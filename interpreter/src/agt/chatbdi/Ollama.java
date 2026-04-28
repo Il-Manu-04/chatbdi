@@ -31,35 +31,39 @@ import static chatbdi.Tools.*;
 
 /**
  * The Ollama class provides an API to call the Ollama models
+ * 
  * @author Andrea Gatti
  */
 public class Ollama {
 	/** The url at which the Ollama server listens */
-    private String URL = "http://localhost:11434/api/";
+	private String URL = "http://localhost:11434/api/";
 	/** The embedding model to use */
-    protected String EMB_MODEL;
+	protected String EMB_MODEL;
 	/** The generation model to use */
-    protected String GEN_MODEL;
+	protected String GEN_MODEL;
 	/** The name that will be assigned to the model that translates KQML to NL */
-    private final String LOG2NL_MODEL = "logic-to-nl";
+	private final String LOG2NL_MODEL = "logic-to-nl";
 	/** The name that will be assigned to the model that translates NL to KQML */
-    private final String NL2LOG_MODEL = "nl-to-logic";
-	/** The name that will be assigned to the model that classifies the Illocutionary Force */
-    private final String CLASS_MODEL = "classify-ilf";
+	private final String NL2LOG_MODEL = "nl-to-logic";
+	/**
+	 * The name that will be assigned to the model that classifies the Illocutionary
+	 * Force
+	 */
+	private final String CLASS_MODEL = "classify-ilf";
 
 	/** The temperature for the generation models */
-    private float TEMPERATURE = 0.0f;
+	private float TEMPERATURE = 0.0f;
 	/** The seed for the generation models (to be reproducible) */
-    private int SEED = 42;
+	private int SEED = 42;
 
 	/** The Agent name (for log printing) */
 	private String agName;
 
-    private String NL2LOG_PROMPT;
-    private String LOG2NL_PROMPT;
-    private String NL2LOG_MODELFILE;
-    private String LOG2NL_MODELFILE;
-    private String CLASS_MODELFILE ;
+	private String NL2LOG_PROMPT;
+	private String LOG2NL_PROMPT;
+	private String NL2LOG_MODELFILE;
+	private String LOG2NL_MODELFILE;
+	private String CLASS_MODELFILE;
 
 	/**
 	 * List of the supported Illocutionary Forces
@@ -72,10 +76,11 @@ public class Ollama {
 
 	/**
 	 * Creates a new Ollama object
+	 * 
 	 * @param supportedIlfs the list of supported Illocuctionary Forces
 	 * @throws ConnectException if the ollama server is not available
 	 */
-	public Ollama( String[] supportedIlfs, String agName, Settings stts ) throws ConnectException {
+	public Ollama(String[] supportedIlfs, String agName, Settings stts) throws ConnectException {
 
 		this.agName = agName;
 		NL2LOG_PROMPT = stts.getUserParameter("nl2log_prompt");
@@ -83,61 +88,62 @@ public class Ollama {
 		NL2LOG_MODELFILE = stts.getUserParameter("nl2log_model");
 		LOG2NL_MODELFILE = stts.getUserParameter("log2nl_model");
 		CLASS_MODELFILE = stts.getUserParameter("class_model");
-		GEN_MODEL = stts.getUserParameter( "gen_model" );
-		EMB_MODEL = stts.getUserParameter( "emb_model" );
-		String sttsTemperature = stts.getUserParameter( "temperature" );
-		if ( sttsTemperature != null )
+		GEN_MODEL = stts.getUserParameter("gen_model");
+		EMB_MODEL = stts.getUserParameter("emb_model");
+		String sttsTemperature = stts.getUserParameter("temperature");
+		if (sttsTemperature != null)
 			TEMPERATURE = Float.parseFloat(sttsTemperature);
-		String sttsSeed = stts.getUserParameter( "seed" );
-		if ( sttsSeed != null )
+		String sttsSeed = stts.getUserParameter("seed");
+		if (sttsSeed != null)
 			SEED = Integer.parseInt(sttsSeed);
-		String sttsUrl = stts.getUserParameter( "ollama_url" );
-		if ( sttsUrl != null )
+		String sttsUrl = stts.getUserParameter("ollama_url");
+		if (sttsUrl != null)
 			URL = sttsUrl;
- 
+
 		// Store the supported Illocutionary Forces
-		SUPPORTED_ILF = new String[ supportedIlfs.length ];
-		for ( int i = 0; i < supportedIlfs.length; i++ )
+		SUPPORTED_ILF = new String[supportedIlfs.length];
+		for (int i = 0; i < supportedIlfs.length; i++)
 			SUPPORTED_ILF[i] = supportedIlfs[i];
 
 		// Check if the Ollama server is online at the given address
-		if ( !is_online() ) {
-			throw new ConnectException( "The Ollama Server is offline or the address is not correct." );
+		if (!is_online()) {
+			throw new ConnectException("The Ollama Server is offline or the address is not correct.");
 		}
 		// Initialize the generation models with prompts
-		System.out.println( "Initializing generation models" );
-		create( GEN_MODEL, NL2LOG_MODEL, TEMPERATURE, NL2LOG_MODELFILE, SEED );
-		create( GEN_MODEL, LOG2NL_MODEL, TEMPERATURE, LOG2NL_MODELFILE, SEED );
-		create( GEN_MODEL, CLASS_MODEL, TEMPERATURE, CLASS_MODELFILE, SEED );
+		System.out.println("Initializing generation models");
+		create(GEN_MODEL, NL2LOG_MODEL, TEMPERATURE, NL2LOG_MODELFILE, SEED);
+		create(GEN_MODEL, LOG2NL_MODEL, TEMPERATURE, LOG2NL_MODELFILE, SEED);
+		create(GEN_MODEL, CLASS_MODEL, TEMPERATURE, CLASS_MODELFILE, SEED);
 	}
 
 	/**
 	 * Checks if Ollama is online
+	 * 
 	 * @return true if available and ready (status code: 200), false otherwise
-	 * Can handle:
-	 * <ul>
-	 * <li> ConnectExcept if the server is not reachable </li>
-	 * <li> IOException if the message cannot be send </li>
-	 * <li> InterruptedException if the connection is interrupted </li>
-	 * </ul>
+	 *         Can handle:
+	 *         <ul>
+	 *         <li>ConnectExcept if the server is not reachable</li>
+	 *         <li>IOException if the message cannot be send</li>
+	 *         <li>InterruptedException if the connection is interrupted</li>
+	 *         </ul>
 	 */
 	private boolean is_online() {
 		try {
-		HttpRequest req = HttpRequest.newBuilder()
-			.uri( URI.create( URL.replaceAll( "/api/", "" ) ) )
-			.header( "Content-Type", "application/json" )
-			.GET()
-			.build();
+			HttpRequest req = HttpRequest.newBuilder()
+					.uri(URI.create(URL.replaceAll("/api/", "")))
+					.header("Content-Type", "application/json")
+					.GET()
+					.build();
 
-			HttpResponse<String> res = client.send( req, HttpResponse.BodyHandlers.ofString() );
+			HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
 			return res.statusCode() == 200;
-		} catch( ConnectException e ) {
+		} catch (ConnectException e) {
 			return false;
-		} catch( IOException e ) {
-			Interpreter ag = (Interpreter) RunLocalMAS.getRunner().getAg( agName ).getTS().getAgArch();
+		} catch (IOException e) {
+			Interpreter ag = (Interpreter) RunLocalMAS.getRunner().getAg(agName).getTS().getAgArch();
 			ag.logSevere(e.getMessage());
-		} catch( InterruptedException e ) {
-			Interpreter ag = (Interpreter) RunLocalMAS.getRunner().getAg( agName ).getTS().getAgArch();
+		} catch (InterruptedException e) {
+			Interpreter ag = (Interpreter) RunLocalMAS.getRunner().getAg(agName).getTS().getAgArch();
 			ag.logSevere(e.getMessage());
 		}
 		return false;
@@ -145,39 +151,41 @@ public class Ollama {
 
 	/**
 	 * Generates the embedding of a string
+	 * 
 	 * @param str the string to embed
-	 * @return a list of double (the embedding vector). The size depends on the model used.
+	 * @return a list of double (the embedding vector). The size depends on the
+	 *         model used.
 	 */
-	public List<Double> embed( String str ) {
+	public List<Double> embed(String str) {
 		// Build the JSON object
 		JSONObject json = new JSONObject();
-		json.put( "model", EMB_MODEL );
-		json.put( "input", str );
-		json.put( "stream", false );
+		json.put("model", EMB_MODEL);
+		json.put("input", str);
+		json.put("stream", false);
 
 		// Build the request
 		HttpRequest req = HttpRequest.newBuilder()
-			.uri( URI.create( URL + "embed" ) )
-			.header( "Content-Type", "application/json" )
-			.POST( HttpRequest.BodyPublishers.ofString( json.toString() ) )
-			.build();
+				.uri(URI.create(URL + "embed"))
+				.header("Content-Type", "application/json")
+				.POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+				.build();
 
 		try {
 			// Send the message
-			HttpResponse<String> res = client.send( req, HttpResponse.BodyHandlers.ofString() );
+			HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
 			// Load the content inside a JSONObject
-			JSONObject emb_json = new JSONObject( res.body() );
+			JSONObject emb_json = new JSONObject(res.body());
 			// Get the embedding array
-			JSONArray vec = emb_json.getJSONArray( "embeddings" ).getJSONArray(0);
+			JSONArray vec = emb_json.getJSONArray("embeddings").getJSONArray(0);
 			// Copy the JSONArray into a Java List
 			List<Double> list = new ArrayList<>();
-			for( int i = 0; i < vec.length(); i++ ) {
-				list.add( vec.getDouble( i ) );
+			for (int i = 0; i < vec.length(); i++) {
+				list.add(vec.getDouble(i));
 			}
 			return list;
-		} catch ( IOException e ) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch ( InterruptedException e ) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -185,35 +193,38 @@ public class Ollama {
 
 	/**
 	 * Computes the embedding of a Literal term
+	 * 
 	 * @param term the Literal to embed
-	 * @return a list of double (the embedding vector). The size depends on the model used.
+	 * @return a list of double (the embedding vector). The size depends on the
+	 *         model used.
 	 */
-	public List<Double> embed( Literal term ) {
-		return embed( preprocess( term ) );
+	public List<Double> embed(Literal term) {
+		return embed(preprocess(term));
 	}
 
 	/**
 	 * This function calls the GENERATE API for the model with input str
+	 * 
 	 * @param model the model to use
-	 * @param str the input message
+	 * @param str   the input message
 	 * @return the body of the answer
 	 */
-	private String generate( String model, String str ) {
+	private String generate(String model, String str) {
 		JSONObject json = new JSONObject();
-		json.put( "model", model );
-		json.put( "prompt", str );
-		json.put( "stream", false );
+		json.put("model", model);
+		json.put("prompt", str);
+		json.put("stream", false);
 
 		HttpRequest req = HttpRequest.newBuilder()
-			.uri( URI.create( URL + "generate" ) )
-			.header( "Content-Type", "application/json" )
-			.POST( HttpRequest.BodyPublishers.ofString( json.toString() ) )
-			.build();
+				.uri(URI.create(URL + "generate"))
+				.header("Content-Type", "application/json")
+				.POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+				.build();
 
 		try {
-			HttpResponse<String> res = client.send( req, HttpResponse.BodyHandlers.ofString() );
+			HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
 			return res.body();
-		} catch( Exception e ) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -221,131 +232,139 @@ public class Ollama {
 
 	/**
 	 * This function classifies a message Illocutionary Force
+	 * 
 	 * @param msg the input message
 	 * @return the Literal correspondent to the Illocutionary Force
 	 */
-	public Literal classify( String msg ) {
+	public Literal classify(String msg) {
 		// Build a JSON Schema with the available Illocutionary Forces
-        JSONObject ilf = new JSONObject();
-        ilf.put( "type", "string" );
-        ilf.put( "enum", SUPPORTED_ILF );
-        JSONObject properties = new JSONObject();
-        properties.put( "Illocutionary Force", ilf );
-        JSONObject json = new JSONObject();
-        json.put( "type", "object" );
-        json.put( "properties", properties );
-        json.put( "required", new JSONArray().put( "Illocutionary Force" ) );
+		JSONObject ilf = new JSONObject();
+		ilf.put("type", "string");
+		ilf.put("enum", SUPPORTED_ILF);
+		JSONObject properties = new JSONObject();
+		properties.put("Illocutionary Force", ilf);
+		JSONObject json = new JSONObject();
+		json.put("type", "object");
+		json.put("properties", properties);
+		json.put("required", new JSONArray().put("Illocutionary Force"));
 
 		// Generate the answer and load it inside a JSON Object
-        JSONObject ans = new JSONObject( generate( CLASS_MODEL, msg, json ) );
+		JSONObject ans = new JSONObject(generate(CLASS_MODEL, msg, json));
 		// Postprocess
-        String ilfObjStr = ans.getString( "response" )
-            .replaceAll( "```json\\s*", "" )
-            .replaceAll( "```\\s*$", "" )
-            .trim();
-        JSONObject ilfObj = new JSONObject( ilfObjStr );
+		String ilfObjStr = ans.getString("response")
+				.replaceAll("```json\\s*", "")
+				.replaceAll("```\\s*$", "")
+				.trim();
+		JSONObject ilfObj = new JSONObject(ilfObjStr);
 		// Return the literal
-        return createLiteral( ilfObj.getString( "Illocutionary Force" ).trim() );
+		return createLiteral(ilfObj.getString("Illocutionary Force").trim());
 	}
 
 	/**
 	 * This function translates a user message to a Literal
 	 * To get better results the terms are translated in Json, for example:
 	 * p(a, b, 1) -> { "functor": p, "arg0": "a", "arg1": "b", "arg2": 1 }
-	 * @param msg the input message
-	 * @param nearest the nearest term in the embedding space
-	 * @param ilf the classified Illocutionary Force
-	 * @param examples a list of all the terms with same functor and arity of the nearest
+	 * 
+	 * @param msg      the input message
+	 * @param nearest  the nearest term in the embedding space
+	 * @param ilf      the classified Illocutionary Force
+	 * @param examples a list of all the terms with same functor and arity of the
+	 *                 nearest
 	 * @return the nearest literal
-	 * @throws IOException if fails reading the NL2LOG_PROMPT file
+	 * @throws IOException    if fails reading the NL2LOG_PROMPT file
 	 * @throws ParseException if the provided answer is not a valid Jason term
 	 */
-	public Literal generate( String msg, Literal nearest, Literal ilf, List<Literal> examples ) throws IOException, ParseException {
+	public Literal generate(String msg, Literal nearest, Literal ilf, List<Literal> examples)
+			throws IOException, ParseException {
 
-        List<JSONObject> jsonExamples = new ArrayList<>();
+		List<JSONObject> jsonExamples = new ArrayList<>();
 		List<Map<String, Term>> mapExamples = new ArrayList<>();
-		System.out.println("[LOG] nearest: " + nearest );
+		System.out.println("[LOG] nearest: " + nearest);
 		// Translate the term in JSON
-        Map<String, Term> nearestJson = termToMap( nearest );
-		System.out.println("[LOG] nearest json: " + nearestJson );
+		Map<String, Term> nearestJson = termToMap(nearest);
+		System.out.println("[LOG] nearest json: " + nearestJson);
 		// Translate all the examples
-        for ( Literal example : examples ) {
+		for (Literal example : examples) {
 			try {
-				Map<String, Term> mapExample = termToMap( example );
-				mapExamples.add( mapExample );
-				jsonExamples.add( mapToJson( mapExample ) );
-			} catch ( NoValueException nve ) {
+				Map<String, Term> mapExample = termToMap(example);
+				mapExamples.add(mapExample);
+				jsonExamples.add(mapToJson(mapExample));
+			} catch (NoValueException nve) {
 				nve.printStackTrace();
 			}
 		}
 		// Generate a schema with types provided in the examples for each arg
-        JSONObject schema = genJSONSchema( mapExamples );
-		System.out.println( "[LOG] Sentence: " + msg + ", nearest: " + nearestJson + ", ilf: " + ilf + ", examples: " + jsonExamples );
+		JSONObject schema = genJSONSchema(mapExamples);
+		System.out.println("[LOG] Sentence: " + msg + ", nearest: " + nearestJson + ", ilf: " + ilf + ", examples: "
+				+ jsonExamples);
 		// Read the prompt and replace needed placeholders
-        String prompt = Files.readString( Path.of( NL2LOG_PROMPT ) )
-            .replace( "SENTENCE", msg )
-            .replace( "NEAREST_JSON", nearestJson.toString() )
-            .replace( "ILF", ilf.toString() )
-            .replace( "EXAMPLES", jsonExamples.toString() );
+		String prompt = Files.readString(Path.of(NL2LOG_PROMPT))
+				.replace("SENTENCE", msg)
+				.replace("NEAREST_JSON", nearestJson.toString())
+				.replace("ILF", ilf.toString())
+				.replace("EXAMPLES", jsonExamples.toString());
 		// // List variable names: they may have meaningful names
-        // // List<Set<Term>> varNames = getVarNames( examples );
-        // // for ( int i = 0; i < varNames.size(); i++ )
-        // //     if ( !varNames.get( i ).isEmpty() )
-        // //         prompt += " - arg" + i + " should contain " + varNames.get( i ) +
-        // //         "; if this piece of information is in the sentence place it here, otherwise place underscore or null";
-        
-		// Generate the new term
-        JSONObject answer = new JSONObject( generate( GEN_MODEL, prompt, schema ) );
-        JSONObject response = new JSONObject( answer.getString( "response" ) );
+		// // List<Set<Term>> varNames = getVarNames( examples );
+		// // for ( int i = 0; i < varNames.size(); i++ )
+		// // if ( !varNames.get( i ).isEmpty() )
+		// // prompt += " - arg" + i + " should contain " + varNames.get( i ) +
+		// // "; if this piece of information is in the sentence place it here,
+		// otherwise place underscore or null";
+
+		// Generate the new term not using GEN_MODEL but NL2LOG_MODEL
+		JSONObject answer = new JSONObject(generate(NL2LOG_MODEL, prompt, schema));
+		JSONObject response = new JSONObject(answer.getString("response"));
 		try {
-			Literal responseTerm = jsonToTerm( response );
+			Literal responseTerm = jsonToTerm(response);
 			return responseTerm;
-		} catch ( ParseException pe ) {
-			throw new ParseException( "LLM error! Generated: " + response + ". It is not a valid Jason term." );
+		} catch (ParseException pe) {
+			throw new ParseException("LLM error! Generated: " + response + ". It is not a valid Jason term.");
 		}
 	}
 
 	/**
 	 * This function translates a Jason message in Natural Language
+	 * 
 	 * @param msg the KQML message
 	 * @return the natural language translation
 	 * @throws IOException if fails to open LOG2NL_PROMPT
 	 */
-	public String generate( Message msg ) throws IOException {
-		String prompt = Files.readString( Path.of( LOG2NL_PROMPT ) )
-			.replace( "SENDER", msg.getSender() )
-			.replace( "ILFORCE", msg.getIlForce() )
-			.replace( "CONTENT", msg.getPropCont().toString() );
-		JSONObject answer = new JSONObject( generate(LOG2NL_MODEL, prompt) );
-		return answer.getString( "response" ).replaceAll( "(?s)<think>.*?</think>", "" );
+	public String generate(Message msg) throws IOException {
+		String prompt = Files.readString(Path.of(LOG2NL_PROMPT))
+				.replace("SENDER", msg.getSender())
+				.replace("ILFORCE", msg.getIlForce())
+				.replace("CONTENT", msg.getPropCont().toString());
+		JSONObject answer = new JSONObject(generate(LOG2NL_MODEL, prompt));
+		return answer.getString("response").replaceAll("(?s)<think>.*?</think>", "");
 	}
 
 	/**
 	 * This function translates a message using model and following format
-	 * @param model the model to use
-	 * @param str the input message
+	 * 
+	 * @param model  the model to use
+	 * @param str    the input message
 	 * @param format the Json Schema for the output
 	 * @return the JSON string received (to handle)
 	 */
-	private String generate( String model, String str, JSONObject format ) {
+	private String generate(String model, String str, JSONObject format) {
 		JSONObject json = new JSONObject();
-		json.put( "model", model );
-		json.put( "prompt", str );
-		json.put( "format", format );
-		json.put( "stream", false );
+		json.put("model", model);
+		json.put("prompt", str);
+		json.put("format", format);
+		json.put("stream", false);
 
 		HttpRequest req = HttpRequest.newBuilder()
-			.uri( URI.create( URL + "generate" ) )
-			.header( "Content-Type", "application/json" )
-			.POST( HttpRequest.BodyPublishers.ofString( json.toString() ) )
-			.build();
+				.uri(URI.create(URL + "generate"))
+				.header("Content-Type", "application/json")
+				.POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+				.build();
 
 		try {
-			HttpResponse<String> res = client.send( req, HttpResponse.BodyHandlers.ofString() );
+			HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
 			return res.body();
-		} catch( IOException e ) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch ( InterruptedException e ) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -353,64 +372,66 @@ public class Ollama {
 
 	/**
 	 * Creates a prompted model
-	 * @param from the starting model
-	 * @param model the final model name
-	 * @param t the temperature
+	 * 
+	 * @param from     the starting model
+	 * @param model    the final model name
+	 * @param t        the temperature
 	 * @param sys_file the path to a system file
 	 */
-	public void create( String from, String model, float t, String sys_file ) {
+	public void create(String from, String model, float t, String sys_file) {
 		JSONObject params = new JSONObject();
-		params.put( "temperature", t );
+		params.put("temperature", t);
 		JSONObject json = new JSONObject();
-		json.put( "from", from );
-		json.put( "model", model );
-		json.put( "stream", false );
-		json.put( "parameters", params );
+		json.put("from", from);
+		json.put("model", model);
+		json.put("stream", false);
+		json.put("parameters", params);
 		try {
-			json.put( "system", Files.readString( Path.of(sys_file ) ) );
+			json.put("system", Files.readString(Path.of(sys_file)));
 			HttpRequest request = HttpRequest.newBuilder()
-				.uri( URI.create( URL + "create" ) )
-				.header( "Content-Type", "application/json" )
-				.POST( HttpRequest.BodyPublishers.ofString( json.toString() ) )
-				.build();
+					.uri(URI.create(URL + "create"))
+					.header("Content-Type", "application/json")
+					.POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+					.build();
 
 			HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
-		} catch ( IOException e ) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch ( InterruptedException e ) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * Creates a prompted model
-	 * @param from the starting model
-	 * @param model the final model name
-	 * @param t the temperature
+	 * 
+	 * @param from     the starting model
+	 * @param model    the final model name
+	 * @param t        the temperature
 	 * @param sys_file the path to a system file
-	 * @param seed the seed for generation
+	 * @param seed     the seed for generation
 	 */
-	public void create( String from, String model, float t, String sys_file, int seed ) {
+	public void create(String from, String model, float t, String sys_file, int seed) {
 		JSONObject params = new JSONObject();
-		params.put( "temperature", t );
-		params.put( "seed", seed );
+		params.put("temperature", t);
+		params.put("seed", seed);
 		JSONObject json = new JSONObject();
-		json.put( "from", from );
-		json.put( "model", model );
-		json.put( "stream", false );
-		json.put( "parameters", params );
+		json.put("from", from);
+		json.put("model", model);
+		json.put("stream", false);
+		json.put("parameters", params);
 		try {
-			json.put( "system", Files.readString( Path.of(sys_file ) ) );
+			json.put("system", Files.readString(Path.of(sys_file)));
 			HttpRequest request = HttpRequest.newBuilder()
-				.uri( URI.create( URL + "create" ) )
-				.header( "Content-Type", "application/json" )
-				.POST( HttpRequest.BodyPublishers.ofString( json.toString() ) )
-				.build();
+					.uri(URI.create(URL + "create"))
+					.header("Content-Type", "application/json")
+					.POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+					.build();
 
 			HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
-		} catch ( IOException e ) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch ( InterruptedException e ) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}

@@ -52,7 +52,7 @@ The calories for 100 grams of beef are 156.;tell;calories/3;calories(beef, unit(
 Beef gives 300 calories.;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
 the price of a portion of meat is 20 dollars;tell;price/2;price(meat, dollars(20));cooking
 you have to be careful with chocolate because it has a lot of calories, 250 per slice;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
-beans are very good for you, they contain 24 grams of protein per 100 grams;tell;calories/3;protein(beans, unit(100, gr), 24);cooking
+beans are very good for you, they contain 24 grams of protein per 100 grams;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
 I like eating salad with water;tell;pairing/2;pairing(salad, water(_));cooking
 The cake costs a lot, 15 euros for just a slice;tell;price/2;price(cake, euros(15));cooking
 what are the fundamental ingredients for cooking a Bolognese lasagna?;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
@@ -333,8 +333,8 @@ FYI, The price of a portion of meat is 20 dollars.;tell;price/2;price(meat, doll
 Update: The price of a portion of meat is 20 dollars.;tell;price/2;price(meat, dollars(20));cooking
 For the record, You have to be careful with chocolate because it has a lot of calories, 250 per slice.;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
 You have to be careful with chocolate because it has a lot of calories, 250 per slice.;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
-Update: Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;calories/3;protein(beans, unit(100, gr), 24);cooking
-Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;calories/3;protein(beans, unit(100, gr), 24);cooking
+Update: Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
 FYI, I like eating salad with water.;tell;pairing/2;pairing(salad, water(_));cooking
 I like eating salad with water.;tell;pairing/2;pairing(salad, water(_));cooking
 For the record, The cake costs a lot, 15 euros for just a slice.;tell;price/2;price(cake, euros(15));cooking

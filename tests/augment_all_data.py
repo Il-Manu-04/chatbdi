@@ -67,28 +67,42 @@ def build_prompt(row: Dict[str, str], num_variants: int) -> str:
     domain = row["domain"]
 
     return f"""You are an expert in NLP data augmentation for NL-to-logic tasks.
+Your goal is to produce natural sentence variants that a real user would type in a chatbot.
 
-Given one training row, generate {num_variants} new rows.
+Given one training example, generate {num_variants} new variations.
+
+Output format — return ONLY plain semicolon-separated lines, one per variant:
+new_sentence;new_solution
 
 Hard constraints:
-1) Return ONLY plain text lines in this exact format (semicolon-separated):
-new_sentence;new_solution
-2) Do NOT add headers, numbering, markdown, comments, or code fences.
-3) Keep semantic intent consistent with the original row.
+1) Each line must be: new_sentence;new_solution — nothing else.
+2) No headers, numbering, markdown, code fences, or extra text.
+3) The new sentence must keep the same semantic intent as the original.
 4) Update the logical solution to match the new sentence exactly.
-5) Keep performative compatibility with the row performative.
-6) Keep functor and arity consistent with the original solution unless sentence meaning truly requires otherwise.
-7) Use valid Prolog/Jason-like syntax in solution.
-8) Keep language in English.
+5) Keep the same performative ({performative}), functor and arity as the original.
+6) Use valid Prolog/Jason-like syntax in the solution.
+7) Write in English. Do NOT repeat the original sentence.
 
-Reference row context (do not output these fields):
+STYLE — write as a real user typing in a chatbot (casual, direct, fluent):
+- Natural phrasing: vary word order, vocabulary, sentence structure genuinely.
+- FORBIDDEN prefixes: never start with "FYI", "Update:", "For the record,",
+  "Reminder:", "Note:", "Heads up:", "Just so you know", "Please note",
+  "Quick check:", "Attention:", or any similar formal/email-style opener.
+- FORBIDDEN pattern: never prepend "Can you", "Could you", "Please" or any
+  modal verb to an already-formed question without rewriting the whole sentence.
+  BAD:  "Can you Are there any open doors?" — this is broken English.
+  GOOD: "Which doors are still open?" — rewrite from scratch.
+- Every sentence must be grammatically correct and self-contained.
+
+Reference context (do NOT output these):
 performative={performative}
 embedding={embedding}
 domain={domain}
 
-Input row:
+Original row:
 {sentence};{solution}
-"""
+
+Generate {num_variants} lines:"""
 
 
 def parse_llm_lines(text: str) -> List[Tuple[str, str]]:
