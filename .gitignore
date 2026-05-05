@@ -12,3 +12,5 @@ examples/auction_ag_jason/.project
 examples/house-building/.project
 docs/main.pdf
 docs/main.typ
+
+training_ml/venv
