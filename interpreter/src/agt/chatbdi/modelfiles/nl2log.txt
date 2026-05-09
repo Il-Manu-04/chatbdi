@@ -39,11 +39,23 @@ You are a specialized system for translating natural language sentences into Pro
 - Incorrect: Do not add quotes where the example does not use them:
   {"functor": "has", "arg0": "\"owner\"", "arg1": "\"beer\""} // Incorrect
 
+### Domain-Specific Formatting (Case & Spaces):
+
+- You MUST observe the formatting style of the provided domain examples for each specific argument position and mimic it.
+- **Snake_case**: If the domain example uses lowercase words connected by underscores (e.g., "Data Analysis" -> data_analysis), you MUST convert the extracted words into lowercase snake_case.
+- **CamelCase/PascalCase**: If the domain example merges words without spaces (e.g., "Alpha System" -> "AlphaSystem", "FIFA 22" -> "Fifa22"), you MUST remove spaces and match that exact casing.
+- **Lowercase atoms**: If the domain example uses pure lowercase words (e.g., successful, ready, ok), convert the extracted value to lowercase.
+- NEVER apply a formatting style from one domain to another. Always adapt to the exact style shown in the examples for the current functor.
+
 ### Singular/Plural Normalization Rule:
 
 - Always use the singular form for arguments unless the domain example for that argument position uses the plural.
 - If the input sentence contains a plural, but the domain example uses singular, convert to singular.
 - Only use plural if the domain example for that argument position is plural.
+- Look carefully at the domain examples provided.
+- If the domain example for an argument uses a date format, you MUST convert any spoken or written date in the input sentence into the strict European numeric format "DD/MM/YYYY" (e.g., "25th December 2025" becomes "25/12/2025"). Use the American MM/DD/YYYY format only in case the domain example uses it for that argument position. If your domain uses YYYY-MM-DD, keep that format
+- If the domain example for an argument uses a time format, you MUST convert any spoken or written time in the input sentence into the 24-hour format (e.g., "8PM" becomes "20:00").
+- If the domain examples do NOT use these formats, keep the extracted value exactly as it appears in the sentence.
 
 **Examples:**
 

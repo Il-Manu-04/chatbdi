@@ -11,8 +11,8 @@ BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
 INPUT_DIR   = os.path.join(BASE_DIR, "input")
 SYSTEM_FILE = os.path.join(BASE_DIR, "..", "interpreter", "src", "agt", "chatbdi", "modelfiles", "nl2log.txt")
 PROMPT_FILE = os.path.join(BASE_DIR, "..", "interpreter", "src", "agt", "chatbdi", "modelfiles", "nl2logPrompt.txt")
-ALL_CSV     = os.path.join(BASE_DIR, "all_data.csv")
-OUTPUT_FILE = os.path.join(BASE_DIR, "dataset.jsonl")
+ALL_CSV     = os.path.join(BASE_DIR, "all_data_fixed.csv")
+OUTPUT_FILE = os.path.join(BASE_DIR, "dataset_fixed.jsonl")
 
 DOMAINS = [
     "booking", "car_control", "cooking", "domestic_robot",

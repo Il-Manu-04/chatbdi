@@ -43,7 +43,7 @@ What gear are we in?;askOne;current_gear/1;current_gear(_);car_control
 How long did it take us to travel 400 km?;askOne;odometer_reading/2;odometer_reading(km(400), _);car_control
 Tell me the wiper speed;askOne;wiper_speed/1;wiper_speed(_);car_control
 How much percentage of battery is left?;askOne;battery_charge/1;battery_charge(_);car_control
-Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(ok);car_control
+Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(_);car_control
 Tell me the ingredients of pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
 Is besciamella in pasta bolognese?;askOne;ingredients/2;ingredients(pasta(bolognese), [veal, besciamella, tomato_sauce]);cooking
 How many calories gives one carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
