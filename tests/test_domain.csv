@@ -1,6 +1,6 @@
 sentence;performative;embedding;solution;domain
 "There is an event called ""WaltuhParty"" the 10/11/2033 at 8PM";tell;event_details/3;"event_details(""WaltuhParty"", ""10/11/2033"", ""20:00"")";tickets
-The VIP ticket for WaltuhParty costs 300 dollars and there are only 3 left;tell;ticket_type/4;"ticket_type(""""WaltuhParty"""", vip, dollars(300), 3)";tickets
+The VIP ticket for WaltuhParty costs 300 dollars and there are only 3 left;tell;ticket_type/4;"ticket_type(""WaltuhParty"", vip, dollars(300), 3)";tickets
 "I registered a new account as ""Giorgio03"" with mail bubbulus@gmail.com";tell;user_account/3;"user_account(""Giorgio03"", ""bubbulus@gmail.com"", _)";tickets
 AldoBaldo02 did the order 12 the 11/11/2021 for 5000 euros and it's still processing;tell;order_details/5;"order_details(12, ""AldoBaldo02"", ""11/11/2021"", euros(5000), processing)";tickets
 There are 200 Premium tickets left;tell;available_tickets/2;available_tickets(premium, 200);tickets
@@ -15,7 +15,7 @@ I need to know all the refund requests suspended;askAll;refund_request/3;refund_
 Can you display all the purchases from user Finger00 which cost is 25 euros;askAll;order_details/5;"order_details(_, ""Finger00"", _, euros(25), _)";tickets
 are there any events at 9pm on 21/12/2021?;askAll;event_details/3;"event_details(_, ""21/12/2021"", ""21:00"")";tickets
 "tell me the actual status of the ""WaltuhParty"" event";askOne;event_status/2;"event_status(""WaltuhParty"", _)";tickets
-Need to know the number of VIP tickets still available;askOne;available_tickets/2;available_tickets(TicketTypeName, Quantity);tickets
+Need to know the number of VIP tickets still available;askOne;available_tickets/2;available_tickets(vip, Quantity);tickets
 I need to know the status of refund #26;askOne;refund_request/3;refund_request(26, _, _);tickets
 "Tell me when user ""Baldovino28"" created his account";askOne;user_account/3;"user_account(""Baldovino28"", _, _)";tickets
 What is the musical genre of artist LilWaltuh?;askOne;artist_info/3;"artist_info(""LilWaltuh"", _, _)";tickets
