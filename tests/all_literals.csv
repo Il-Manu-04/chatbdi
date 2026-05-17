@@ -13,14 +13,14 @@ request_late_checkout(GuestName, Date);request_late_checkout;booking
 confirmed_booking(BookingId);confirmed_booking;booking
 cancel_booking(BookingId);cancel_booking;booking
 review(HotelName, Rating);review;booking
-"booking(anna, double, ""01/01/2026"", ""05/01/2026"")";booking;booking
-"booking(_, suite, ""20/12/2025"", ""27/12/2025"")";booking;booking
-"available(single, ""10/10/2025"", _)";available;booking
-"available(double, ""02/02/2026"", ""10/02/2026"")";available;booking
-"available(_, ""25/12/2025"", ""01/01/2026"")";available;booking
-"fully_booked(""31/12/2025"")";fully_booked;booking
-"fully_booked(""15/08/2025"")";fully_booked;booking
-"fully_booked(""01/01/2026"")";fully_booked;booking
+booking(anna, double, "01/01/2026", "05/01/2026");booking;booking
+booking(_, suite, "20/12/2025", "27/12/2025");booking;booking
+available(single, "10/10/2025", _);available;booking
+available(double, "02/02/2026", "10/02/2026");available;booking
+available(_, "25/12/2025", "01/01/2026");available;booking
+fully_booked("31/12/2025");fully_booked;booking
+fully_booked("15/08/2025");fully_booked;booking
+fully_booked("01/01/2026");fully_booked;booking
 has_reservation(luca, 15);has_reservation;booking
 has_reservation(_, 18);has_reservation;booking
 check_in(maria, 101);check_in;booking
@@ -36,11 +36,11 @@ payment_status(14, pending);payment_status;booking
 payment_status(15, completed);payment_status;booking
 payment_status(16, failed);payment_status;booking
 payment_status(_, cancelled);payment_status;booking
-"request_early_checkin(anna, ""01/01/2026"")";request_early_checkin;booking
-"request_early_checkin(_, ""02/01/2026"")";request_early_checkin;booking
+request_early_checkin(anna, "01/01/2026");request_early_checkin;booking
+request_early_checkin(_, "02/01/2026");request_early_checkin;booking
 request_early_checkin(gianni, _);request_early_checkin;booking
-"request_late_checkout(maria, ""06/01/2026"")";request_late_checkout;booking
-"request_late_checkout(_, ""16/10/2025"")";request_late_checkout;booking
+request_late_checkout(maria, "06/01/2026");request_late_checkout;booking
+request_late_checkout(_, "16/10/2025");request_late_checkout;booking
 request_late_checkout(_, _);request_late_checkout;booking
 cancel_booking(9);cancel_booking;booking
 cancel_booking(18);cancel_booking;booking
@@ -48,10 +48,10 @@ cancel_booking(_);cancel_booking;booking
 confirmed_booking(9);confirmed_booking;booking
 confirmed_booking(10);confirmed_booking;booking
 confirmed_booking(_);confirmed_booking;booking
-"booking(_, double, ""12/02/2026"", ""15/02/2026"")";booking;booking
-"booking(luca, _, ""01/03/2026"", ""05/03/2026"")";booking;booking
+booking(_, double, "12/02/2026", "15/02/2026");booking;booking
+booking(luca, _, "01/03/2026", "05/03/2026");booking;booking
 booking(alice, suite, _, _);booking;booking
-"booking(_, _, ""10/11/2025"", _)";booking;booking
+booking(_, _, "10/11/2025", _);booking;booking
 available(_, _, _);available;booking
 has_reservation(giulia, 22);has_reservation;booking
 has_reservation(_, 23);has_reservation;booking
@@ -66,17 +66,17 @@ review(hotel_sole, 3);review;booking
 review(_, 1);review;booking
 review(_, 2);review;booking
 review(_, _);review;booking
-"booking(_, _, ""25/12/2025"", ""01/01/2026"")";booking;booking
-"booking(fabio, single, ""24/12/2025"", _)";booking;booking
-"booking(chiara, _, _, ""30/12/2025"")";booking;booking
-"booking(_, suite, ""31/12/2025"", ""02/01/2026"")";booking;booking
+booking(_, _, "25/12/2025", "01/01/2026");booking;booking
+booking(fabio, single, "24/12/2025", _);booking;booking
+booking(chiara, _, _, "30/12/2025");booking;booking
+booking(_, suite, "31/12/2025", "02/01/2026");booking;booking
 check_in(gianni, 303);check_in;booking
 check_in(piero, _);check_in;booking
 check_out(luca);check_out;booking
 check_out(_);check_out;booking
-"request_early_checkin(_, ""24/12/2025"")";request_early_checkin;booking
+request_early_checkin(_, "24/12/2025");request_early_checkin;booking
 request_late_checkout(chiara, _);request_late_checkout;booking
-"request_late_checkout(_, ""02/01/2026"")";request_late_checkout;booking
+request_late_checkout(_, "02/01/2026");request_late_checkout;booking
 cancel_booking(30);cancel_booking;booking
 cancel_booking(31);cancel_booking;booking
 cancel_booking(32);cancel_booking;booking
@@ -86,18 +86,18 @@ last_booking_id(32);last_booking_id;booking
 last_booking_id(_);last_booking_id;booking
 last_booking_id(50);last_booking_id;booking
 last_booking_id(99);last_booking_id;booking
-"available(double, ""15/10/2025"", _)";available;booking
-"available(single, ""20/10/2025"", ""25/10/2025"")";available;booking
-"fully_booked(""25/12/2025"")";fully_booked;booking
-"fully_booked(""01/08/2025"")";fully_booked;booking
+available(double, "15/10/2025", _);available;booking
+available(single, "20/10/2025", "25/10/2025");available;booking
+fully_booked("25/12/2025");fully_booked;booking
+fully_booked("01/08/2025");fully_booked;booking
 room_price(single, 40);room_price;booking
 room_price(double, 55);room_price;booking
 room_price(suite, 150);room_price;booking
 payment_status(33, refunded);payment_status;booking
 payment_status(34, completed);payment_status;booking
 payment_status(_, _);payment_status;booking
-"booking(_, _, tomorrow, ""01/07/2025"")";booking;booking
-"booking(federica, single, ""15/09/2025"", ""18/09/2025"")";booking;booking
+booking(_, _, tomorrow, "01/07/2025");booking;booking
+booking(federica, single, "15/09/2025", "18/09/2025");booking;booking
 check_in(_, 105);check_in;booking
 check_out(federica);check_out;booking
 has_reservation(_, _);has_reservation;booking
@@ -177,7 +177,7 @@ destination_set(paris);destination_set;car_control
 destination_set(rome);destination_set;car_control
 destination_set(delhi);destination_set;car_control
 destination_set(_, _);destination_set;car_control
-"destination_set(""45.4215N,75.6972W"")";destination_set;car_control
+destination_set("45.4215N,75.6972W");destination_set;car_control
 vehicle_status(stopped);vehicle_status;car_control
 vehicle_status(error);vehicle_status;car_control
 vehicle_status(_);vehicle_status;car_control
@@ -351,12 +351,12 @@ stock(_, 100);stock;domestic_robot
 stock(_, _);stock;domestic_robot
 stock(pizza, 10);stock;domestic_robot
 stock(wine, 15);stock;domestic_robot
-"time(""13:00"")";time;domestic_robot
-"time(""08:45"")";time;domestic_robot
+time("13:00");time;domestic_robot
+time("08:45");time;domestic_robot
 time(_);time;domestic_robot
-"time(""18:30"")";time;domestic_robot
-"time(""22:10"")";time;domestic_robot
-"time(""06:15"")";time;domestic_robot
+time("18:30");time;domestic_robot
+time("22:10");time;domestic_robot
+time("06:15");time;domestic_robot
 get(beer);get;domestic_robot
 get(water);get;domestic_robot
 get(sandwich);get;domestic_robot
@@ -394,8 +394,8 @@ stock(sandwich, _);stock;domestic_robot
 stock(_, 75);stock;domestic_robot
 too_much(beer, 5);too_much;domestic_robot
 too_much(juice, _);too_much;domestic_robot
-"time(""10:10"")";time;domestic_robot
-"time(""15:00"")";time;domestic_robot
+time("10:10");time;domestic_robot
+time("15:00");time;domestic_robot
 drink(soda);drink;domestic_robot
 drink(_, _);drink;domestic_robot
 get(juice);get;domestic_robot
@@ -424,75 +424,75 @@ hardware_assigned(EmployeeID, DeviceType, DeviceID, IssueDate);hardware_assigned
 last_employee_id(7891);last_employee_id;employer_management
 last_employee_id(7900);last_employee_id;employer_management
 last_employee_id(_);last_employee_id;employer_management
-"employee_details(7900, ""Emma"", ""Clark"", ""02/06/1987"", ""emma.clark@company.com"", ""555-1234"")";employee_details;employer_management
-"employee_details(_, ""Liam"", ""Turner"", _, _, _)";employee_details;employer_management
-"employment_info(7900, ""QA Analyst"", qa, ""01/02/2021"", active)";employment_info;employer_management
-"employment_info(_, ""Marketing Manager"", marketing, ""12/09/2019"", on_leave)";employment_info;employer_management
-"employment_info(1234, ""HR Assistant"", hr, _, _)";employment_info;employer_management
-"contact_info(7900, ""Olivia Clark"", ""555-5678"", spouse)";contact_info;employer_management
-"contact_info(_, ""Daniel Smith"", _, friend)";contact_info;employer_management
+employee_details(7900, "Emma", "Clark", "02/06/1987", "emma.clark@company.com", "555-1234");employee_details;employer_management
+employee_details(_, "Liam", "Turner", _, _, _);employee_details;employer_management
+employment_info(7900, "QA Analyst", qa, "01/02/2021", active);employment_info;employer_management
+employment_info(_, "Marketing Manager", marketing, "12/09/2019", on_leave);employment_info;employer_management
+employment_info(1234, "HR Assistant", hr, _, _);employment_info;employer_management
+contact_info(7900, "Olivia Clark", "555-5678", spouse);contact_info;employer_management
+contact_info(_, "Daniel Smith", _, friend);contact_info;employer_management
 salary_details(7900, 58000, usd, monthly);salary_details;employer_management
 salary_details(_, 70000, eur, yearly);salary_details;employer_management
 department_details(101, marketing, 4521);department_details;employer_management
 department_details(_, finance, _);department_details;employer_management
 manager_of(1111, hr);manager_of;employer_management
 manager_of(_, it);manager_of;employer_management
-"performance_review(1234, ""01/04/2024"", 7890, 4.0, good)";performance_review;employer_management
-"performance_review(5678, ""20/06/2023"", _, 4.8, excellent)";performance_review;employer_management
+performance_review(1234, "01/04/2024", 7890, 4.0, good);performance_review;employer_management
+performance_review(5678, "20/06/2023", _, 4.8, excellent);performance_review;employer_management
 skill_set(7900, java, intermediate);skill_set;employer_management
 skill_set(_, communication, expert);skill_set;employer_management
 skill_set(1001, project_management, advanced);skill_set;employer_management
-"certification_details(7900, ""Scrum Master"", ""01/01/2022"", ""01/01/2025"")";certification_details;employer_management
-"certification_details(_, ""Data Privacy"", ""05/10/2023"", _)";certification_details;employer_management
-"certification_details(5678, _, ""15/03/2021"", _)";certification_details;employer_management
-"leave_request(2001, 7900, vacation, ""01/08/2024"", ""15/08/2024"", pending)";leave_request;employer_management
+certification_details(7900, "Scrum Master", "01/01/2022", "01/01/2025");certification_details;employer_management
+certification_details(_, "Data Privacy", "05/10/2023", _);certification_details;employer_management
+certification_details(5678, _, "15/03/2021", _);certification_details;employer_management
+leave_request(2001, 7900, vacation, "01/08/2024", "15/08/2024", pending);leave_request;employer_management
 leave_request(_, _, sick, _, _, approved);leave_request;employer_management
-"leave_request(2002, 1234, unpaid, ""10/09/2023"", ""25/09/2023"", rejected)";leave_request;employer_management
-"attendance_record(7900, ""last month"", ""08:30"", ""17:30"")";attendance_record;employer_management
-"attendance_record(_, ""last month"", _, _)";attendance_record;employer_management
-"disciplinary_action(1234, warning, ""10/01/2024"", ""Late submissions"")";disciplinary_action;employer_management
-"disciplinary_action(_, verbal_notice, ""15/11/2023"", _)";disciplinary_action;employer_management
-"training_attended(7900, agile_training, ""12/03/2024"")";training_attended;employer_management
+leave_request(2002, 1234, unpaid, "10/09/2023", "25/09/2023", rejected);leave_request;employer_management
+attendance_record(7900, "last month", "08:30", "17:30");attendance_record;employer_management
+attendance_record(_, "last month", _, _);attendance_record;employer_management
+disciplinary_action(1234, warning, "10/01/2024", "Late submissions");disciplinary_action;employer_management
+disciplinary_action(_, verbal_notice, "15/11/2023", _);disciplinary_action;employer_management
+training_attended(7900, agile_training, "12/03/2024");training_attended;employer_management
 training_attended(_, team_building, _);training_attended;employer_management
-"training_attended(9001, leadership, ""05/05/2023"")";training_attended;employer_management
-"training_attended(_, diversity_and_inclusion, ""12/01/2023"")";training_attended;employer_management
+training_attended(9001, leadership, "05/05/2023");training_attended;employer_management
+training_attended(_, diversity_and_inclusion, "12/01/2023");training_attended;employer_management
 access_level(7900, email_system, user);access_level;employer_management
 access_level(_, payroll, admin);access_level;employer_management
 access_level(2345, crm, editor);access_level;employer_management
 access_level(_, company_systems, _);access_level;employer_management
-"hardware_assigned(7900, laptop, ""LT-9012"", ""10/02/2023"")";hardware_assigned;employer_management
-"hardware_assigned(5678, phone, ""PH-5544"", _)";hardware_assigned;employer_management
-"hardware_assigned(_, monitor, ""MN-0001"", ""05/05/2023"")";hardware_assigned;employer_management
+hardware_assigned(7900, laptop, "LT-9012", "10/02/2023");hardware_assigned;employer_management
+hardware_assigned(5678, phone, "PH-5544", _);hardware_assigned;employer_management
+hardware_assigned(_, monitor, "MN-0001", "05/05/2023");hardware_assigned;employer_management
 hardware_assigned(_, _, _, _);hardware_assigned;employer_management
-"employee_details(8001, ""Noah"", ""Green"", _, _, _)";employee_details;employer_management
-"employment_info(8001, ""Support Engineer"", it, ""03/03/2022"", active)";employment_info;employer_management
-"contact_info(8001, ""Lily Green"", ""555-1010"", spouse)";contact_info;employer_management
+employee_details(8001, "Noah", "Green", _, _, _);employee_details;employer_management
+employment_info(8001, "Support Engineer", it, "03/03/2022", active);employment_info;employer_management
+contact_info(8001, "Lily Green", "555-1010", spouse);contact_info;employer_management
 salary_details(8001, 62000, usd, monthly);salary_details;employer_management
 department_details(102, operations, 6789);department_details;employer_management
 manager_of(6789, operations);manager_of;employer_management
-"performance_review(8001, ""12/12/2023"", 5678, 4.2, good)";performance_review;employer_management
+performance_review(8001, "12/12/2023", 5678, 4.2, good);performance_review;employer_management
 skill_set(8001, sql, beginner);skill_set;employer_management
-"certification_details(8001, ""ITIL Foundation"", ""01/07/2022"", ""01/07/2025"")";certification_details;employer_management
-"leave_request(3001, 8001, maternity, ""01/04/2024"", ""01/08/2024"", approved)";leave_request;employer_management
-"attendance_record(8001, ""last month"", ""09:00"", ""17:00"")";attendance_record;employer_management
-"disciplinary_action(8001, written_warning, ""15/12/2023"", ""Policy violation"")";disciplinary_action;employer_management
-"training_attended(8001, mandatory_safety, ""01/02/2024"")";training_attended;employer_management
+certification_details(8001, "ITIL Foundation", "01/07/2022", "01/07/2025");certification_details;employer_management
+leave_request(3001, 8001, maternity, "01/04/2024", "01/08/2024", approved);leave_request;employer_management
+attendance_record(8001, "last month", "09:00", "17:00");attendance_record;employer_management
+disciplinary_action(8001, written_warning, "15/12/2023", "Policy violation");disciplinary_action;employer_management
+training_attended(8001, mandatory_safety, "01/02/2024");training_attended;employer_management
 access_level(8001, hr_portal, viewer);access_level;employer_management
-"hardware_assigned(8001, tablet, ""TB-7788"", ""02/01/2023"")";hardware_assigned;employer_management
-"certification_details(""Olivia Davis"", ""Cloud Security"", ""10/02/2023"", _)";certification_details;employer_management
+hardware_assigned(8001, tablet, "TB-7788", "02/01/2023");hardware_assigned;employer_management
+certification_details(1234, "Cloud Security", "10/02/2023", _);certification_details;employer_management
 certification_details(_, _, _, expiration);certification_details;employer_management
-"training_attended(""Isabella Lee"", remote_working, _)";training_attended;employer_management
+training_attended(3003, remote_working, _);training_attended;employer_management
 training_attended(9999, compliance_training, _);training_attended;employer_management
 skill_set(_, leadership, expert);skill_set;employer_management
 salary_details(1111, 85000, usd, yearly);salary_details;employer_management
 salary_details(_, _, _, _);salary_details;employer_management
-"leave_request(_, _, vacation, ""01/01/2025"", ""10/01/2025"", pending)";leave_request;employer_management
+leave_request(_, _, vacation, "01/01/2025", "10/01/2025", pending);leave_request;employer_management
 access_level(9999, intranet, user);access_level;employer_management
-"employee_details(_, ""Ava"", ""White"", _, _, _)";employee_details;employer_management
-"performance_review(_, ""01/02/2024"", _, 3.8, satisfactory)";performance_review;employer_management
+employee_details(_, "Ava", "White", _, _, _);employee_details;employer_management
+performance_review(_, "01/02/2024", _, 3.8, satisfactory);performance_review;employer_management
 training_attended(_, onboarding, _);training_attended;employer_management
 hardware_assigned(_, docking_station, _, _);hardware_assigned;employer_management
-"certification_details(_, cybersecurity, ""03/03/2022"", _)";certification_details;employer_management
+certification_details(_, cybersecurity, "03/03/2022", _);certification_details;employer_management
 training_attended(2002, project_management, _);training_attended;employer_management
 hardware_assigned(2002, headset, _, _);hardware_assigned;employer_management
 skill_set(2002, jira, advanced);skill_set;employer_management
@@ -510,75 +510,75 @@ download_status(UserID, GameName, ProgressPercentage);download_status;games_plat
 multiplayer_session(GameName, SessionID, PlayerCount, MaxPlayers);multiplayer_session;games_platform
 community_forum_post(PostID, UserID, ForumTopic, PostDate, Content);community_forum_post;games_platform
 wallet_balance(UserID, CurrentBalance);wallet_balance;games_platform
-"user_account(""GamerX"", 1001, ""01/01/2023"")";user_account;games_platform
-"user_account(_, 1002, ""02/02/2023"")";user_account;games_platform
-"user_account(""NoScopeNinja"", _, _)";user_account;games_platform
+user_account("GamerX", 1001, "01/01/2023");user_account;games_platform
+user_account(_, 1002, "02/02/2023");user_account;games_platform
+user_account("NoScopeNinja", _, _);user_account;games_platform
 user_friend(10, 14);user_friend;games_platform
 user_friend(3, 5);user_friend;games_platform
 user_friend(_, _);user_friend;games_platform
 wallet_balance(1001, 50);wallet_balance;games_platform
 wallet_balance(_, 75);wallet_balance;games_platform
 wallet_balance(1003, _);wallet_balance;games_platform
-"game_owned(1001, ""HollowKnight"")";game_owned;games_platform
-"game_owned(_, ""Cyberpunk2077"")";game_owned;games_platform
+game_owned(1001, "HollowKnight");game_owned;games_platform
+game_owned(_, "Cyberpunk2077");game_owned;games_platform
 game_owned(1005, _);game_owned;games_platform
-"wishlist(1001, ""DeathStranding"", ""12/12/2023"")";wishlist;games_platform
-"wishlist(1010, ""RE4Remake"", _)";wishlist;games_platform
-"wishlist(_, ""Sekiro"", _)";wishlist;games_platform
-"in_cart(1002, ""Bloodborne"", ""06/06/2025"")";in_cart;games_platform
-"in_cart(_, ""DOOM"", _)";in_cart;games_platform
+wishlist(1001, "DeathStranding", "12/12/2023");wishlist;games_platform
+wishlist(1010, "RE4Remake", _);wishlist;games_platform
+wishlist(_, "Sekiro", _);wishlist;games_platform
+in_cart(1002, "Bloodborne", "06/06/2025");in_cart;games_platform
+in_cart(_, "DOOM", _);in_cart;games_platform
 in_cart(1003, _, _);in_cart;games_platform
-"game_on_sale(""Starfield"", 25, ""30/07/2025"")";game_on_sale;games_platform
-"game_on_sale(_, 10, ""15/08/2025"")";game_on_sale;games_platform
-"game_on_sale(""Cyberpunk2077"", _, _)";game_on_sale;games_platform
-"achievement_unlocked(1011, ""Sekiro"", ""DragonSlayer"", ""20/05/2025"")";achievement_unlocked;games_platform
-"achievement_unlocked(_, ""EldenRing"", ""RadahnDefeated"", _)";achievement_unlocked;games_platform
-"achievement_unlocked(1006, ""Hades"", _, _)";achievement_unlocked;games_platform
-"game_review(""GhostOfTsushima"", 10, 5, ""01/01/2024"")";game_review;games_platform
-"game_review(""Witcher3"", 11, _, _)";game_review;games_platform
+game_on_sale("Starfield", 25, "30/07/2025");game_on_sale;games_platform
+game_on_sale(_, 10, "15/08/2025");game_on_sale;games_platform
+game_on_sale("Cyberpunk2077", _, _);game_on_sale;games_platform
+achievement_unlocked(1011, "Sekiro", "DragonSlayer", "20/05/2025");achievement_unlocked;games_platform
+achievement_unlocked(_, "EldenRing", "RadahnDefeated", _);achievement_unlocked;games_platform
+achievement_unlocked(1006, "Hades", _, _);achievement_unlocked;games_platform
+game_review("GhostOfTsushima", 10, 5, "01/01/2024");game_review;games_platform
+game_review("Witcher3", 11, _, _);game_review;games_platform
 game_review(_, _, 3, _);game_review;games_platform
-"download_status(1002, ""GTA5"", 80)";download_status;games_platform
+download_status(1002, "GTA5", 80);download_status;games_platform
 download_status(1003, _, 0);download_status;games_platform
-"download_status(_, ""Valorant"", _)";download_status;games_platform
-"multiplayer_session(""Overwatch2"", 20252, 5, 10)";multiplayer_session;games_platform
-"multiplayer_session(""ApexLegends"", _, _, _)";multiplayer_session;games_platform
+download_status(_, "Valorant", _);download_status;games_platform
+multiplayer_session("Overwatch2", 20252, 5, 10);multiplayer_session;games_platform
+multiplayer_session("ApexLegends", _, _, _);multiplayer_session;games_platform
 multiplayer_session(_, _, 2, 3);multiplayer_session;games_platform
-"community_forum_post(201, 1001, ""SoulsborneGames"", ""15/06/2024"", ""Love the difficulty!"")";community_forum_post;games_platform
-"community_forum_post(202, _, ""TipsAndTricks"", _, _)";community_forum_post;games_platform
-"community_forum_post(_, _, _, _, ""Any co-op partners?"")";community_forum_post;games_platform
-"user_library(1001, ""Sekiro"", ""01/05/2024"", 120)";user_library;games_platform
-"user_library(_, ""RE4Remake"", _, _)";user_library;games_platform
+community_forum_post(201, 1001, "SoulsborneGames", "15/06/2024", "Love the difficulty!");community_forum_post;games_platform
+community_forum_post(202, _, "TipsAndTricks", _, _);community_forum_post;games_platform
+community_forum_post(_, _, _, _, "Any co-op partners?");community_forum_post;games_platform
+user_library(1001, "Sekiro", "01/05/2024", 120);user_library;games_platform
+user_library(_, "RE4Remake", _, _);user_library;games_platform
 user_library(1002, _, _, 90);user_library;games_platform
-"user_account(""PixelRogue"", 1020, ""11/11/2022"")";user_account;games_platform
-"user_account(""ShadowWalker"", 1055, ""12/12/2023"")";user_account;games_platform
+user_account("PixelRogue", 1020, "11/11/2022");user_account;games_platform
+user_account("ShadowWalker", 1055, "12/12/2023");user_account;games_platform
 user_friend(1020, 1055);user_friend;games_platform
 wallet_balance(1020, 0);wallet_balance;games_platform
-"game_owned(1020, ""DeadCells"")";game_owned;games_platform
-"wishlist(1020, ""Blasphemous"", ""04/04/2024"")";wishlist;games_platform
-"achievement_unlocked(1020, ""DeadCells"", ""BossRush"", ""06/06/2025"")";achievement_unlocked;games_platform
-"download_status(1020, ""DeadCells"", 100)";download_status;games_platform
-"game_review(""DeadCells"", 1020, 5, ""07/07/2025"")";game_review;games_platform
-"in_cart(1020, ""Blasphemous2"", ""08/08/2025"")";in_cart;games_platform
-"game_on_sale(""Blasphemous"", 50, ""01/09/2025"")";game_on_sale;games_platform
-"multiplayer_session(""Warframe"", 22333, 4, 8)";multiplayer_session;games_platform
-"community_forum_post(203, 1020, ""IndieGames"", ""10/10/2024"", ""Try Dead Cells!"")";community_forum_post;games_platform
-"user_library(1020, ""HollowKnight"", ""03/03/2024"", 200)";user_library;games_platform
-"user_account(""CritHit"", 1100, ""01/01/2020"")";user_account;games_platform
+game_owned(1020, "DeadCells");game_owned;games_platform
+wishlist(1020, "Blasphemous", "04/04/2024");wishlist;games_platform
+achievement_unlocked(1020, "DeadCells", "BossRush", "06/06/2025");achievement_unlocked;games_platform
+download_status(1020, "DeadCells", 100);download_status;games_platform
+game_review("DeadCells", 1020, 5, "07/07/2025");game_review;games_platform
+in_cart(1020, "Blasphemous2", "08/08/2025");in_cart;games_platform
+game_on_sale("Blasphemous", 50, "01/09/2025");game_on_sale;games_platform
+multiplayer_session("Warframe", 22333, 4, 8);multiplayer_session;games_platform
+community_forum_post(203, 1020, "IndieGames", "10/10/2024", "Try Dead Cells!");community_forum_post;games_platform
+user_library(1020, "HollowKnight", "03/03/2024", 200);user_library;games_platform
+user_account("CritHit", 1100, "01/01/2020");user_account;games_platform
 wallet_balance(1100, 5);wallet_balance;games_platform
-"game_owned(1100, ""Frostpunk"")";game_owned;games_platform
-"wishlist(1100, ""Frostpunk2"", _)";wishlist;games_platform
-"in_cart(1100, ""Frostpunk2"", ""01/06/2025"")";in_cart;games_platform
-"achievement_unlocked(1100, ""Frostpunk"", ""Survivor"", ""10/10/2023"")";achievement_unlocked;games_platform
-"download_status(1100, ""Frostpunk"", 100)";download_status;games_platform
-"community_forum_post(204, 1100, ""CityBuilders"", ""01/12/2024"", ""This game is intense!"")";community_forum_post;games_platform
-"multiplayer_session(""Valorant"", 3201, 5, 5)";multiplayer_session;games_platform
-"game_review(""Valorant"", 1100, 4, ""05/05/2024"")";game_review;games_platform
-"user_library(1100, ""Frostpunk"", ""01/01/2020"", 90)";user_library;games_platform
-"game_details(""G123"", ""Frostpunk"", ""strategy"", 30, ""11bitStudios"", ""11bitStudios"", ""01/05/2018"")";game_details;games_platform
-"game_details(""G456"", ""Sekiro"", ""soulslike"", 50, ""FromSoftware"", ""Activision"", _)";game_details;games_platform
-"game_details(_, ""HollowKnight"", ""metroidvania"", 15, _, ""Team Cherry"", _)";game_details;games_platform
-"game_details(_, ""Valorant"", ""shooter"", 0, ""Riot Games"", ""Riot Games"", ""01/01/2020"")";game_details;games_platform
-"game_details(""G999"", _, ""rpg"", 60, ""CDPR"", _, ""01/01/2025"")";game_details;games_platform
+game_owned(1100, "Frostpunk");game_owned;games_platform
+wishlist(1100, "Frostpunk2", _);wishlist;games_platform
+in_cart(1100, "Frostpunk2", "01/06/2025");in_cart;games_platform
+achievement_unlocked(1100, "Frostpunk", "Survivor", "10/10/2023");achievement_unlocked;games_platform
+download_status(1100, "Frostpunk", 100);download_status;games_platform
+community_forum_post(204, 1100, "CityBuilders", "01/12/2024", "This game is intense!");community_forum_post;games_platform
+multiplayer_session("Valorant", 3201, 5, 5);multiplayer_session;games_platform
+game_review("Valorant", 1100, 4, "05/05/2024");game_review;games_platform
+user_library(1100, "Frostpunk", "01/01/2020", 90);user_library;games_platform
+game_details("G123", "Frostpunk", "strategy", 30, "11bitStudios", "11bitStudios", "01/05/2018");game_details;games_platform
+game_details("G456", "Sekiro", "soulslike", 50, "FromSoftware", "Activision", _);game_details;games_platform
+game_details(_, "HollowKnight", "metroidvania", 15, _, "Team Cherry", _);game_details;games_platform
+game_details(_, "Valorant", "shooter", 0, "Riot Games", "Riot Games", "01/01/2020");game_details;games_platform
+game_details("G999", _, "rpg", 60, "CDPR", _, "01/01/2025");game_details;games_platform
 last_project_id(202);last_project_id;house_builder
 project_details(ProjectID, ProjectName, Status);project_details;house_builder
 project_milestone(ProjectID, MilestoneName, CompletionDate);project_milestone;house_builder
@@ -596,89 +596,89 @@ payment_status(ProjectID, Status);payment_status;house_builder
 equipment_on_site(ProjectID, EquipmentType);equipment_on_site;house_builder
 waste_management(ProjectID, WasteType, Volume);waste_management;house_builder
 client_communication(ProjectID, Date, Subject);client_communication;house_builder
-"project_details(303, ""Central Plaza"", active)";project_details;house_builder
-"project_details(304, ""East Wing Expansion"", delayed)";project_details;house_builder
-"project_details(305, ""Warehouse Build"", completed)";project_details;house_builder
-"project_milestone(303, ""Foundation"", ""2025-07-15"")";project_milestone;house_builder
-"project_milestone(304, ""Inspection"", _)";project_milestone;house_builder
-"project_milestone(_, ""Final Review"", ""2026-01-10"")";project_milestone;house_builder
-"site_info(303, ""456 Elm Street"", ""Gravel"")";site_info;house_builder
-"site_info(304, ""789 Oak Road"", ""Sand"")";site_info;house_builder
-"site_info(_, ""221 Pine Lane"", _)";site_info;house_builder
-"permit_status(303, ""Construction"", ""Pending"")";permit_status;house_builder
-"permit_status(304, ""Zoning"", ""Approved"")";permit_status;house_builder
-"permit_status(_, _, ""Denied"")";permit_status;house_builder
-"resource_needed(303, ""cement bags"", unit(200))";resource_needed;house_builder
-"resource_needed(304, ""rebar"", unit(300))";resource_needed;house_builder
-"resource_needed(_, ""glass panels"", unit(_))";resource_needed;house_builder
-"resource_inventory(""cement bags"", 150)";resource_inventory;house_builder
-"resource_inventory(""rebar"", 80)";resource_inventory;house_builder
-"resource_inventory(""bricks"", _)";resource_inventory;house_builder
-"supplier_details(""BuildItCo"", ""Anna Lee"")";supplier_details;house_builder
-"supplier_details(""FastSteel"", ""John Doe"")";supplier_details;house_builder
-"supplier_details(_, ""Luca Bianchi"")";supplier_details;house_builder
-"team_assignment(303, ""E202"", ""Electrician"")";team_assignment;house_builder
-"team_assignment(304, ""E303"", ""Foreman"")";team_assignment;house_builder
-"team_assignment(_, _, ""Site Manager"")";team_assignment;house_builder
-"employee_skill(""E202"", ""Plumbing"")";employee_skill;house_builder
-"employee_skill(""E303"", ""Excavation"")";employee_skill;house_builder
-employee_skill(_, masonry);employee_skill;house_builder
-"inspection_scheduled(303, ""Fire Safety"", ""2025-08-01"", ""Scheduled"")";inspection_scheduled;house_builder
-"inspection_scheduled(304, ""Zoning"", _, ""Failed"")";inspection_scheduled;house_builder
-"inspection_scheduled(_, ""HVAC"", ""2025-10-10"", _)";inspection_scheduled;house_builder
-"safety_incident(303, ""2025-07-22"", ""Worker injury from equipment"")";safety_incident;house_builder
-"safety_incident(304, ""2025-06-10"", ""Tripping hazard reported"")";safety_incident;house_builder
-"safety_incident(_, ""2025-07-01"", _)";safety_incident;house_builder
-"budget_item(303, ""Steel"", euro(5000))";budget_item;house_builder
-"budget_item(304, ""Glass"", usd(3500))";budget_item;house_builder
-"budget_item(_, ""Labor"", euro(_))";budget_item;house_builder
+project_details(303, "Central Plaza", active);project_details;house_builder
+project_details(304, "East Wing Expansion", delayed);project_details;house_builder
+project_details(305, "Warehouse Build", completed);project_details;house_builder
+project_milestone(303, "Foundation", "2025-07-15");project_milestone;house_builder
+project_milestone(304, "Inspection", _);project_milestone;house_builder
+project_milestone(_, "Final Review", "2026-01-10");project_milestone;house_builder
+site_info(303, "456 Elm Street", "Gravel");site_info;house_builder
+site_info(304, "789 Oak Road", "Sand");site_info;house_builder
+site_info(_, "221 Pine Lane", _);site_info;house_builder
+permit_status(303, "Construction", "Pending");permit_status;house_builder
+permit_status(304, "Zoning", "Approved");permit_status;house_builder
+permit_status(_, _, "Denied");permit_status;house_builder
+resource_needed(303, "cement bags", unit(200));resource_needed;house_builder
+resource_needed(304, "rebar", unit(300));resource_needed;house_builder
+resource_needed(_, "glass panels", unit(_));resource_needed;house_builder
+resource_inventory("cement bags", 150);resource_inventory;house_builder
+resource_inventory("rebar", 80);resource_inventory;house_builder
+resource_inventory("bricks", _);resource_inventory;house_builder
+supplier_details("BuildItCo", "Anna Lee");supplier_details;house_builder
+supplier_details("FastSteel", "John Doe");supplier_details;house_builder
+supplier_details(_, "Luca Bianchi");supplier_details;house_builder
+team_assignment(303, "E202", "Electrician");team_assignment;house_builder
+team_assignment(304, "E303", "Foreman");team_assignment;house_builder
+team_assignment(_, _, "Site Manager");team_assignment;house_builder
+employee_skill("E202", "Plumbing");employee_skill;house_builder
+employee_skill("E303", "Excavation");employee_skill;house_builder
+employee_skill(_, "Masonry");employee_skill;house_builder
+inspection_scheduled(303, "Fire Safety", "2025-08-01", "Scheduled");inspection_scheduled;house_builder
+inspection_scheduled(304, "Zoning", _, "Failed");inspection_scheduled;house_builder
+inspection_scheduled(_, "HVAC", "2025-10-10", _);inspection_scheduled;house_builder
+safety_incident(303, "2025-07-22", "Worker injury from equipment");safety_incident;house_builder
+safety_incident(304, "2025-06-10", "Tripping hazard reported");safety_incident;house_builder
+safety_incident(_, "2025-07-01", _);safety_incident;house_builder
+budget_item(303, "Steel", euro(5000));budget_item;house_builder
+budget_item(304, "Glass", usd(3500));budget_item;house_builder
+budget_item(_, "Labor", euro(_));budget_item;house_builder
 payment_status(303, paid);payment_status;house_builder
 payment_status(304, pending);payment_status;house_builder
 payment_status(_, processing);payment_status;house_builder
-"equipment_on_site(303, ""Excavator"")";equipment_on_site;house_builder
-"equipment_on_site(304, ""Forklift"")";equipment_on_site;house_builder
-"equipment_on_site(_, ""Concrete Mixer"")";equipment_on_site;house_builder
-"waste_management(303, ""Plastic"", 10)";waste_management;house_builder
-"waste_management(304, ""Metal"", 15)";waste_management;house_builder
-"waste_management(_, ""Concrete"", _)";waste_management;house_builder
-"client_communication(303, ""2025-06-30"", ""Change order request"")";client_communication;house_builder
-"client_communication(304, ""2025-07-15"", ""Permit delay"")";client_communication;house_builder
-"client_communication(_, ""2025-08-10"", _)";client_communication;house_builder
-"project_details(_, ""North Bridge"", active)";project_details;house_builder
+equipment_on_site(303, "Excavator");equipment_on_site;house_builder
+equipment_on_site(304, "Forklift");equipment_on_site;house_builder
+equipment_on_site(_, "Concrete Mixer");equipment_on_site;house_builder
+waste_management(303, "Plastic", 10);waste_management;house_builder
+waste_management(304, "Metal", 15);waste_management;house_builder
+waste_management(_, "Concrete", _);waste_management;house_builder
+client_communication(303, "2025-06-30", "Change order request");client_communication;house_builder
+client_communication(304, "2025-07-15", "Permit delay");client_communication;house_builder
+client_communication(_, "2025-08-10", _);client_communication;house_builder
+project_details(_, "North Bridge", active);project_details;house_builder
 project_details(306, _, planning);project_details;house_builder
-"project_milestone(306, ""Design Phase"", ""2025-05-01"")";project_milestone;house_builder
-"project_milestone(307, ""Utility Setup"", _)";project_milestone;house_builder
-"site_info(306, ""90 River Way"", ""Rocky"")";site_info;house_builder
-"permit_status(306, ""Fire Safety"", ""Approved"")";permit_status;house_builder
-"permit_status(307, ""Noise"", ""Pending"")";permit_status;house_builder
-"resource_needed(306, ""pipes"", unit(90))";resource_needed;house_builder
-"resource_inventory(""glass panels"", 40)";resource_inventory;house_builder
-"supplier_details(""UrbanStone"", ""Elisa Marino"")";supplier_details;house_builder
-"team_assignment(306, ""E404"", ""Surveyor"")";team_assignment;house_builder
-"employee_skill(""E404"", ""Surveying"")";employee_skill;house_builder
-"inspection_scheduled(306, ""Waterproofing"", _, ""Passed"")";inspection_scheduled;house_builder
-"safety_incident(306, ""2025-07-04"", ""Minor chemical spill"")";safety_incident;house_builder
-"budget_item(306, ""Insulation"", euro(1200))";budget_item;house_builder
+project_milestone(306, "Design Phase", "2025-05-01");project_milestone;house_builder
+project_milestone(307, "Utility Setup", _);project_milestone;house_builder
+site_info(306, "90 River Way", "Rocky");site_info;house_builder
+permit_status(306, "Fire Safety", "Approved");permit_status;house_builder
+permit_status(307, "Noise", "Pending");permit_status;house_builder
+resource_needed(306, "pipes", unit(90));resource_needed;house_builder
+resource_inventory("glass panels", 40);resource_inventory;house_builder
+supplier_details("UrbanStone", "Elisa Marino");supplier_details;house_builder
+team_assignment(306, "E404", "Surveyor");team_assignment;house_builder
+employee_skill("E404", "Surveying");employee_skill;house_builder
+inspection_scheduled(306, "Waterproofing", _, "Passed");inspection_scheduled;house_builder
+safety_incident(306, "2025-07-04", "Minor chemical spill");safety_incident;house_builder
+budget_item(306, "Insulation", euro(1200));budget_item;house_builder
 payment_status(306, approved);payment_status;house_builder
-"equipment_on_site(306, ""Backhoe"")";equipment_on_site;house_builder
-"waste_management(306, ""Wood"", 25)";waste_management;house_builder
-"client_communication(306, ""2025-06-15"", ""Material concern"")";client_communication;house_builder
-"resource_needed(_, ""tiles"", unit(120))";resource_needed;house_builder
-"resource_needed(202, ""cement bags"", unit(150))";resource_needed;house_builder
-"equipment_on_site(202, ""Cement Mixer"")";equipment_on_site;house_builder
-"team_assignment(202, ""E150"", ""Plumber"")";team_assignment;house_builder
-"employee_skill(""E150"", ""Drainage Systems"")";employee_skill;house_builder
-"permit_status(202, ""Plumbing"", ""Approved"")";permit_status;house_builder
-"inspection_scheduled(202, ""HVAC"", _, ""Scheduled"")";inspection_scheduled;house_builder
-"budget_item(202, ""Equipment Rental"", euro(1800))";budget_item;house_builder
+equipment_on_site(306, "Backhoe");equipment_on_site;house_builder
+waste_management(306, "Wood", 25);waste_management;house_builder
+client_communication(306, "2025-06-15", "Material concern");client_communication;house_builder
+resource_needed(_, "tiles", unit(120));resource_needed;house_builder
+resource_needed(202, "cement bags", unit(150));resource_needed;house_builder
+equipment_on_site(202, "Cement Mixer");equipment_on_site;house_builder
+team_assignment(202, "E150", "Plumber");team_assignment;house_builder
+employee_skill("E150", "Drainage Systems");employee_skill;house_builder
+permit_status(202, "Plumbing", "Approved");permit_status;house_builder
+inspection_scheduled(202, "HVAC", _, "Scheduled");inspection_scheduled;house_builder
+budget_item(202, "Equipment Rental", euro(1800));budget_item;house_builder
 payment_status(202, completed);payment_status;house_builder
-"client_communication(202, ""2025-09-10"", ""Schedule clarification"")";client_communication;house_builder
-"waste_management(202, ""Concrete"", 50)";waste_management;house_builder
-"resource_inventory(""tiles"", 75)";resource_inventory;house_builder
-"resource_inventory(""insulation sheets"", 60)";resource_inventory;house_builder
-"supplier_details(""GreenMaterials"", ""Sofia Trentini"")";supplier_details;house_builder
-"supplier_details(""QuickBuild"", ""Marco Neri"")";supplier_details;house_builder
-"supplier_details(""EcoBuild"", ""Chiara Rossi"")";supplier_details;house_builder
+client_communication(202, "2025-09-10", "Schedule clarification");client_communication;house_builder
+waste_management(202, "Concrete", 50);waste_management;house_builder
+resource_inventory("tiles", 75);resource_inventory;house_builder
+resource_inventory("insulation sheets", 60);resource_inventory;house_builder
+supplier_details("GreenMaterials", "Sofia Trentini");supplier_details;house_builder
+supplier_details("QuickBuild", "Marco Neri");supplier_details;house_builder
+supplier_details("EcoBuild", "Chiara Rossi");supplier_details;house_builder
 last_transaction_id(20587);last_transaction_id;onbanking
 account(AccountNumber, AccountType, CurrentBalance);account;onbanking
 user(Username, PasswordHash, CustomerId);user;onbanking
@@ -700,24 +700,24 @@ account(30983, premium, 7200);account;onbanking
 account(30120, standard, 1850);account;onbanking
 account(32100, student, 300);account;onbanking
 account(_, savings, 990);account;onbanking
-"user(""Luigi88"", _, 3001)";user;onbanking
-"user(""AnnaRossi"", hash123xyz, 3002)";user;onbanking
+user("Luigi88", _, 3001);user;onbanking
+user("AnnaRossi", hash123xyz, 3002);user;onbanking
 user(_, _, 3003);user;onbanking
-"transaction(9001, 30120, transfer, 150, ""01/01/2024"", ""Monthly rent"")";transaction;onbanking
-"transaction(9002, 32100, withdrawal, 50, ""15/02/2024"", ""ATM"")";transaction;onbanking
-"transaction(9003, 30983, deposit, 5000, ""10/03/2024"", ""Salary"")";transaction;onbanking
-"transaction(_, _, payment, 300, ""12/04/2024"", _)";transaction;onbanking
-"login_status(""Luigi88"", online)";login_status;onbanking
-"login_status(""AnnaRossi"", offline)";login_status;onbanking
-"login_status(""MikeTheBanker"", _)";login_status;onbanking
-"authentication_attempt(""AnnaRossi"", ""2024-03-10"", failed)";authentication_attempt;onbanking
-"authentication_attempt(""Luigi88"", ""2024-03-12"", success)";authentication_attempt;onbanking
-"authentication_attempt(_, ""2024-03-14"", failed)";authentication_attempt;onbanking
-"successful_login(""AnnaRossi"")";successful_login;onbanking
-"successful_login(""Luigi88"")";successful_login;onbanking
-"successful_login(""TheRealGio23"")";successful_login;onbanking
-"failed_login(""MikeTheBanker"")";failed_login;onbanking
-"failed_login(""WrongGuy1"")";failed_login;onbanking
+transaction(9001, 30120, transfer, 150, "01/01/2024", "Monthly rent");transaction;onbanking
+transaction(9002, 32100, withdrawal, 50, "15/02/2024", "ATM");transaction;onbanking
+transaction(9003, 30983, deposit, 5000, "10/03/2024", "Salary");transaction;onbanking
+transaction(_, _, payment, 300, "12/04/2024", _);transaction;onbanking
+login_status("Luigi88", online);login_status;onbanking
+login_status("AnnaRossi", offline);login_status;onbanking
+login_status("MikeTheBanker", _);login_status;onbanking
+authentication_attempt("AnnaRossi", "2024-03-10", failed);authentication_attempt;onbanking
+authentication_attempt("Luigi88", "2024-03-12", success);authentication_attempt;onbanking
+authentication_attempt(_, "2024-03-14", failed);authentication_attempt;onbanking
+successful_login("AnnaRossi");successful_login;onbanking
+successful_login("Luigi88");successful_login;onbanking
+successful_login("TheRealGio23");successful_login;onbanking
+failed_login("MikeTheBanker");failed_login;onbanking
+failed_login("WrongGuy1");failed_login;onbanking
 failed_login(_);failed_login;onbanking
 transfer_limit(premium, 5000);transfer_limit;onbanking
 transfer_limit(student, 300);transfer_limit;onbanking
@@ -734,48 +734,48 @@ security_alert(_, multiple_failures);security_alert;onbanking
 card_status(1221, active);card_status;onbanking
 card_status(1222, blocked);card_status;onbanking
 card_status(_, inactive);card_status;onbanking
-"bill_payment(9100, 30120, ""Water Utility"", 80, ""2024-04-01"")";bill_payment;onbanking
-"bill_payment(9101, 30983, ""Electricity Co."", 120, ""2024-04-10"")";bill_payment;onbanking
-"bill_payment(_, _, ""Gas Service"", 65, _)";bill_payment;onbanking
-"transaction(9102, 32100, payment, 60, ""2024-04-12"", ""Tuition Fee"")";transaction;onbanking
-"transaction(_, _, deposit, 2000, ""2024-05-01"", _)";transaction;onbanking
+bill_payment(9100, 30120, "Water Utility", 80, "2024-04-01")";bill_payment;onbanking
+bill_payment(9101, 30983, "Electricity Co.", 120, "2024-04-10")";bill_payment;onbanking
+bill_payment(_, _, "Gas Service", 65, _)";bill_payment;onbanking
+transaction(9102, 32100, payment, 60, "2024-04-12", "Tuition Fee")";transaction;onbanking
+transaction(_, _, deposit, 2000, "2024-05-01", _)";transaction;onbanking
 account(30985, standard, 2500);account;onbanking
-"user(""MarioPro"", hashedpwd, 3004)";user;onbanking
+user("MarioPro", hashedpwd, 3004);user;onbanking
 card_status(1344, expired);card_status;onbanking
-"login_status(""MarioPro"", online)";login_status;onbanking
-"authentication_attempt(""MarioPro"", ""2024-05-05"", success)";authentication_attempt;onbanking
+login_status("MarioPro", online);login_status;onbanking
+authentication_attempt("MarioPro", "2024-05-05", success);authentication_attempt;onbanking
 send_notification(3004, 803);send_notification;onbanking
 security_alert(3004, blocked_card);security_alert;onbanking
 transfer_limit(standard, 1500);transfer_limit;onbanking
-"transaction(9103, 30985, withdrawal, 400, ""2024-05-10"", ""ATM"")";transaction;onbanking
+transaction(9103, 30985, withdrawal, 400, "2024-05-10", "ATM");transaction;onbanking
 pending_transaction(9300, 30985);pending_transaction;onbanking
-"bill_payment(9104, 30985, ""Internet Provider"", 90, ""2024-05-12"")";bill_payment;onbanking
-"failed_login(""Intruder99"")";failed_login;onbanking
-"authentication_attempt(""Intruder99"", ""2024-05-13"", failed)";authentication_attempt;onbanking
+bill_payment(9104, 30985, "Internet Provider", 90, "2024-05-12");bill_payment;onbanking
+failed_login("Intruder99");failed_login;onbanking
+authentication_attempt("Intruder99", "2024-05-13", failed);authentication_attempt;onbanking
 card_status(1444, stolen);card_status;onbanking
-"transaction(9105, 30985, payment, 75, ""2024-05-13"", ""Gym Fee"")";transaction;onbanking
+transaction(9105, 30985, payment, 75, "2024-05-13", "Gym Fee");transaction;onbanking
 send_notification(3004, 804);send_notification;onbanking
 security_alert(3004, unusual_access);security_alert;onbanking
-"user(""SandraK"", pwdhash22, 3005)";user;onbanking
+user("SandraK", pwdhash22, 3005);user;onbanking
 account(31000, business, 12000);account;onbanking
 transfer_limit(business, 10000);transfer_limit;onbanking
 card_status(1555, active);card_status;onbanking
-"login_status(""SandraK"", offline)";login_status;onbanking
-"authentication_attempt(""SandraK"", ""2024-05-14"", success)";authentication_attempt;onbanking
-"successful_login(""SandraK"")";successful_login;onbanking
-"transaction(9106, 31000, deposit, 8000, ""2024-05-15"", ""Client Payment"")";transaction;onbanking
+login_status("SandraK", offline);login_status;onbanking
+authentication_attempt("SandraK", "2024-05-14", success);authentication_attempt;onbanking
+successful_login("SandraK");successful_login;onbanking
+transaction(9106, 31000, deposit, 8000, "2024-05-15", "Client Payment");transaction;onbanking
 pending_transaction(9400, 31000);pending_transaction;onbanking
-"bill_payment(9107, 31000, ""Office Supplies"", 300, ""2024-05-20"")";bill_payment;onbanking
+bill_payment(9107, 31000, "Office Supplies", 300, "2024-05-20");bill_payment;onbanking
 send_notification(3005, 805);send_notification;onbanking
 security_alert(3005, location_mismatch);security_alert;onbanking
 card_status(_, expired);card_status;onbanking
-"failed_login(""Shadow01"")";failed_login;onbanking
-"transaction(_, _, transfer, 1500, ""2024-06-01"", _)";transaction;onbanking
+failed_login("Shadow01");failed_login;onbanking
+transaction(_, _, transfer, 1500, "2024-06-01", _);transaction;onbanking
 account(31001, premium, 8500);account;onbanking
-"user(""Shadow01"", _, 3006)";user;onbanking
-"successful_login(""Shadow01"")";successful_login;onbanking
-"authentication_attempt(""Shadow01"", ""2024-06-01"", failed)";authentication_attempt;onbanking
-"login_status(""Shadow01"", online)";login_status;onbanking
+user("Shadow01", _, 3006);user;onbanking
+successful_login("Shadow01");successful_login;onbanking
+authentication_attempt("Shadow01", "2024-06-01", failed);authentication_attempt;onbanking
+login_status("Shadow01", online);login_status;onbanking
 transfer_limit(_, _);transfer_limit;onbanking
 robot_status(Status);robot_status;robot_assistant
 current_location(Zone, Display);current_location;robot_assistant
@@ -784,7 +784,8 @@ battery_level(Percentage);battery_level;robot_assistant
 charging_status(IsCharging);charging_status;robot_assistant
 customer_request(CustomerID, ProductInterest);customer_request;robot_assistant
 product_details(ProductName, Category, Brand, Price, StockQuantity, DisplayLocation);product_details;robot_assistant
-"product_specifications(ProductName, SpecName, SpecValue) % e.g., product_specifications(Laptop_X, ""RAM"", ""16GB"")";product_specifications;robot_assistant
+product_specifications(ProductName, SpecName, SpecValue)
+product_specifications(Laptop_X, "RAM", "16GB");product_specifications;robot_assistant
 product_on_display(ProductName, DisplayLocation);product_on_display;robot_assistant
 product_in_stockroom(ProductName, Quantity);product_in_stockroom;robot_assistant
 low_stock_alert(ProductName, CurrentQuantity);low_stock_alert;robot_assistant
@@ -793,7 +794,8 @@ promotion_active(ProductName, DiscountPercentage, StartDate, EndDate);promotion_
 accessory_compatible(MainProduct, AccessoryProduct);accessory_compatible;robot_assistant
 sales_completed(ProductList, Currency(TotalAmount), PaymentType);sales_completed;robot_assistant
 return_process(TransactionID, Product);return_process;robot_assistant
-navigation_obstacle(ObstacleType, Location) % e.g., navigation_obstacle(cliente, corsia_tv);navigation_obstacle;robot_assistant
+navigation_obstacle(ObstacleType, Location)
+navigation_obstacle(cliente, corsia_tv);navigation_obstacle;robot_assistant
 task_completed(TaskName);task_completed;robot_assistant
 robot_status(recharging);robot_status;robot_assistant
 robot_status(_);robot_status;robot_assistant
@@ -803,27 +805,27 @@ charging_status(true);charging_status;robot_assistant
 charging_status(_);charging_status;robot_assistant
 current_location(smartphones, 3);current_location;robot_assistant
 current_location(_, 3);current_location;robot_assistant
-"customer_request(28, ""SamsungS3"")";customer_request;robot_assistant
-"customer_request(_, ""XiaomiRedmi"")";customer_request;robot_assistant
-"product_on_display(""Xiaomi"", _)";product_on_display;robot_assistant
+customer_request(28, "SamsungS3");customer_request;robot_assistant
+customer_request(_, "XiaomiRedmi");customer_request;robot_assistant
+product_on_display("Xiaomi", _);product_on_display;robot_assistant
 product_on_display(_, pc);product_on_display;robot_assistant
-"promotion_active(""Motorola2"", 20, ""1/1/2025"", ""1/2/2025"")";promotion_active;robot_assistant
-"promotion_active(_, 30, _, ""1/2/2025"")";promotion_active;robot_assistant
-"accessory_compatible(""SamsungWatch"", ""XiaomiRedmi"")";accessory_compatible;robot_assistant
-"accessory_compatible(_, ""XiaomiRedmi"")";accessory_compatible;robot_assistant
-"sales_completed(""iPhone6"", euro(80), cash)";sales_completed;robot_assistant
+promotion_active("Motorola2", 20, "1/1/2025", "1/2/2025");promotion_active;robot_assistant
+promotion_active(_, 30, _, "1/2/2025");promotion_active;robot_assistant
+accessory_compatible("SamsungWatch", "XiaomiRedmi");accessory_compatible;robot_assistant
+accessory_compatible(_, "XiaomiRedmi");accessory_compatible;robot_assistant
+sales_completed("iPhone6", euro(80), cash);sales_completed;robot_assistant
 sales_completed(_, euro(80), _);sales_completed;robot_assistant
-"return_process(2, ""Xiaomi"")";return_process;robot_assistant
-"return_process(_, ""Samsung"")";return_process;robot_assistant
-"out_of_stock(""VR"")";out_of_stock;robot_assistant
+return_process(2, "Xiaomi");return_process;robot_assistant
+return_process(_, "Samsung");return_process;robot_assistant
+out_of_stock("VR");out_of_stock;robot_assistant
 out_of_stock(_);out_of_stock;robot_assistant
 product_in_stockroom(_, 9);product_in_stockroom;robot_assistant
-"product_in_stockroom(""SamsungS3"", _)";product_in_stockroom;robot_assistant
+product_in_stockroom("SamsungS3", _);product_in_stockroom;robot_assistant
 task_completed(clear);task_completed;robot_assistant
 task_completed(_);task_completed;robot_assistant
-"low_stock_alert(""iPhone6"", 1)";low_stock_alert;robot_assistant
+low_stock_alert("iPhone6", 1);low_stock_alert;robot_assistant
 low_stock_alert(_, _);low_stock_alert;robot_assistant
-"customer_query(""C28"", ""SamsungS3"")";customer_query;robot_assistant
+customer_query("C28", "SamsungS3");customer_query;robot_assistant
 customer_query(_, _);customer_query;robot_assistant
 robot_status(recharging);robot_status;robot_assistant
 battery_level(80);battery_level;robot_assistant
@@ -842,51 +844,51 @@ refund_request(OrderNumber, RequestDate, Status);refund_request;tickets
 event_on_sale(EventName, SaleStartDate, SaleEndDate);event_on_sale;tickets
 artist_info(ArtistName, Genre, Description);artist_info;tickets
 event_artist(EventName, ArtistName);event_artist;tickets
-"event_details(""WaltuhParty"", ""10/11/2033"", ""20:00"")";event_details;tickets
-"event_details(EventName, ""10/11/2033"", ""20:00"")";event_details;tickets
-"event_details(""EventName"", Date, Time)";event_details;tickets
-"ticket_type(""WaltuhParty"", vip, euros(300), 3)";ticket_type;tickets
+event_details("WaltuhParty", "10/11/2033", "20:00");event_details;tickets
+event_details(EventName, "10/11/2033", "20:00");event_details;tickets
+event_details(_, Date, Time);event_details;tickets
+ticket_type("WaltuhParty", vip, euros(300), 3);ticket_type;tickets
 ticket_type(EventName, vip, Currency(Price), Quantity);ticket_type;tickets
 ticket_type(EventName, TicketTypeName, Currency(Price), _);ticket_type;tickets
-"user_account(""Giorgio03"", ""bubbulus@gmail.com"", RegistrationDate)";user_account;tickets
+user_account("Giorgio03", "bubbulus@gmail.com", RegistrationDate);user_account;tickets
 user_account(Username, Email, _);user_account;tickets
 user_account(_, _, RegistrationDate);user_account;tickets
-"order_details(12, ""AldoBaldo02"", ""11/11/2021"", euros(5000), processing)";order_details;tickets
+order_details(12, "AldoBaldo02", "11/11/2021", euros(5000), processing);order_details;tickets
 order_details(OrderNumber, Username, OrderDate, Currency(TotalAmount), Status);order_details;tickets
 order_details(_, Username, _, Currency(_), _);order_details;tickets
 available_tickets(premium, 200);available_tickets;tickets
 available_tickets(TicketTypeName, Quantity);available_tickets;tickets
 available_tickets(_, _);available_tickets;tickets
-"event_status(""NintendoDirectOnlyForRichPeople"", ready)";event_status;tickets
+event_status("NintendoDirectOnlyForRichPeople", ready);event_status;tickets
 event_status(EventName, Status);event_status;tickets
 event_status(_, cancelled);event_status;tickets
-"event_artist(""NintendoDirectOnlyForRichPeople"", ""Bowser"")";event_artist;tickets
-"event_artist(""WaltuhParty"", ArtistName)";event_artist;tickets
+event_artist("NintendoDirectOnlyForRichPeople", "Bowser");event_artist;tickets
+event_artist("WaltuhParty", ArtistName);event_artist;tickets
 event_artist(EventName, _);event_artist;tickets
-"refund_request(21, ""3/10/2021"", cancelled)";refund_request;tickets
+refund_request(21, "3/10/2021", cancelled);refund_request;tickets
 refund_request(OrderNumber, RequestDate, Status);refund_request;tickets
 refund_request(_, _, _);refund_request;tickets
-"payment_method(""Caruso98"", card, 2221)";payment_method;tickets
+payment_method("Caruso98", card, 2221);payment_method;tickets
 payment_method(Username, MethodType, LastFourDigits);payment_method;tickets
 payment_method(_, _, _);payment_method;tickets
-"artist_info(""FRANCOILMUSICISTA"", pop, _)";artist_info;tickets
+artist_info("FRANCOILMUSICISTA", pop, _);artist_info;tickets
 artist_info(ArtistName, Genre, _);artist_info;tickets
 artist_info(_, _, _);artist_info;tickets
-"purchase_history(""AldoBaldo02"")";purchase_history;tickets
+purchase_history("AldoBaldo02");purchase_history;tickets
 purchase_history(Username);purchase_history;tickets
-"user_account(""Baldovino28"", _, ""21/12/2021"")";user_account;tickets
+user_account("Baldovino28", _, "21/12/2021");user_account;tickets
 user_account(_, Email, _);user_account;tickets
-"refund_request(""Baldovino28"", _, suspended)";refund_request;tickets
+refund_request(_, _, suspended);refund_request;tickets
 refund_request(OrderNumber, _, _);refund_request;tickets
-"order_details(""Baldovino28"", ""Finger00"", ""21/12/2021"", euros(_), _)";order_details;tickets
+order_details(4, "Finger00", "21/12/2021", euros(_), _);order_details;tickets
 order_details(OrderNumber, Username, _, Currency(_), _);order_details;tickets
-"event_details(""EventName"", ""21/12/2021"", ""21:00"")";event_details;tickets
+event_details(_, "21/12/2021", "21:00");event_details;tickets
 event_details(_, _, _);event_details;tickets
 available_tickets(TicketTypeName, Quantity);available_tickets;tickets
 refund_request(26, _, _);refund_request;tickets
-"artist_info(""LilWaltuh"", _, _)";artist_info;tickets
-"event_artist(""WaltuhParty"", ""LilWaltuh"")";event_artist;tickets
-"ticket_type(""WaltuhParty"", vip, euros(300), 4)";ticket_type;tickets
-"payment_method(""AldoBaldo02"", card, 4444)";payment_method;tickets
-"user_account(""AldoBaldo02"", ""aldobaldino03@gmail.com"", ""12/12/2012"")";user_account;tickets
-"event_details(""WaltuhParty"", ""1/1/2026"", ""01:00"")";event_details;tickets
+artist_info("LilWaltuh", _, _);artist_info;tickets
+event_artist("WaltuhParty", "LilWaltuh");event_artist;tickets
+ticket_type("WaltuhParty", vip, euros(300), 4);ticket_type;tickets
+payment_method("AldoBaldo02", card, 4444);payment_method;tickets
+user_account("AldoBaldo02", "aldobaldino03@gmail.com", "12/12/2012");user_account;tickets
+event_details("WaltuhParty", "1/1/2026", "01:00");event_details;tickets
