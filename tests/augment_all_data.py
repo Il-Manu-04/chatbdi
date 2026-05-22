@@ -45,22 +45,28 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output", default=os.path.join(base, "all_data_augmented.csv"))
     p.add_argument("--literals", default=os.path.join(base, "all_literals.csv"),
                    help="Path to all_literals.csv for validation context")
-    p.add_argument("--model", default="gpt-4o-mini", help="OpenAI model")
+    p.add_argument("--model", default="gemini-3.5-flash", help="LLM model to use")
     p.add_argument("--per-row", type=int, default=5)
     p.add_argument("--temperature", type=float, default=0.7)
     p.add_argument("--delay", type=float, default=0.5)
     p.add_argument("--start", type=int, default=0)
     p.add_argument("--limit", type=int, default=0, help="0 = all")
     p.add_argument("--no-original", action="store_true")
-    p.add_argument("--base-url", default="")
+    p.add_argument("--base-url", default="https://generativelanguage.googleapis.com/v1beta/openai/")
     return p.parse_args()
 
 
 # ── OpenAI client ─────────────────────────────────────────────────────────────
 def build_client(base_url: str) -> OpenAI:
-    if base_url.strip():
-        # Local endpoints (Ollama, vLLM, etc.) don't need a real API key
+    # INSERISCI LA TUA CHIAVE GEMINI QUI SOTTO TRA LE VIRGOLETTE 
+    LA_MIA_CHIAVE_GEMINI = "[ENCRYPTION_KEY]"
+
+    if LA_MIA_CHIAVE_GEMINI and not LA_MIA_CHIAVE_GEMINI.startswith("INCOLLA"):
+        api_key = LA_MIA_CHIAVE_GEMINI
+    else:
         api_key = os.environ.get("OPENAI_API_KEY", "ollama")
+
+    if base_url.strip():
         return OpenAI(base_url=base_url.strip(), api_key=api_key)
     return OpenAI()
 
@@ -286,7 +292,8 @@ HARD CONSTRAINTS (violating ANY of these makes the output invalid):
 
 3) PROLOG SYNTAX — follow the original solution's format EXACTLY:
    - Quoted strings: if the original uses "value", your variant MUST quote that
-     argument position too (e.g., "Milano", "10/11/2033").
+     argument position too (e.g., "Milano", "10/11/2033"). 
+     IMPORTANT: This applies to the Prolog solution ONLY! Do NOT put quotes around entities in the natural language sentence unless they were present in the original sentence.
    - Atoms: if the original uses an unquoted atom (e.g., ready, vip, cancelled),
      keep it unquoted and lowercase.
    - Compound terms: if the original uses euro(4316) or km(600), your variant
@@ -376,7 +383,8 @@ def request_variants(
             return parse_llm_lines(content)
         except Exception as exc:
             last_exc = exc
-            wait = BACKOFF_BASE ** attempt
+            # Google Free Tier: 15 RPM. Se becchiamo il limite, aspettiamo sempre di più (es. 15s, 30s, 60s)
+            wait = 15 * (2 ** attempt)
             print(f"  [RETRY {attempt + 1}/{MAX_RETRIES}] {exc} -- waiting {wait:.1f}s")
             time.sleep(wait)
 

@@ -43,7 +43,7 @@ What gear are we in?;askOne;current_gear/1;current_gear(_);car_control
 How long did it take us to travel 400 km?;askOne;odometer_reading/2;odometer_reading(km(400), _);car_control
 Tell me the wiper speed;askOne;wiper_speed/1;wiper_speed(_);car_control
 How much percentage of battery is left?;askOne;battery_charge/1;battery_charge(_);car_control
-Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(ok);car_control
+Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(_);car_control
 Tell me the ingredients of pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
 Is besciamella in pasta bolognese?;askOne;ingredients/2;ingredients(pasta(bolognese), [veal, besciamella, tomato_sauce]);cooking
 How many calories gives one carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
@@ -95,12 +95,12 @@ The last employee ID in the system is 7890;tell;last_employee_id/1;last_employee
 John Smith was hired on 15/03/2020 as a Senior Developer in IT;tell;employment_info/5;"employment_info(""John Smith"", ""Senior Developer"", it, ""15/03/2020"",_)";employer_management
 Maria Garcia's base salary is 65000 USD paid monthly;tell;salary_details/4;"salary_details(""Maria Garcia"", 65000, usd, monthly)";employer_management
 The Finance department is managed by employee ID 4521;tell;manager_of/2;manager_of(4521, finance);employer_management
-Performance review for employee 3421 was conducted on 10/05/2023 with rating 4.5;tell;performance_review/5;performance_review(3421, 10/05/2023, _, 4.5,_);employer_management
+Performance review for employee 3421 was conducted on 10/05/2023 with rating 4.5;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5,_)";employer_management
 "Employee 5678 has ""Python Programming"" skill at expert level";tell;skill_set/3;skill_set(5678, python, expert);employer_management
 "David Wilson completed ""Advanced Leadership"" certification on 05/01/2023";tell;certification_details/4;"certification_details(""David Wilson"", ""Advanced Leadership"", ""05/01/2023"", _)";employer_management
 "Which employees have ""Data Analysis"" skill at advanced level?";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
 Which are all the training courses attended by employee 7890?;askAll;training_attended/3;training_attended(7890, _, _);employer_management
-List all hardware devices assigned to the Marketing department;askAll;hardware_assigned/4;hardware_assigned(_, _, marketing, _);employer_management
+List all hardware devices assigned to the Marketing department;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
 Show me all leave requests pending approval;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
 Which employees have disciplinary actions in the last year?;askAll;disciplinary_action/4;disciplinary_action(_, _, last year, _);employer_management
 What certifications does Sarah Johnson hold?;askAll;certification_details/4;"certification_details(""Sarah Johnson"", _, _, _)";employer_management
@@ -111,7 +111,7 @@ Does the Sales department have any open positions?;askOne;employment_info/5;empl
 Employer 292 got access level 3 to AlphaSystem;tell;access_level/3;access_level(292, alpha_system, 3);employer_management
 Employer 7 attend JS course till 1/11/2025;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
 Has employee 6655 completed the mandatory safety training?;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
-Which employees in the IT department currently hold AWS certifications?;askAll;certification_details/4;certification_details(_, aws, _, _);employer_management
+Which employees in the IT department currently hold AWS certifications?;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
 I need to know all the skills about employer 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
 User 10 and user 11 are friends;tell;user_friend/2;user_friend(10, 11);games_platform
 Doom is 30% off until 25/10/2025;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
@@ -134,32 +134,32 @@ How advanced is the COD download for user 4?;askOne;download_status/3;"download_
 Give me the community post number 3;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
 Tell me some details about multiplayer session number 12921;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
 On what date did user 3 add ForHonor to the cart?;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
-user 4 owns DS2?;askOne;game_owned/2;"game_owned(2, ""DS2"")";games_platform
-The actual cost of Concrete for the last project is 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", 4316)";house_builder
-The actual cost of Labor for the last project is 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 3116)";house_builder
-The actual cost of Labor for the last project is 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 6477)";house_builder
-The actual cost of Concrete for the last project is 9011 euros.;tell;budget_item/3;"budget_item(202, ""Concrete"", 9011)";house_builder
-The actual cost of Labor for the last project is 1867 euros.;tell;budget_item/3;"budget_item(202, ""Labor"", 1867)";house_builder
-A client communication was sent on 2025-03-26 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-03-26"", ""Site issue"")";house_builder
-A client communication was sent on 2025-08-13 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-08-13"", ""Site issue"")";house_builder
-"Need to know all the emplyers with skill ""builder""";askAll;employee_skill/2;employee_skill(_, builder);house_builder
+user 4 owns DS2?;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+The actual cost of Concrete for the last project is 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+The actual cost of Labor for the last project is 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+The actual cost of Labor for the last project is 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+The actual cost of Concrete for the last project is 9011 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+The actual cost of Labor for the last project is 1867 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+A client communication was sent on 2025-03-26 about 'Site issue'.;tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+A client communication was sent on 2025-08-13 about 'Site issue'.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+"Need to know all the employers with skill ""builder""";askAll;employee_skill/2;employee_skill(_, builder);house_builder
 Does employee E101 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
 Does employee E102 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
 Does employee E103 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
 Is a bulldozer is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
 Is a crane is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
 Was the plumbing inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
-Was the electrical inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Electrical"", _, ""Passed"")";house_builder
-Was the structural inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Structural"", _, ""Passed"")";house_builder
+Was the electrical inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Was the structural inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
 "Tell me all the project with permit status ""approved""";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
 Has the environmental permit been approved for project 202?;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
 What's the current status of project 202?;askOne;project_details/3;project_details(202, _, Status);house_builder
 The plumbing milestone was completed on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
-The framing milestone was completed on 2025-09-16.;tell;project_milestone/3;"project_milestone(202, ""Framing"", ""2025-09-16"")";house_builder
-The plumbing milestone was completed on 2025-06-02.;tell;project_milestone/3;"project_milestone(202, ""Plumbing"", ""2025-06-02"")";house_builder
+The framing milestone was completed on 2025-09-16.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+The plumbing milestone was completed on 2025-06-02.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
 We currently have 123 units of pipes in stock;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
 We currently have 103 units of wood panels in stock.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
-We need 82 more steel beams for project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", 82)";house_builder
+We need 82 more steel beams for project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
 The site address for project 202 is 123 Main Street, and the ground type is Clay. ;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
 Supplier SteelCorp has a contact person named Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
 Who is assigned as the architect for project 202?;askOne;team_assignment/3;"team_assignment(202, EmployeeID, ""Architect"")";house_builder
@@ -193,8 +193,8 @@ Customer C28 asked for infos about SamsungS3;tell;customer_request/2;"customer_r
 SamsungWatch are now compatible with XiaomiRedmi;tell;accessory_compatible/2;"accessory_compatible(""SamsungWatch"", ""XiaomiRedmi"")";robot_assistant
 "Robot completed task ""HelpElderMan""";tell;task_completed/1;"task_completed(""HelpElderMan"")";robot_assistant
 There are no more VRs available;tell;out_of_stock/1;"out_of_stock(""VR"")";robot_assistant
-There is a Laptop on PC display;tell;product_on_display/2;product_on_display(laptop, pc);robot_assistant
-Motorola has a 20% discount valid from 1/1/2025 to 1/2/2025;tell;promotion_active/4;"promotion_active(""Motorola2"", 20, ""1/1/2025"", ""1/2/2025"")";robot_assistant
+There is a Laptop on PC display;tell;product_on_display/2;"product_on_display(""Laptop"", ""PC"")";robot_assistant
+Motorola has a 20% discount valid from 1/1/2025 to 1/2/2025;tell;promotion_active/4;"promotion_active(""Motorola"", 20, ""1/1/2025"", ""1/2/2025"")";robot_assistant
 Which are all the available return processes for Samsung devices?;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
 I'd like to get all the names about unavailable products;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
 Could you give me a full rundown of promotions active untill 1/1/2026?;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
@@ -207,480 +207,994 @@ Is there any request from customer 21 about XiaomiRedmi?;askOne;customer_request
 Is SamsungS3 out on stock?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
 "Did you completed the task ""Clear""?";askOne;task_completed/1;task_completed(clear);robot_assistant
 Did you finish the return process of Transaction 99?;askOne;return_process/2;return_process(99, _);robot_assistant
-"There is an event called ""WaltuhParty"" the 10/11/2033 at 8PM";tell;event_details/3;"event_details(""WaltuhParty"", ""10/11/2033"", ""20:00"")";tickets
-The VIP ticket for WaltuhParty costs 300 dollars and there are only 3 left;tell;ticket_type/4;"ticket_type(""WaltuhParty"", vip, dollars(300), 3)";tickets
-"I registered a new account as ""Giorgio03"" with mail bubbulus@gmail.com";tell;user_account/3;"user_account(""Giorgio03"", ""bubbulus@gmail.com"", _)";tickets
-AldoBaldo02 did the order 12 the 11/11/2021 for 5000 euros and it's still processing;tell;order_details/5;"order_details(12, ""AldoBaldo02"", ""11/11/2021"", euros(5000), processing)";tickets
-There are 200 Premium tickets left;tell;available_tickets/2;available_tickets(premium, 200);tickets
-"The ""NintendoDirectOnlyForRichPeople"" event is ready";tell;event_status/2;"event_status(""NintendoDirectOnlyForRichPeople"", ready)";tickets
-"The ""NintendoDirectOnlyForRichPeople"" event is presented by Bowser";tell;event_artist/2;"event_artist(""NintendoDirectOnlyForRichPeople"", ""Bowser"")";tickets
-The 3th October 2021 I asked for a refund of order 21 and I cancelled it;tell;refund_request/3;"refund_request(21, ""3/10/2021"", cancelled)";tickets
-Caruso98 payed with card ************2221;tell;payment_method/3;"payment_method(""Caruso98"", card, 2221)";tickets
-I would like to know the name of the events that are cancelled;askAll;event_status/2;event_status(_, cancelled);tickets
-Which ones and how many tickets are available for WaltuhParty?;askAll;available_tickets/2;"available_tickets(""WaltuhParty"", _)";tickets
-I want to know the account registered on 21/12/2021;askAll;user_account/3;"user_account(_, _, ""21/12/2021"")";tickets
-I need to know all the refund requests suspended;askAll;refund_request/3;refund_request(_, _, suspended);tickets
-Can you display all the purchases from user Finger00 which cost is 25 euros;askAll;order_details/5;"order_details(_, ""Finger00"", ""21/12/2021"", euros(_), _)";tickets
-are there any events at 9pm on 21/12/2021?;askAll;event_details/3;"event_details(_, ""21/12/2021"", ""21:00"")";tickets
-"tell me the actual status of the ""WaltuhParty"" event";askOne;event_status/2;"event_status(""WaltuhParty"", _)";tickets
-Need to know the number of VIP tickets still available;askOne;available_tickets/2;available_tickets(TicketTypeName, Quantity);tickets
-I need to know the status of refund #26;askOne;refund_request/3;refund_request(26, _, _);tickets
-"Tell me when user ""Baldovino28"" created his account";askOne;user_account/3;"user_account(""Baldovino28"", _, _)";tickets
-What is the musical genre of artist LilWaltuh?;askOne;artist_info/3;"artist_info(""LilWaltuh"", _, _)";tickets
-LilWaltuh will be the artist of the WaltuhParty event?;askOne;event_artist/2;"event_artist(""WaltuhParty"", ""LilWaltuh"")";tickets
-FYI, The last booking id is 4.;tell;last_booking_id/1;last_booking_id(4);booking
-Update: The last booking id is 4.;tell;last_booking_id/1;last_booking_id(4);booking
-For the record, Gigi checked into room 12.;tell;check_in/2;check_in(gigi, 12);booking
-FYI, Gigi checked into room 12.;tell;check_in/2;check_in(gigi, 12);booking
-Update: The price of a double room is 50 euros per night.;tell;room_price/2;room_price(double, 50);booking
-For the record, The price of a double room is 50 euros per night.;tell;room_price/2;room_price(double, 50);booking
-Update: Payment for booking room 23 is completed succesfully.;tell;payment_status/2;payment_status(23, successful);booking
-FYI, Payment for booking room 23 is completed succesfully.;tell;payment_status/2;payment_status(23, successful);booking
-Update: They just called me, they cancelled booking number 38.;tell;cancel_booking/1;cancel_booking(38);booking
-FYI, They just called me, they cancelled booking number 38.;tell;cancel_booking/1;cancel_booking(38);booking
-Update: A double room is available from the 25th December 2025.;tell;available/3;"available(double, ""25/12/2025"", _)";booking
-For the record, A double room is available from the 25th December 2025.;tell;available/3;"available(double, ""25/12/2025"", _)";booking
-FYI, Jonhatan did the checkout yesterday.;tell;check_out/1;check_out(jonhatan);booking
-Update: Jonhatan did the checkout yesterday.;tell;check_out/1;check_out(jonhatan);booking
-Update: There are no more available rooms for 13 August 2025.;tell;fully_booked/1;"fully_booked(""13/08/2025"")";booking
-For the record, There are no more available rooms for 13 August 2025.;tell;fully_booked/1;"fully_booked(""13/08/2025"")";booking
-Carlo booked a single room from 10/10/2025 to 15/10/2025.;tell;booking/4;"booking(carlo, single, ""10/10/2025"", ""15/10/2025"")";booking
-FYI, Carlo booked a single room from 10/10/2025 to 15/10/2025.;tell;booking/4;"booking(carlo, single, ""10/10/2025"", ""15/10/2025"")";booking
-Can you Is there a reservation with 12 as a ID?;askOne;has_reservation/2;has_reservation(_, 12);booking
-Could you Is there a reservation with 12 as a ID?;askOne;has_reservation/2;has_reservation(_, 12);booking
-Could you Is there a booking from Franco?;askOne;booking/4;booking(franco, _, _, _);booking
-Please, Is there a booking from Franco?;askOne;booking/4;booking(franco, _, _, _);booking
-Could you Was Alfredo's payment for booking number 8 successful?;askOne;payment_status/2;payment_status(8, successful);booking
-Can you Was Alfredo's payment for booking number 8 successful?;askOne;payment_status/2;payment_status(8, successful);booking
-Could you Is single room available from 8th October 2025?;askOne;available/3;"available(single, ""8/10/2025"", _)";booking
-Can you Is single room available from 8th October 2025?;askOne;available/3;"available(single, ""8/10/2025"", _)";booking
-Quick check: Can you tell me the name of a hotel with 4 star rating?;askOne;review/2;review(_, 4);booking
-Can you show me the name of a hotel with 4 star rating?;askOne;review/2;review(_, 4);booking
-Please, Is booking number 21 cancelled?;askOne;cancel_booking/1;cancel_booking(21);booking
-Can you Is booking number 21 cancelled?;askOne;cancel_booking/1;cancel_booking(21);booking
-Could you How much does a single room cost?;askOne;room_price/2;room_price(single, _);booking
-Can you How much does a single room cost?;askOne;room_price/2;room_price(single, _);booking
-Can you Did Pino request an early checkin for 12/12/2025?;askOne;request_early_checkin/2;"request_early_checkin(pino, ""12/12/2025"")";booking
-Please, Did Pino request an early checkin for 12/12/2025?;askOne;request_early_checkin/2;"request_early_checkin(pino, ""12/12/2025"")";booking
-Can you I want to know all the hotels with 5 stars review?;askAll;review/2;review(_, 5);booking
-Please, I want to know all the hotels with 5 stars review?;askAll;review/2;review(_, 5);booking
-Quick check: Can you send me the prices of all rooms?;askAll;room_price/2;room_price(_, _);booking
-Can you Which are all the days in which we are fully booked?;askAll;fully_booked/1;fully_booked(_);booking
-Please, Which are all the days in which we are fully booked?;askAll;fully_booked/1;fully_booked(_);booking
-Can you Which are the names of all the people that have a reservation?;askAll;has_reservation/2;has_reservation(_, _);booking
-Please, Which are the names of all the people that have a reservation?;askAll;has_reservation/2;has_reservation(_, _);booking
-Can you Tell me every payment with a rejected status?;askAll;payment_status/2;payment_status(_, rejected);booking
-Show me every payment with a rejected status;askAll;payment_status/2;payment_status(_, rejected);booking
-Can you Which rooms are available from the 12th Semptember 2025?;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
-I need to know Which rooms are available from the 12th Semptember 2025?;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
-The vehicle now is ready.;tell;vehicle_status/1;vehicle_status(ready);car_control
-FYI, The vehicle now is ready.;tell;vehicle_status/1;vehicle_status(ready);car_control
-For the record, We'll go at 180kph until we reach Poggiorusco.;tell;current_speed/2;current_speed(180, kph);car_control
-Update: We'll go at 180kph until we reach Poggiorusco.;tell;current_speed/2;current_speed(180, kph);car_control
-For the record, We need to refuel the car, the petrol level is low.;tell;fuel_level/1;fuel_level(low);car_control
-Update: We need to refuel the car, the petrol level is low.;tell;fuel_level/1;fuel_level(low);car_control
-Update: The battery is charging, only 20% missing.;tell;battery_charge/1;battery_charge(80);car_control
-For the record, The battery is charging, only 20% missing.;tell;battery_charge/1;battery_charge(80);car_control
-FYI, Wiper is working at speed 3.;tell;wiper_speed/1;wiper_speed(3);car_control
-For the record, Wiper is working at speed 3.;tell;wiper_speed/1;wiper_speed(3);car_control
-FYI, We traveled for 600km in 7 hours, really impressive.;tell;odometer_reading/2;odometer_reading(km(600), hour(7));car_control
-We traveled for 600km in 7 hours, really impressive.;tell;odometer_reading/2;odometer_reading(km(600), hour(7));car_control
-Update: Finally we are going to Kabul.;tell;destination_set/1;destination_set(kabul);car_control
-For the record, Finally we are going to Kabul.;tell;destination_set/1;destination_set(kabul);car_control
-For the record, Pressure of rear tires is 55PSI, they will explode.;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
-FYI, Pressure of rear tires is 55PSI, they will explode.;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
-Update: The braking lights are broken.;tell;light_status/2;light_status(braking, broken);car_control
-For the record, The braking lights are broken.;tell;light_status/2;light_status(braking, broken);car_control
-I need to know the status of all lights?;askAll;light_status/2;light_status(_, _);car_control
-Quick check: I need to know the status of all lights?;askAll;light_status/2;light_status(_, _);car_control
-Please, What is the pressure of the tires?;askAll;tire_pressure/2;tire_pressure(_, _);car_control
-What's the pressure of the tires?;askAll;tire_pressure/2;tire_pressure(_, _);car_control
-Please, Which tires have 30PSI?;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
-I need to know Which tires have 30PSI?;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
-I need to know Are there unfastened seat belt?;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
-Can you Are there unfastened seat belt?;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
-Can you Are there any doors still open?;askAll;door_status/2;door_status(_, open);car_control
-I need to know Are there any doors still open?;askAll;door_status/2;door_status(_, open);car_control
-Tell me the pressure of both front tires?;askAll;tire_pressure/2;tire_pressure(front, _);car_control
-Please, Tell me the pressure of both front tires?;askAll;tire_pressure/2;tire_pressure(front, _);car_control
-Could you What is the fuel level?;askOne;fuel_level/1;fuel_level(_);car_control
-Please, What is the fuel level?;askOne;fuel_level/1;fuel_level(_);car_control
-Could you Where we're going?;askOne;destination_set/1;destination_set(_);car_control
-Can you Where we're going?;askOne;destination_set/1;destination_set(_);car_control
-Can you What gear are we in?;askOne;current_gear/1;current_gear(_);car_control
-Could you What gear are we in?;askOne;current_gear/1;current_gear(_);car_control
-Can you How long did it take us to travel 400 km?;askOne;odometer_reading/2;odometer_reading(km(400), _);car_control
-Could you How long did it take us to travel 400 km?;askOne;odometer_reading/2;odometer_reading(km(400), _);car_control
-Show me the wiper speed;askOne;wiper_speed/1;wiper_speed(_);car_control
-Tell me the wiper speed?;askOne;wiper_speed/1;wiper_speed(_);car_control
-Please, How much percentage of battery is left?;askOne;battery_charge/1;battery_charge(_);car_control
-Could you How much percentage of battery is left?;askOne;battery_charge/1;battery_charge(_);car_control
-Please, Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(ok);car_control
-Can you Update me on the vehicle status?;askOne;vehicle_status/1;vehicle_status(ok);car_control
-Please, Tell me the ingredients of pasta bolognese?;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
-Tell me the ingredients of pasta bolognese?;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
-Can you Is besciamella in pasta bolognese?;askOne;ingredients/2;ingredients(pasta(bolognese), [veal, besciamella, tomato_sauce]);cooking
-Please, Is besciamella in pasta bolognese?;askOne;ingredients/2;ingredients(pasta(bolognese), [veal, besciamella, tomato_sauce]);cooking
-Please, How many calories gives one carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
-Can you How many calories gives one carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
-Update: I love eating pizza capricciosa with weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
-FYI, I love eating pizza capricciosa with weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
-For the record, The calories for 100 grams of beef are 156.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
-FYI, The calories for 100 grams of beef are 156.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
-For the record, Beef gives 300 calories.;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
-Update: Beef gives 300 calories.;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
-FYI, The price of a portion of meat is 20 dollars.;tell;price/2;price(meat, dollars(20));cooking
-Update: The price of a portion of meat is 20 dollars.;tell;price/2;price(meat, dollars(20));cooking
-For the record, You have to be careful with chocolate because it has a lot of calories, 250 per slice.;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
-You have to be careful with chocolate because it has a lot of calories, 250 per slice.;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
-Update: Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
-Beans are very good for you, they contain 24 grams of protein per 100 grams.;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
-FYI, I like eating salad with water.;tell;pairing/2;pairing(salad, water(_));cooking
-I like eating salad with water.;tell;pairing/2;pairing(salad, water(_));cooking
-For the record, The cake costs a lot, 15 euros for just a slice.;tell;price/2;price(cake, euros(15));cooking
-Update: The cake costs a lot, 15 euros for just a slice.;tell;price/2;price(cake, euros(15));cooking
-Please, What are the fundamental ingredients for cooking a Bolognese lasagna?;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
-Can you What are the fundamental ingredients for cooking a Bolognese lasagna?;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
-Quick check: Can you tell me the price of all dishes?;askAll;price/2;price(_, _);cooking
-Can you show me the price of all dishes?;askAll;price/2;price(_, _);cooking
-Please, I would like to know all the calories of all the available food?;askAll;calories/3;calories(_, _, _);cooking
-I need to know I would like to know all the calories of all the available food?;askAll;calories/3;calories(_, _, _);cooking
-I need to know Recommend to me all the best matches you have?;askAll;pairing/2;pairing(_, _);cooking
-Recommend to me all the best matches you have?;askAll;pairing/2;pairing(_, _);cooking
-I need to know Just tell all the dishes that costs 50 pounds?;askAll;price/2;price( _, pounds(50));cooking
-Please, Just tell all the dishes that costs 50 pounds?;askAll;price/2;price( _, pounds(50));cooking
-Can you What are the ingredients behind this chocolate cake?;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
-I need to know What are the ingredients behind this chocolate cake?;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
-Just tell all the pizzas that have 200 calories?;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
-I need to know Just tell all the pizzas that have 200 calories?;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
-To check the price of something, you need to check the menu?;askAll;price/2;price(_, _);cooking
-Can you To check the price of something, you need to check the menu?;askAll;price/2;price(_, _);cooking
-Can you How much does the cake cost?;askOne;price/2;price(cake, _);cooking
-Could you How much does the cake cost?;askOne;price/2;price(cake, _);cooking
-Please, How many calories does 100 grams of ice cream have?;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
-Can you How many calories does 100 grams of ice cream have?;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
-I would like to know the best pairing with red wine?;askOne;pairing/2;pairing(_, wine(red));cooking
-Please, I would like to know the best pairing with red wine?;askOne;pairing/2;pairing(_, wine(red));cooking
-What are the ingredients for roman pasta?;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
-Please, What are the ingredients for roman pasta?;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
-Can you How do I know if I can afford this dish?;askOne;price/2;price(_, _);cooking
-Could you How do I know if I can afford this dish?;askOne;price/2;price(_, _);cooking
-FYI, The id of last order is 3.;tell;last_order_id/1;last_order_id(3);domestic_robot
-For the record, The id of last order is 3.;tell;last_order_id/1;last_order_id(3);domestic_robot
-Update: I ordered 2 sandwiches.;tell;order/2;order(sandwich,2);domestic_robot
-For the record, I ordered 2 sandwiches.;tell;order/2;order(sandwich,2);domestic_robot
-For the record, There is a lot of water in the fridge.;tell;available/2;available(water, fridge);domestic_robot
-FYI, There is a lot of water in the fridge.;tell;available/2;available(water, fridge);domestic_robot
-Update: 4 pieces of cake are too much.;tell;too_much/2;too_much(cake, 4);domestic_robot
-FYI, 4 pieces of cake are too much.;tell;too_much/2;too_much(cake, 4);domestic_robot
-FYI, Yesterday I said the candy limit is 5.;tell;limit/2;limit(candy,5);domestic_robot
-For the record, Yesterday I said the candy limit is 5.;tell;limit/2;limit(candy,5);domestic_robot
-Owner has the food.;tell;has/2;has(owner,food);domestic_robot
-FYI, Owner has the food.;tell;has/2;has(owner,food);domestic_robot
-For the record, It's eight o'clock now.;tell;time/1;"time(""08:00"")";domestic_robot
-It's eight o'clock now.;tell;time/1;"time(""08:00"")";domestic_robot
-FYI, At lunch I drink some wine.;tell;drink/1;drink(wine);domestic_robot
-Update: At lunch I drink some wine.;tell;drink/1;drink(wine);domestic_robot
-Update: Yesterday 20 apples were delivered.;tell;delivered/3;delivered(apple, 20, _);domestic_robot
-FYI, Yesterday 20 apples were delivered.;tell;delivered/3;delivered(apple, 20, _);domestic_robot
-Could you I would like to know the ID of the last order?;askOne;last_order_id/1;last_order_id(_);domestic_robot
-Please, I would like to know the ID of the last order?;askOne;last_order_id/1;last_order_id(_);domestic_robot
-Please, What is the limit of drinking beer?;askOne;limit/2;limit(beer,_);domestic_robot
-What's the limit of drinking beer?;askOne;limit/2;limit(beer,_);domestic_robot
-Could you What time is it?;askOne;time/1;time(_);domestic_robot
-Please, What time is it?;askOne;time/1;time(_);domestic_robot
-Can you Does the owner have a beer?;askOne;has/2;has(owner, beer);domestic_robot
-Please, Does the owner have a beer?;askOne;has/2;has(owner, beer);domestic_robot
-Please, show me if you drank beer for breakfast;askOne;drink/1;drink(beer);domestic_robot
-Quick check: Please, tell me if you drank beer for breakfast?;askOne;drink/1;drink(beer);domestic_robot
-Please, Did they deliver 30 cakes?;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
-Can you Did they deliver 30 cakes?;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
-Can you Is pasta available?;askOne;available/2;available(pasta, _);domestic_robot
-Could you Is pasta available?;askOne;available/2;available(pasta, _);domestic_robot
-Can you Did I eat too much meat?;askOne;too_much/2;too_much(meat, _);domestic_robot
-Could you Did I eat too much meat?;askOne;too_much/2;too_much(meat, _);domestic_robot
-Can you You should tell me all the beer orders?;askAll;order/2;order(beer, _);domestic_robot
-Please, You should tell me all the beer orders?;askAll;order/2;order(beer, _);domestic_robot
-List all the things available in the fridge?;askAll;available/2;available(_, fridge);domestic_robot
-Can you List all the things available in the fridge?;askAll;available/2;available(_, fridge);domestic_robot
-Can you show me all the things of which limit is 5?;askAll;limit/2;limit(_, 5);domestic_robot
-Quick check: Can you tell me all the things of which limit is 5?;askAll;limit/2;limit(_, 5);domestic_robot
-Please, Tell me all the things you have restocked and their number?;askAll;stock/2;stock(_, _);domestic_robot
-Show me all the things you have restocked and their number;askAll;stock/2;stock(_, _);domestic_robot
-Can you Is there any beer available in the fridge?;askOne;available/2;available(beer, fridge);domestic_robot
-Could you Is there any beer available in the fridge?;askOne;available/2;available(beer, fridge);domestic_robot
-Can you Tell me all the limits for all the things?;askAll;limit/2;limit(_, _);domestic_robot
-I need to know Tell me all the limits for all the things?;askAll;limit/2;limit(_, _);domestic_robot
-FYI, The last employee ID in the system is 7890.;tell;last_employee_id/1;last_employee_id(7890);employer_management
-The last employee ID in the system is 7890.;tell;last_employee_id/1;last_employee_id(7890);employer_management
-Update: John Smith was hired on 15/03/2020 as a Senior Developer in IT.;tell;employment_info/5;"employment_info(""John Smith"", ""Senior Developer"", it, ""15/03/2020"",_)";employer_management
-FYI, John Smith was hired on 15/03/2020 as a Senior Developer in IT.;tell;employment_info/5;"employment_info(""John Smith"", ""Senior Developer"", it, ""15/03/2020"",_)";employer_management
-FYI, Maria Garcia's base salary is 65000 USD paid monthly.;tell;salary_details/4;"salary_details(""Maria Garcia"", 65000, usd, monthly)";employer_management
-Update: Maria Garcia's base salary is 65000 USD paid monthly.;tell;salary_details/4;"salary_details(""Maria Garcia"", 65000, usd, monthly)";employer_management
-The Finance department is managed by employee ID 4521.;tell;manager_of/2;manager_of(4521, finance);employer_management
-For the record, The Finance department is managed by employee ID 4521.;tell;manager_of/2;manager_of(4521, finance);employer_management
-Performance review for employee 3421 was conducted on 10/05/2023 with rating 4.5.;tell;performance_review/5;performance_review(3421, 10/05/2023, _, 4.5,_);employer_management
-Update: Performance review for employee 3421 was conducted on 10/05/2023 with rating 4.5.;tell;performance_review/5;performance_review(3421, 10/05/2023, _, 4.5,_);employer_management
-"FYI, Employee 5678 has ""Python Programming"" skill at expert level.";tell;skill_set/3;skill_set(5678, python, expert);employer_management
-"For the record, Employee 5678 has ""Python Programming"" skill at expert level.";tell;skill_set/3;skill_set(5678, python, expert);employer_management
-"For the record, David Wilson completed ""Advanced Leadership"" certification on 05/01/2023.";tell;certification_details/4;"certification_details(""David Wilson"", ""Advanced Leadership"", ""05/01/2023"", _)";employer_management
-"FYI, David Wilson completed ""Advanced Leadership"" certification on 05/01/2023.";tell;certification_details/4;"certification_details(""David Wilson"", ""Advanced Leadership"", ""05/01/2023"", _)";employer_management
-"Please, Which employees have ""Data Analysis"" skill at advanced level?";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
-"Can you Which employees have ""Data Analysis"" skill at advanced level?";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
-I need to know Which are all the training courses attended by employee 7890?;askAll;training_attended/3;training_attended(7890, _, _);employer_management
-Can you Which are all the training courses attended by employee 7890?;askAll;training_attended/3;training_attended(7890, _, _);employer_management
-I need to know List all hardware devices assigned to the Marketing department?;askAll;hardware_assigned/4;hardware_assigned(_, _, marketing, _);employer_management
-Can you List all hardware devices assigned to the Marketing department?;askAll;hardware_assigned/4;hardware_assigned(_, _, marketing, _);employer_management
-I need to know Show me all leave requests pending approval?;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
-Can you Show me all leave requests pending approval?;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
-Can you Which employees have disciplinary actions in the last year?;askAll;disciplinary_action/4;disciplinary_action(_, _, last year, _);employer_management
-Please, Which employees have disciplinary actions in the last year?;askAll;disciplinary_action/4;disciplinary_action(_, _, last year, _);employer_management
-I need to know What certifications does Sarah Johnson hold?;askAll;certification_details/4;"certification_details(""Sarah Johnson"", _, _, _)";employer_management
-Please, What certifications does Sarah Johnson hold?;askAll;certification_details/4;"certification_details(""Sarah Johnson"", _, _, _)";employer_management
-Can you Is employee 1234 currently on leave?;askOne;leave_request/6;leave_request(1234, _, _, _, _, _);employer_management
-Please, Is employee 1234 currently on leave?;askOne;leave_request/6;leave_request(1234, _, _, _, _, _);employer_management
-Can you Did Michael Brown complete the cybersecurity training?;askOne;training_attended/3;"training_attended(""Michael Brown"", cybersecurity, _)";employer_management
-Please, Did Michael Brown complete the cybersecurity training?;askOne;training_attended/3;"training_attended(""Michael Brown"", cybersecurity, _)";employer_management
-Can you Has employee 4567 been assigned a new laptop recently?;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
-Please, Has employee 4567 been assigned a new laptop recently?;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
-Please, Does the Sales department have any open positions?;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
-Could you Does the Sales department have any open positions?;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
-For the record, Employer 292 got access level 3 to AlphaSystem.;tell;access_level/3;access_level(292, alpha_system, 3);employer_management
-Update: Employer 292 got access level 3 to AlphaSystem.;tell;access_level/3;access_level(292, alpha_system, 3);employer_management
-Employer 7 attend JS course till 1/11/2025.;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
-FYI, Employer 7 attend JS course till 1/11/2025.;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
-Could you Has employee 6655 completed the mandatory safety training?;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
-Can you Has employee 6655 completed the mandatory safety training?;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
-Please, Which employees in the IT department currently hold AWS certifications?;askAll;certification_details/4;certification_details(_, aws, _, _);employer_management
-I need to know Which employees in the IT department currently hold AWS certifications?;askAll;certification_details/4;certification_details(_, aws, _, _);employer_management
-Quick check: I need to know all the skills about employer 121?;askAll;skill_set/3;skill_set(121, _, _);employer_management
-I would like to know all the skills about employer 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
-Update: User 10 and user 11 are friends.;tell;user_friend/2;user_friend(10, 11);games_platform
-User 10 and user 11 are friends.;tell;user_friend/2;user_friend(10, 11);games_platform
-Update: Doom is 30% off until 25/10/2025.;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
-For the record, Doom is 30% off until 25/10/2025.;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
-For the record, Zelda was added to cart by user 123.;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
-Update: Zelda was added to cart by user 123.;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
-FYI, The wallet amount of user 9 is 23 euros.;tell;wallet_balance/2;wallet_balance(9, 23);games_platform
-Update: The wallet amount of user 9 is 23 euros.;tell;wallet_balance/2;wallet_balance(9, 23);games_platform
-For the record, User 18 reviewed FIFA 22 with a score of 1 out of 10 on 12/12/2022.;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
-Update: User 18 reviewed FIFA 22 with a score of 1 out of 10 on 12/12/2022.;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
-Update: There is a game session with 3/10 players on Borderlands3.;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
-There is a game session with 3/10 players on Borderlands3.;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
-Update: The user 22 has a record in its library with CSGO played for 300 hours.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
-The user 22 has a record in its library with CSGO played for 300 hours.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
-FYI, User 99 unlocked the achievement LordOfCinder on DarkSouls3.;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
-User 99 unlocked the achievement LordOfCinder on DarkSouls3.;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
-Update: Download of Pokemon is still at 25%.;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
-For the record, Download of Pokemon is still at 25%.;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
-Please, What are all the games that user 12 owns?;askAll;game_owned/2;game_owned(12, _);games_platform
-I need to know What are all the games that user 12 owns?;askAll;game_owned/2;game_owned(12, _);games_platform
-Tell me the names of the soulslike games under 30 euros made from Bethesda?;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
-I need to know Tell me the names of the soulslike games under 30 euros made from Bethesda?;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
-I need to know What games do I have in my cart?;askAll;in_cart/3;in_cart(_, _, _);games_platform
-Can you What games do I have in my cart?;askAll;in_cart/3;in_cart(_, _, _);games_platform
-Can you Who are user 5's friends?;askAll;user_friend/2;user_friend(_, _);games_platform
-Who are user 5's friends?;askAll;user_friend/2;user_friend(_, _);games_platform
-Can you Tell me all the achievements unlocked by user 3 in FinalFantasyXIV before July 11, 2021?;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
-Show me all the achievements unlocked by user 3 in FinalFantasyXIV before July 11, 2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
-I need to know Tell me all the user 3 games you put in your cart before today?;askAll;in_cart/3;in_cart(3, _, today);games_platform
-Please, Tell me all the user 3 games you put in your cart before today?;askAll;in_cart/3;in_cart(3, _, today);games_platform
-"Tell me the creation date of the user ""UnclePear""?";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
-"Show me the creation date of the user ""UnclePear""";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
-Please, What is user 2's wallet amount?;askOne;wallet_balance/2;wallet_balance(2, _);games_platform
-Can you What is user 2's wallet amount?;askOne;wallet_balance/2;wallet_balance(2, _);games_platform
-Can you How advanced is the COD download for user 4?;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
-Please, How advanced is the COD download for user 4?;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
-Can you Give me the community post number 3?;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
-Could you Give me the community post number 3?;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
-Can you Tell me some details about multiplayer session number 12921?;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
-Show me some details about multiplayer session number 12921;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
-Could you On what date did user 3 add ForHonor to the cart?;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
-Please, On what date did user 3 add ForHonor to the cart?;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
-Please, User 4 owns DS2?;askOne;game_owned/2;"game_owned(2, ""DS2"")";games_platform
-Could you User 4 owns DS2?;askOne;game_owned/2;"game_owned(2, ""DS2"")";games_platform
-FYI, The actual cost of Concrete for the last project is 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", 4316)";house_builder
-Update: The actual cost of Concrete for the last project is 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", 4316)";house_builder
-Update: The actual cost of Labor for the last project is 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 3116)";house_builder
-For the record, The actual cost of Labor for the last project is 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 3116)";house_builder
-FYI, The actual cost of Labor for the last project is 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 6477)";house_builder
-Update: The actual cost of Labor for the last project is 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", 6477)";house_builder
-FYI, The actual cost of Concrete for the last project is 9011 euros.;tell;budget_item/3;"budget_item(202, ""Concrete"", 9011)";house_builder
-For the record, The actual cost of Concrete for the last project is 9011 euros.;tell;budget_item/3;"budget_item(202, ""Concrete"", 9011)";house_builder
-For the record, The actual cost of Labor for the last project is 1867 euros.;tell;budget_item/3;"budget_item(202, ""Labor"", 1867)";house_builder
-FYI, The actual cost of Labor for the last project is 1867 euros.;tell;budget_item/3;"budget_item(202, ""Labor"", 1867)";house_builder
-FYI, A client communication was sent on 2025-03-26 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-03-26"", ""Site issue"")";house_builder
-For the record, A client communication was sent on 2025-03-26 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-03-26"", ""Site issue"")";house_builder
-Update: A client communication was sent on 2025-08-13 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-08-13"", ""Site issue"")";house_builder
-FYI, A client communication was sent on 2025-08-13 about 'Site issue'.;tell;client_communication/3;"client_communication(202, ""2025-08-13"", ""Site issue"")";house_builder
-"Please, Need to know all the emplyers with skill ""builder""?";askAll;employee_skill/2;employee_skill(_, builder);house_builder
-"Need to know all the emplyers with skill ""builder""?";askAll;employee_skill/2;employee_skill(_, builder);house_builder
-Could you Does employee E101 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
-Please, Does employee E101 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
-Can you Does employee E102 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
-Please, Does employee E102 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
-Could you Does employee E103 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
-Please, Does employee E103 have a skill in welding?;askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
-Could you Is a bulldozer is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
-Please, Is a bulldozer is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
-Could you Is a crane is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
-Can you Is a crane is currently on site for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
-Please, Was the plumbing inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
-Could you Was the plumbing inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
-Can you Was the electrical inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Electrical"", _, ""Passed"")";house_builder
-Could you Was the electrical inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Electrical"", _, ""Passed"")";house_builder
-Can you Was the structural inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Structural"", _, ""Passed"")";house_builder
-Could you Was the structural inspection passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(202, ""Structural"", _, ""Passed"")";house_builder
-"Show me all the project with permit status ""approved""";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
-"Tell me all the project with permit status ""approved""?";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
-Please, Has the environmental permit been approved for project 202?;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
-Could you Has the environmental permit been approved for project 202?;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
-Please, What's the current status of project 202?;askOne;project_details/3;project_details(202, _, Status);house_builder
-Can you What's the current status of project 202?;askOne;project_details/3;project_details(202, _, Status);house_builder
-Update: The plumbing milestone was completed on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
-FYI, The plumbing milestone was completed on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
-FYI, The framing milestone was completed on 2025-09-16.;tell;project_milestone/3;"project_milestone(202, ""Framing"", ""2025-09-16"")";house_builder
-For the record, The framing milestone was completed on 2025-09-16.;tell;project_milestone/3;"project_milestone(202, ""Framing"", ""2025-09-16"")";house_builder
-For the record, The plumbing milestone was completed on 2025-06-02.;tell;project_milestone/3;"project_milestone(202, ""Plumbing"", ""2025-06-02"")";house_builder
-Update: The plumbing milestone was completed on 2025-06-02.;tell;project_milestone/3;"project_milestone(202, ""Plumbing"", ""2025-06-02"")";house_builder
-Update: We currently have 123 units of pipes in stock.;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
-For the record, We currently have 123 units of pipes in stock.;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
-Update: We currently have 103 units of wood panels in stock.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
-FYI, We currently have 103 units of wood panels in stock.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
-Update: We need 82 more steel beams for project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", 82)";house_builder
-For the record, We need 82 more steel beams for project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", 82)";house_builder
-For the record, The site address for project 202 is 123 Main Street, and the ground type is Clay.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
-Update: The site address for project 202 is 123 Main Street, and the ground type is Clay.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
-For the record, Supplier SteelCorp has a contact person named Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
-Update: Supplier SteelCorp has a contact person named Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
-Could you Who is assigned as the architect for project 202?;askOne;team_assignment/3;"team_assignment(202, EmployeeID, ""Architect"")";house_builder
-Please, Who is assigned as the architect for project 202?;askOne;team_assignment/3;"team_assignment(202, EmployeeID, ""Architect"")";house_builder
-Update: We have generated 13 cubic meters of wood waste on project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
-FYI, We have generated 13 cubic meters of wood waste on project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
-FYI, We have generated 32 cubic meters of wood waste on project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
-For the record, We have generated 32 cubic meters of wood waste on project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
-For the record, The last transaction ID is 12.;tell;last_transaction_id/1;last_transaction_id(12);onbanking
-The last transaction ID is 12.;tell;last_transaction_id/1;last_transaction_id(12);onbanking
-User Pippo01 is offline.;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
-Update: User Pippo01 is offline.;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
-For the record, User ErTrota04 failed to login.;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
-Update: User ErTrota04 failed to login.;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
-I send to user 3232 notification number 2.;tell;send_notification/2;send_notification(3232, 2);onbanking
-Update: I send to user 3232 notification number 2.;tell;send_notification/2;send_notification(3232, 2);onbanking
-Account 01343 has 3000 euros.;tell;account/3;account(01343, _, 3000);onbanking
-For the record, Account 01343 has 3000 euros.;tell;account/3;account(01343, _, 3000);onbanking
-FYI, Fabiuccio222 has loggedin successfully.;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
-For the record, Fabiuccio222 has loggedin successfully.;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
-Update: Credit Card 0021 has been blocked.;tell;card_status/2;card_status(0021, blocked);onbanking
-Credit Card 0021 has been blocked.;tell;card_status/2;card_status(0021, blocked);onbanking
-For the record, There is a transaction of 200 euros from account 0123 on 12/12/2021.;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
-There is a transaction of 200 euros from account 0123 on 12/12/2021.;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
-For the record, Yesterday someone tried to authenticate in Pluto account, but he failed.;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
-Yesterday someone tried to authenticate in Pluto account, but he failed.;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
-Tell me all the cards whose status is blocked?;askAll;card_status/2;card_status(_, blocked);onbanking
-Show me all the cards whose status is blocked;askAll;card_status/2;card_status(_, blocked);onbanking
-I would like to know which are the IDs of those who received alert notifications;askAll;security_alert/2;security_alert(_, _);onbanking
-I need to know which are the IDs of those who received alert notifications?;askAll;security_alert/2;security_alert(_, _);onbanking
-Please, Which accounts were unable to log in?;askAll;failed_login/1;failed_login(_);onbanking
-Can you Which accounts were unable to log in?;askAll;failed_login/1;failed_login(_);onbanking
-"I need to know Tell me all login attempts to user ""Bulbasaur15"" on 4/12/2023?";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
-"Can you Tell me all login attempts to user ""Bulbasaur15"" on 4/12/2023?";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
-Can you Which accounts have 200 euro daily limits?;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
-I need to know Which accounts have 200 euro daily limits?;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
-Please, Which accounts received alert number 213?;askAll;security_alert/2;security_alert(_, 213);onbanking
-I need to know Which accounts received alert number 213?;askAll;security_alert/2;security_alert(_, 213);onbanking
-What's te last transaction id?;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
-Could you What is te last transaction id?;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
-Could you What is the transfer limit of premium accounts?;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
-Please, What is the transfer limit of premium accounts?;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
-"Please, Tell me the status of account ""Giratina12""?";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
-"Tell me the status of account ""Giratina12""?";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
-Can you What is the username of customer number 11?;askOne;user/3;user(_, _, 11);onbanking
-What is the username of customer number 11?;askOne;user/3;user(_, _, 11);onbanking
-Can you Tell me the status of card number 321?;askOne;card_status/2;card_status(321, _);onbanking
-Show me the status of card number 321;askOne;card_status/2;card_status(321, _);onbanking
-Tell me the pending transaction of account 122?;askOne;pending_transaction/2;pending_transaction( _, 122);onbanking
-Could you Tell me the pending transaction of account 122?;askOne;pending_transaction/2;pending_transaction( _, 122);onbanking
-Quick check: I need to know the amount of payment 222?;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
-I would like to know the amount of payment 222;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
-FYI, The robot is charging.;tell;robot_status/1;robot_status(recharging);robot_assistant
-For the record, The robot is charging.;tell;robot_status/1;robot_status(recharging);robot_assistant
-The battery is at 80%.;tell;battery_level/1;battery_level(80);robot_assistant
-Update: The battery is at 80%.;tell;battery_level/1;battery_level(80);robot_assistant
-Customer C28 asked for infos about SamsungS3.;tell;customer_request/2;"customer_request(""C28"", ""SamsungS3"")";robot_assistant
-Update: Customer C28 asked for infos about SamsungS3.;tell;customer_request/2;"customer_request(""C28"", ""SamsungS3"")";robot_assistant
-FYI, SamsungWatch are now compatible with XiaomiRedmi.;tell;accessory_compatible/2;"accessory_compatible(""SamsungWatch"", ""XiaomiRedmi"")";robot_assistant
-Update: SamsungWatch are now compatible with XiaomiRedmi.;tell;accessory_compatible/2;"accessory_compatible(""SamsungWatch"", ""XiaomiRedmi"")";robot_assistant
-"FYI, Robot completed task ""HelpElderMan"".";tell;task_completed/1;"task_completed(""HelpElderMan"")";robot_assistant
-"Robot completed task ""HelpElderMan"".";tell;task_completed/1;"task_completed(""HelpElderMan"")";robot_assistant
-There are no more VRs available.;tell;out_of_stock/1;"out_of_stock(""VR"")";robot_assistant
-Update: There are no more VRs available.;tell;out_of_stock/1;"out_of_stock(""VR"")";robot_assistant
-There is a Laptop on PC display.;tell;product_on_display/2;product_on_display(laptop, pc);robot_assistant
-FYI, There is a Laptop on PC display.;tell;product_on_display/2;product_on_display(laptop, pc);robot_assistant
-For the record, Motorola has a 20% discount valid from 1/1/2025 to 1/2/2025.;tell;promotion_active/4;"promotion_active(""Motorola2"", 20, ""1/1/2025"", ""1/2/2025"")";robot_assistant
-Update: Motorola has a 20% discount valid from 1/1/2025 to 1/2/2025.;tell;promotion_active/4;"promotion_active(""Motorola2"", 20, ""1/1/2025"", ""1/2/2025"")";robot_assistant
-Please, Which are all the available return processes for Samsung devices?;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
-I need to know Which are all the available return processes for Samsung devices?;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
-Please, I'd like to get all the names about unavailable products?;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
-I'd like to get all the names about unavailable products?;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
-Quick check: Could you give me a full rundown of promotions active untill 1/1/2026?;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
-Can you Tell me all the product which quantity remaining is 9?;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
-I need to know Tell me all the product which quantity remaining is 9?;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
-I need to know I'd like to know all the customers that are interested in dishwashers?;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
-I'd like to know all the customers that are interested in dishwashers?;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
-Show me all the compatible accessories with PixelPhone3;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
-Can you Tell me all the compatible accessories with PixelPhone3?;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
-Could you What is the robot battery level?;askOne;battery_level/1;battery_level(_);robot_assistant
-Please, What is the robot battery level?;askOne;battery_level/1;battery_level(_);robot_assistant
-Could you Any info about robot charging?;askOne;charging_status/1;charging_status(_);robot_assistant
-Can you Any info about robot charging?;askOne;charging_status/1;charging_status(_);robot_assistant
-Could you Is there any request from customer 21 about XiaomiRedmi?;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
-Please, Is there any request from customer 21 about XiaomiRedmi?;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
-Please, Is SamsungS3 out on stock?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
-Can you Is SamsungS3 out on stock?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
-"Could you Did you completed the task ""Clear""?";askOne;task_completed/1;task_completed(clear);robot_assistant
-"Please, Did you completed the task ""Clear""?";askOne;task_completed/1;task_completed(clear);robot_assistant
-Please, Did you finish the return process of Transaction 99?;askOne;return_process/2;return_process(99, _);robot_assistant
-Could you Did you finish the return process of Transaction 99?;askOne;return_process/2;return_process(99, _);robot_assistant
-"FYI, There is an event called ""WaltuhParty"" the 10/11/2033 at 8PM.";tell;event_details/3;"event_details(""WaltuhParty"", ""10/11/2033"", ""20:00"")";tickets
-"There is an event called ""WaltuhParty"" the 10/11/2033 at 8PM.";tell;event_details/3;"event_details(""WaltuhParty"", ""10/11/2033"", ""20:00"")";tickets
-FYI, The VIP ticket for WaltuhParty costs 300 dollars and there are only 3 left.;tell;ticket_type/4;"ticket_type(""WaltuhParty"", vip, dollars(300), 3)";tickets
-Update: The VIP ticket for WaltuhParty costs 300 dollars and there are only 3 left.;tell;ticket_type/4;"ticket_type(""WaltuhParty"", vip, dollars(300), 3)";tickets
-"FYI, I registered a new account as ""Giorgio03"" with mail bubbulus@gmail.com.";tell;user_account/3;"user_account(""Giorgio03"", ""bubbulus@gmail.com"", _)";tickets
-"I registered a new account as ""Giorgio03"" with mail bubbulus@gmail.com.";tell;user_account/3;"user_account(""Giorgio03"", ""bubbulus@gmail.com"", _)";tickets
-AldoBaldo02 did the order 12 the 11/11/2021 for 5000 euros and it's still processing.;tell;order_details/5;"order_details(12, ""AldoBaldo02"", ""11/11/2021"", euros(5000), processing)";tickets
-FYI, AldoBaldo02 did the order 12 the 11/11/2021 for 5000 euros and it's still processing.;tell;order_details/5;"order_details(12, ""AldoBaldo02"", ""11/11/2021"", euros(5000), processing)";tickets
-FYI, There are 200 Premium tickets left.;tell;available_tickets/2;available_tickets(premium, 200);tickets
-There are 200 Premium tickets left.;tell;available_tickets/2;available_tickets(premium, 200);tickets
-"FYI, The ""NintendoDirectOnlyForRichPeople"" event is ready.";tell;event_status/2;"event_status(""NintendoDirectOnlyForRichPeople"", ready)";tickets
-"For the record, The ""NintendoDirectOnlyForRichPeople"" event is ready.";tell;event_status/2;"event_status(""NintendoDirectOnlyForRichPeople"", ready)";tickets
-"For the record, The ""NintendoDirectOnlyForRichPeople"" event is presented by Bowser.";tell;event_artist/2;"event_artist(""NintendoDirectOnlyForRichPeople"", ""Bowser"")";tickets
-"Update: The ""NintendoDirectOnlyForRichPeople"" event is presented by Bowser.";tell;event_artist/2;"event_artist(""NintendoDirectOnlyForRichPeople"", ""Bowser"")";tickets
-FYI, The 3th October 2021 I asked for a refund of order 21 and I cancelled it.;tell;refund_request/3;"refund_request(21, ""3/10/2021"", cancelled)";tickets
-The 3th October 2021 I asked for a refund of order 21 and I cancelled it.;tell;refund_request/3;"refund_request(21, ""3/10/2021"", cancelled)";tickets
-For the record, Caruso98 payed with card ************2221.;tell;payment_method/3;"payment_method(""Caruso98"", card, 2221)";tickets
-FYI, Caruso98 payed with card ************2221.;tell;payment_method/3;"payment_method(""Caruso98"", card, 2221)";tickets
-I need to know I would like to know the name of the events that are cancelled?;askAll;event_status/2;event_status(_, cancelled);tickets
-Please, I would like to know the name of the events that are cancelled?;askAll;event_status/2;event_status(_, cancelled);tickets
-Please, Which ones and how many tickets are available for WaltuhParty?;askAll;available_tickets/2;"available_tickets(""WaltuhParty"", _)";tickets
-I need to know Which ones and how many tickets are available for WaltuhParty?;askAll;available_tickets/2;"available_tickets(""WaltuhParty"", _)";tickets
-I want to know the account registered on 21/12/2021?;askAll;user_account/3;"user_account(_, _, ""21/12/2021"")";tickets
-Can you I want to know the account registered on 21/12/2021?;askAll;user_account/3;"user_account(_, _, ""21/12/2021"")";tickets
-I would like to know all the refund requests suspended;askAll;refund_request/3;refund_request(_, _, suspended);tickets
-I need to know all the refund requests suspended?;askAll;refund_request/3;refund_request(_, _, suspended);tickets
-Can you display all the purchases from user Finger00 which cost is 25 euros?;askAll;order_details/5;"order_details(_, ""Finger00"", ""21/12/2021"", euros(_), _)";tickets
-Quick check: Can you display all the purchases from user Finger00 which cost is 25 euros?;askAll;order_details/5;"order_details(_, ""Finger00"", ""21/12/2021"", euros(_), _)";tickets
-Please, Are there any events at 9pm on 21/12/2021?;askAll;event_details/3;"event_details(_, ""21/12/2021"", ""21:00"")";tickets
-I need to know Are there any events at 9pm on 21/12/2021?;askAll;event_details/3;"event_details(_, ""21/12/2021"", ""21:00"")";tickets
-"Could you Tell me the actual status of the ""WaltuhParty"" event?";askOne;event_status/2;"event_status(""WaltuhParty"", _)";tickets
-"Tell me the actual status of the ""WaltuhParty"" event?";askOne;event_status/2;"event_status(""WaltuhParty"", _)";tickets
-Please, Need to know the number of VIP tickets still available?;askOne;available_tickets/2;available_tickets(TicketTypeName, Quantity);tickets
-Can you Need to know the number of VIP tickets still available?;askOne;available_tickets/2;available_tickets(TicketTypeName, Quantity);tickets
-Quick check: I need to know the status of refund #26?;askOne;refund_request/3;refund_request(26, _, _);tickets
-I would like to know the status of refund #26;askOne;refund_request/3;refund_request(26, _, _);tickets
-"Could you Tell me when user ""Baldovino28"" created his account?";askOne;user_account/3;"user_account(""Baldovino28"", _, _)";tickets
-"Can you Tell me when user ""Baldovino28"" created his account?";askOne;user_account/3;"user_account(""Baldovino28"", _, _)";tickets
-Can you What is the musical genre of artist LilWaltuh?;askOne;artist_info/3;"artist_info(""LilWaltuh"", _, _)";tickets
-Please, What is the musical genre of artist LilWaltuh?;askOne;artist_info/3;"artist_info(""LilWaltuh"", _, _)";tickets
-Can you LilWaltuh will be the artist of the WaltuhParty event?;askOne;event_artist/2;"event_artist(""WaltuhParty"", ""LilWaltuh"")";tickets
-Please, LilWaltuh will be the artist of the WaltuhParty event?;askOne;event_artist/2;"event_artist(""WaltuhParty"", ""LilWaltuh"")";tickets
+The most recent booking ID is 15;tell;last_booking_id/1;last_booking_id(15);booking
+Booking ID 92 was the last one;tell;last_booking_id/1;last_booking_id(92);booking
+The final booking ID is 7;tell;last_booking_id/1;last_booking_id(7);booking
+The last booking has an ID of 103;tell;last_booking_id/1;last_booking_id(103);booking
+Our last booking ID is 54;tell;last_booking_id/1;last_booking_id(54);booking
+marco is checked into room 105;tell;check_in/2;check_in(marco, 105);booking
+luca just checked in to room 42;tell;check_in/2;check_in(luca, 42);booking
+anna has checked into room 301;tell;check_in/2;check_in(anna, 301);booking
+room 215 has been checked into by sophia;tell;check_in/2;check_in(sophia, 215);booking
+matteo checked in at room 18;tell;check_in/2;check_in(matteo, 18);booking
+A single room costs 75 euros per night;tell;room_price/2;room_price(single, 75);booking
+The nightly rate for a suite is 250;tell;room_price/2;room_price(suite, 250);booking
+It costs 180 euros a night for a deluxe room;tell;room_price/2;room_price(deluxe, 180);booking
+A triple room has a price of 110 per night;tell;room_price/2;room_price(triple, 110);booking
+The price per night for the penthouse is 500 euros;tell;room_price/2;room_price(penthouse, 500);booking
+The transaction for booking room 105 went through successfully;tell;payment_status/2;payment_status(105, successful);booking
+Payment for booking room 8 has failed;tell;payment_status/2;payment_status(8, failed);booking
+The payment status for room booking 412 is currently pending;tell;payment_status/2;payment_status(412, pending);booking
+Room 57's booking payment was completed successfully;tell;payment_status/2;payment_status(57, successful);booking
+We have successfully processed the payment for booking room 99;tell;payment_status/2;payment_status(99, completed);booking
+Just got word that booking 12 has been cancelled.;tell;cancel_booking/1;cancel_booking(12);booking
+I need to cancel booking number 99.;tell;cancel_booking/1;cancel_booking(99);booking
+They called to cancel reservation 401.;tell;cancel_booking/1;cancel_booking(401);booking
+Booking 73 was just cancelled.;tell;cancel_booking/1;cancel_booking(73);booking
+Go ahead and cancel booking 15.;tell;cancel_booking/1;cancel_booking(15);booking
+There is a single room open starting November 12th, 2026;tell;available/3;"available(single, ""12/11/2026"", _)";booking
+A suite is ready from the 5th of January 2027;tell;available/3;"available(suite, ""05/01/2027"", _)";booking
+We have a deluxe room free starting October 1st, 2025;tell;available/3;"available(deluxe, ""01/10/2025"", _)";booking
+A family room is available beginning August 18th, 2026;tell;available/3;"available(family, ""18/08/2026"", _)";booking
+Starting June 30th, 2027, there's a double room ready;tell;available/3;"available(double, ""30/06/2027"", _)";booking
+Yesterday, Emily checked out of her room;tell;check_out/1;check_out(emily);booking
+Marcus has already completed his checkout;tell;check_out/1;check_out(marcus);booking
+Sarah checked out earlier today;tell;check_out/1;check_out(sarah);booking
+David went through the checkout process a moment ago;tell;check_out/1;check_out(david);booking
+Sophia finished checking out;tell;check_out/1;check_out(sophia);booking
+We are completely full on December 24, 2025.;tell;fully_booked/1;"fully_booked(""24/12/2025"")";booking
+There's no vacancy left for May 1st, 2026.;tell;fully_booked/1;"fully_booked(""01/05/2026"")";booking
+Every single room is booked out for July 15, 2025.;tell;fully_booked/1;"fully_booked(""15/07/2025"")";booking
+We don't have any open rooms on October 31, 2025.;tell;fully_booked/1;"fully_booked(""31/10/2025"")";booking
+All rooms are taken for January 10th, 2026.;tell;fully_booked/1;"fully_booked(""10/01/2026"")";booking
+Mario has reserved a double room from 12/11/2025 to 18/11/2025;tell;booking/4;"booking(mario, double, ""12/11/2025"", ""18/11/2025"")";booking
+Anna made a reservation for a suite from 01/12/2025 to 05/12/2025;tell;booking/4;"booking(anna, suite, ""01/12/2025"", ""05/12/2025"")";booking
+Giovanni booked a single room between 20/09/2025 and 25/09/2025;tell;booking/4;"booking(giovanni, single, ""20/09/2025"", ""25/09/2025"")";booking
+Elena has a family room booked for the period 05/05/2026 to 12/05/2026;tell;booking/4;"booking(elena, family, ""05/05/2026"", ""12/05/2026"")";booking
+Marco booked a triple room for the dates 15/08/2025 through 22/08/2025;tell;booking/4;"booking(marco, triple, ""15/08/2025"", ""22/08/2025"")";booking
+Does booking 45 exist?;askOne;has_reservation/2;has_reservation(_, 45);booking
+Check if there is a reservation for ID 99;askOne;has_reservation/2;has_reservation(_, 99);booking
+Is ID 701 registered as a reservation?;askOne;has_reservation/2;has_reservation(_, 701);booking
+Do we have a booking under ID 50?;askOne;has_reservation/2;has_reservation(_, 50);booking
+Is there any booking linked to ID 108?;askOne;has_reservation/2;has_reservation(_, 108);booking
+Did Maria make a reservation?;askOne;booking/4;booking(maria, _, _, _);booking
+Is there any booking under the name John?;askOne;booking/4;booking(john, _, _, _);booking
+Do we have a booking for Alice?;askOne;booking/4;booking(alice, _, _, _);booking
+Has Elena booked a room?;askOne;booking/4;booking(elena, _, _, _);booking
+Is there a reservation registered to Marco?;askOne;booking/4;booking(marco, _, _, _);booking
+Did the payment for booking 123 actually go through?;askOne;payment_status/2;payment_status(123, successful);booking
+Is booking 54's payment status currently pending?;askOne;payment_status/2;payment_status(54, pending);booking
+Did the transaction fail for booking number 890?;askOne;payment_status/2;payment_status(890, failed);booking
+Was the payment for reservation 42 successful?;askOne;payment_status/2;payment_status(42, successful);booking
+Has the payment for booking 15 been completed?;askOne;payment_status/2;payment_status(15, completed);booking
+Do you have a double room open starting November 12th, 2025?;askOne;available/3;"available(double, ""12/11/2025"", _)";booking
+Can I book a suite from the 5th of December 2025?;askOne;available/3;"available(suite, ""5/12/2025"", _)";booking
+I need to check if a single room is free starting 20th January 2026?;askOne;available/3;"available(single, ""20/1/2026"", _)";booking
+Is there any double room vacant from July 14, 2025?;askOne;available/3;"available(double, ""14/7/2025"", _)";booking
+Would a suite be available starting October 1st, 2025?;askOne;available/3;"available(suite, ""1/10/2025"", _)";booking
+What is a hotel that has a 5 star rating?;askOne;review/2;review(_, 5);booking
+Give me the name of any hotel rated 3 stars.;askOne;review/2;review(_, 3);booking
+I need to find a hotel with a 2 star rating.;askOne;review/2;review(_, 2);booking
+Which hotel got a rating of 5 stars?;askOne;review/2;review(_, 5);booking
+Is there a hotel that is rated 1 star?;askOne;review/2;review(_, 1);booking
+Has booking 45 been cancelled?;askOne;cancel_booking/1;cancel_booking(45);booking
+Can you check if booking number 112 is cancelled?;askOne;cancel_booking/1;cancel_booking(112);booking
+Is reservation 89 cancelled?;askOne;cancel_booking/1;cancel_booking(89);booking
+Did booking 7 get cancelled?;askOne;cancel_booking/1;cancel_booking(7);booking
+Would booking number 340 happen to be cancelled?;askOne;cancel_booking/1;cancel_booking(340);booking
+What is the price of a double room?;askOne;room_price/2;room_price(double, _);booking
+What's the rate for a suite?;askOne;room_price/2;room_price(suite, _);booking
+How much is a deluxe room per night?;askOne;room_price/2;room_price(deluxe, _);booking
+What does a triple room run you?;askOne;room_price/2;room_price(triple, _);booking
+Tell me the cost of a standard room?;askOne;room_price/2;room_price(standard, _);booking
+Is there an early check-in request from Marco for 10/10/2026?;askOne;request_early_checkin/2;"request_early_checkin(marco, ""10/10/2026"")";booking
+What date did Sarah ask to check in early?;askOne;request_early_checkin/2;request_early_checkin(sarah, _);booking
+Did anyone ask for an early check-in on 25/12/2024?;askOne;request_early_checkin/2;"request_early_checkin(_, ""25/12/2024"")";booking
+Did Elena request an early check-in for 05/06/2025?;askOne;request_early_checkin/2;"request_early_checkin(elena, ""05/06/2025"")";booking
+When did David request his early check-in?;askOne;request_early_checkin/2;request_early_checkin(david, _);booking
+Show me every hotel that has a 4 star rating.;askAll;review/2;review(_, 4);booking
+Which hotels have received a 3-star review?;askAll;review/2;review(_, 3);booking
+List all of the hotels with a 1 star rating.;askAll;review/2;review(_, 1);booking
+Give me a list of all hotels rated 5 stars.;askAll;review/2;review(_, 5);booking
+I'm looking for all hotels that got a 2 star review.;askAll;review/2;review(_, 2);booking
+What are the prices for all the different rooms?;askAll;room_price/2;room_price(_, _);booking
+Show me the rates for every room type.;askAll;room_price/2;room_price(_, _);booking
+I'd like to see a list of all room prices.;askAll;room_price/2;room_price(_, _);booking
+How much does each room cost?;askAll;room_price/2;room_price(_, _);booking
+List the pricing for all available rooms.;askAll;room_price/2;room_price(_, _);booking
+What are all the dates where we have no availability left?;askAll;fully_booked/1;fully_booked(_);booking
+List all the days that are completely booked up.;askAll;fully_booked/1;fully_booked(_);booking
+Show me every single date we are fully booked.;askAll;fully_booked/1;fully_booked(_);booking
+Which dates have zero vacancy?;askAll;fully_booked/1;fully_booked(_);booking
+Give me a list of all the days we're fully booked.;askAll;fully_booked/1;fully_booked(_);booking
+Show me all the people who have reservations.;askAll;has_reservation/2;has_reservation(_, _);booking
+Who currently has a booking?;askAll;has_reservation/2;has_reservation(_, _);booking
+List the names of everyone with a reservation.;askAll;has_reservation/2;has_reservation(_, _);booking
+Tell me who has a reservation.;askAll;has_reservation/2;has_reservation(_, _);booking
+Which guests have made a reservation?;askAll;has_reservation/2;has_reservation(_, _);booking
+Which payments have failed;askAll;payment_status/2;payment_status(_, failed);booking
+Show me all the pending payments;askAll;payment_status/2;payment_status(_, pending);booking
+List all payments that are completed;askAll;payment_status/2;payment_status(_, completed);booking
+Find every payment with a cancelled status;askAll;payment_status/2;payment_status(_, cancelled);booking
+I need to see all payments that were declined;askAll;payment_status/2;payment_status(_, declined);booking
+the car is running on fumes, the fuel level is empty;tell;fuel_level/1;fuel_level(empty);car_control
+we need to stop for gas because the tank is low;tell;fuel_level/1;fuel_level(low);car_control
+the petrol gauge indicates that the fuel level is low;tell;fuel_level/1;fuel_level(low);car_control
+the tank is nearly dry and the fuel level is critical;tell;fuel_level/1;fuel_level(critical);car_control
+the fuel level is low so we should find a gas station;tell;fuel_level/1;fuel_level(low);car_control
+The device is charging, with 15% still missing;tell;battery_charge/1;battery_charge(85);car_control
+It is currently plugged in, 30% left to reach full capacity;tell;battery_charge/1;battery_charge(70);car_control
+Charging right now, 45% missing to hit 100%;tell;battery_charge/1;battery_charge(55);car_control
+The phone is charging, only 10% is missing;tell;battery_charge/1;battery_charge(90);car_control
+It's plugged in and charging, 25% missing;tell;battery_charge/1;battery_charge(75);car_control
+Show me all room options open starting from 12/9/2025;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
+List every room that I can book beginning 12/9/2025;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
+Are there any rooms free for the date 12/9/2025 onwards;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
+I need a list of all available rooms starting on 12/9/2025;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
+Which accommodations have openings from 12/9/2025 until further notice;askAll;available/3;"available(_, ""12/9/2025"", _)";booking
+the car is currently set to ready;tell;vehicle_status/1;vehicle_status(ready);car_control
+the vehicle state is now ready;tell;vehicle_status/1;vehicle_status(ready);car_control
+the status of the car is ready;tell;vehicle_status/1;vehicle_status(ready);car_control
+everything is ready with the vehicle;tell;vehicle_status/1;vehicle_status(ready);car_control
+the vehicle is confirmed as ready;tell;vehicle_status/1;vehicle_status(ready);car_control
+The car is cruising at 180 kph;tell;current_speed/2;current_speed(180, kph);car_control
+Maintain a speed of 180 kph;tell;current_speed/2;current_speed(180, kph);car_control
+We are currently hitting 180 kph;tell;current_speed/2;current_speed(180, kph);car_control
+Set the velocity to 180 kph;tell;current_speed/2;current_speed(180, kph);car_control
+Traveling at 180 kph right now;tell;current_speed/2;current_speed(180, kph);car_control
+the gas gauge is showing low;tell;fuel_level/1;fuel_level(low);car_control
+my current fuel level is empty;tell;fuel_level/1;fuel_level(empty);car_control
+the car is reporting a high amount of fuel;tell;fuel_level/1;fuel_level(high);car_control
+the fuel indicator is currently at medium;tell;fuel_level/1;fuel_level(medium);car_control
+the vehicle reports the fuel status as critical;tell;fuel_level/1;fuel_level(critical);car_control
+My battery status is currently at 80 percent;tell;battery_charge/1;battery_charge(80);car_control
+The charge level is sitting at 80;tell;battery_charge/1;battery_charge(80);car_control
+I've got 80 percent power in the battery;tell;battery_charge/1;battery_charge(80);car_control
+The device is showing an 80 percent charge;tell;battery_charge/1;battery_charge(80);car_control
+The battery is currently holding 80 percent capacity;tell;battery_charge/1;battery_charge(80);car_control
+Set the wiper to level 3;tell;wiper_speed/1;wiper_speed(3);car_control
+The windshield wipers are currently on setting 3;tell;wiper_speed/1;wiper_speed(3);car_control
+Wiper speed is currently 3;tell;wiper_speed/1;wiper_speed(3);car_control
+The wipers are running at speed 3;tell;wiper_speed/1;wiper_speed(3);car_control
+I have the wipers on speed 3;tell;wiper_speed/1;wiper_speed(3);car_control
+The vehicle covered 650km in 9 hours;tell;odometer_reading/2;odometer_reading(km(650), hour(9));car_control
+We drove a total of 450km over the course of 5 hours;tell;odometer_reading/2;odometer_reading(km(450), hour(5));car_control
+My trip spanned 800km and took 12 hours;tell;odometer_reading/2;odometer_reading(km(800), hour(12));car_control
+We managed to rack up 300km in just 4 hours;tell;odometer_reading/2;odometer_reading(km(300), hour(4));car_control
+The distance recorded was 950km after 14 hours of driving;tell;odometer_reading/2;odometer_reading(km(950), hour(14));car_control
+We have settled on Kabul as our final destination;tell;destination_set/1;destination_set(kabul);car_control
+Our trip will take us to Kabul;tell;destination_set/1;destination_set(kabul);car_control
+Kabul is the place where we are heading;tell;destination_set/1;destination_set(kabul);car_control
+We finally picked Kabul as the spot;tell;destination_set/1;destination_set(kabul);car_control
+The destination for our upcoming trip is Kabul;tell;destination_set/1;destination_set(kabul);car_control
+The back tires are currently at 55PSI;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
+Set the pressure for the rear tires to 55PSI;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
+The rear wheels have a pressure reading of 55PSI;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
+I need to report that the rear tire pressure is 55PSI;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
+The rear tire setup is sitting at 55PSI;tell;tire_pressure/2;tire_pressure(rear, 55);car_control
+the braking lights currently show broken;tell;light_status/2;light_status(braking, broken);car_control
+set the status of the braking lights to broken;tell;light_status/2;light_status(braking, broken);car_control
+braking lights are in a broken state;tell;light_status/2;light_status(braking, broken);car_control
+report the braking lights as broken;tell;light_status/2;light_status(braking, broken);car_control
+the braking lights are now broken;tell;light_status/2;light_status(braking, broken);car_control
+what is the state of every light;askAll;light_status/2;light_status(_, _);car_control
+list all the light statuses for me;askAll;light_status/2;light_status(_, _);car_control
+check the current status of all my lights;askAll;light_status/2;light_status(_, _);car_control
+show me the status of all available lights;askAll;light_status/2;light_status(_, _);car_control
+tell me the state of every light on the list;askAll;light_status/2;light_status(_, _);car_control
+Show me the current pressure readings for all tires.;askAll;tire_pressure/2;tire_pressure(_, _);car_control
+List the PSI levels for every wheel.;askAll;tire_pressure/2;tire_pressure(_, _);car_control
+What are the tire pressure stats for each position?;askAll;tire_pressure/2;tire_pressure(_, _);car_control
+I need the pressure values for all the tires.;askAll;tire_pressure/2;tire_pressure(_, _);car_control
+Give me a report on the pressure of all tires.;askAll;tire_pressure/2;tire_pressure(_, _);car_control
+What is the position of every tire inflated to 30 PSI?;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
+List all wheels that currently hold a pressure of 30 PSI.;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
+Show me all tires with a pressure level of 30.;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
+Identify every tire showing exactly 30 PSI.;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
+Give me a list of all tires set to 30 PSI.;askAll;tire_pressure/2;tire_pressure(_, 30);car_control
+Which seats currently have the belt unfastened?;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
+List every seat where the safety belt is not buckled.;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
+Show me all positions with an unfastened seat belt.;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
+Find all the seats that are not wearing their seat belts.;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
+Identify every location where the seat belt is still unfastened.;askAll;seat_belt_fastened/2;seat_belt_fastened(_, unfastened);car_control
+Which doors are currently open?;askAll;door_status/2;door_status(_, open);car_control
+List every door that is in the open state.;askAll;door_status/2;door_status(_, open);car_control
+Show me all open doors.;askAll;door_status/2;door_status(_, open);car_control
+I need a list of all the doors that are open right now.;askAll;door_status/2;door_status(_, open);car_control
+What is the status of all doors that are currently open?;askAll;door_status/2;door_status(_, open);car_control
+What is the tire pressure for the front wheels?;askAll;tire_pressure/2;tire_pressure(front, _);car_control
+List the pressure readings for all front tires.;askAll;tire_pressure/2;tire_pressure(front, _);car_control
+Show me the pressure stats for the front set.;askAll;tire_pressure/2;tire_pressure(front, _);car_control
+Retrieve the tire pressure for the front position.;askAll;tire_pressure/2;tire_pressure(front, _);car_control
+Display every pressure value recorded for the front tires.;askAll;tire_pressure/2;tire_pressure(front, _);car_control
+How much fuel is currently in the tank?;askOne;fuel_level/1;fuel_level(_);car_control
+Tell me the current fuel status.;askOne;fuel_level/1;fuel_level(_);car_control
+I need to know the fuel gauge reading.;askOne;fuel_level/1;fuel_level(_);car_control
+What does the fuel level look like right now?;askOne;fuel_level/1;fuel_level(_);car_control
+Show me the current fuel level.;askOne;fuel_level/1;fuel_level(_);car_control
+What is the target location?;askOne;destination_set/1;destination_set(_);car_control
+Where are we headed?;askOne;destination_set/1;destination_set(_);car_control
+Tell me the destination.;askOne;destination_set/1;destination_set(_);car_control
+Which spot are we going to?;askOne;destination_set/1;destination_set(_);car_control
+What is the final stop?;askOne;destination_set/1;destination_set(_);car_control
+Which gear is currently engaged?;askOne;current_gear/1;current_gear(_);car_control
+Tell me the current gear position.;askOne;current_gear/1;current_gear(_);car_control
+In what gear is the transmission right now?;askOne;current_gear/1;current_gear(_);car_control
+Show me the current gear.;askOne;current_gear/1;current_gear(_);car_control
+What is the status of the gear?;askOne;current_gear/1;current_gear(_);car_control
+What was the duration for a trip covering 150 km?;askOne;odometer_reading/2;odometer_reading(km(150), _);car_control
+How many hours did we drive for a distance of 850 km?;askOne;odometer_reading/2;odometer_reading(km(850), _);car_control
+Give me the travel time for a 300 km journey.;askOne;odometer_reading/2;odometer_reading(km(300), _);car_control
+I need to know the time elapsed for a 50 km drive.;askOne;odometer_reading/2;odometer_reading(km(50), _);car_control
+How much time was logged for covering 1200 km?;askOne;odometer_reading/2;odometer_reading(km(1200), _);car_control
+What is the current setting for the wipers?;askOne;wiper_speed/1;wiper_speed(_);car_control
+Display the wiper speed level.;askOne;wiper_speed/1;wiper_speed(_);car_control
+I need to know the speed of the wipers.;askOne;wiper_speed/1;wiper_speed(_);car_control
+Show me what speed the wipers are set to.;askOne;wiper_speed/1;wiper_speed(_);car_control
+Check the wiper speed for me.;askOne;wiper_speed/1;wiper_speed(_);car_control
+What is the current battery level?;askOne;battery_charge/1;battery_charge(_);car_control
+How much power remains in the battery?;askOne;battery_charge/1;battery_charge(_);car_control
+Check the battery percentage for me.;askOne;battery_charge/1;battery_charge(_);car_control
+Tell me the state of the battery charge.;askOne;battery_charge/1;battery_charge(_);car_control
+What is the battery at right now?;askOne;battery_charge/1;battery_charge(_);car_control
+What is the current status of the vehicle?;askOne;vehicle_status/1;vehicle_status(_);car_control
+Is the vehicle currently operational or not?;askOne;vehicle_status/1;vehicle_status(_);car_control
+Check the status of the vehicle for me.;askOne;vehicle_status/1;vehicle_status(_);car_control
+Tell me what the vehicle status is right now.;askOne;vehicle_status/1;vehicle_status(_);car_control
+I need to know the state of the vehicle.;askOne;vehicle_status/1;vehicle_status(_);car_control
+List the components needed for pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
+What is inside a pasta bolognese dish;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
+Show me all the items required to make pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
+I need to know the ingredients for pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
+Which ingredients are used in pasta bolognese;askAll;ingredients/2;ingredients(pasta(bolognese), _);cooking
+What are the components of pasta bolognese?;askOne;ingredients/2;ingredients(pasta(bolognese), _);cooking
+List all the items used to make pasta bolognese.;askOne;ingredients/2;ingredients(pasta(bolognese), _);cooking
+Show me the list of ingredients for pasta bolognese.;askOne;ingredients/2;ingredients(pasta(bolognese), _);cooking
+Tell me everything that goes into a pasta bolognese recipe.;askOne;ingredients/2;ingredients(pasta(bolognese), _);cooking
+What is the calorie count for a single carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
+Tell me the energy content of one carrot.;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
+How much energy is in one carrot?;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
+Find the calories for a piece of carrot.;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
+I need to know the calorie value of a single carrot.;askOne;calories/3;calories(carrot, unit(1, piece), _);cooking
+I enjoy having a pizza capricciosa along with a weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
+A pizza capricciosa is a great match for a weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
+My favorite combo is pizza capricciosa and weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
+Pairing a weiss beer with a pizza capricciosa is perfect.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
+I like to pair my pizza capricciosa with weiss beer.;tell;pairing/2;pairing(pizza(capricciosa), beer(weiss));cooking
+A portion of 100 grams of beef contains 156 calories.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
+Beef has 156 calories per 100 grams.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
+If you eat 100 grams of beef, you consume 156 calories.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
+156 calories are found in 100 grams of beef.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
+The energy content of 100 grams of beef is exactly 156 calories.;tell;calories/3;calories(beef, unit(100, gr), 156);cooking
+A portion of beef contains 300 calories;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
+How many calories are in a serving of beef?;tell;calories/3;calories(beef, unit(1, portion), _);cooking
+Report the calorie count for a single portion of beef;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
+What is the caloric value of one serving of beef?;tell;calories/3;calories(beef, unit(1, portion), _);cooking
+A single serving of beef has 300 calories;tell;calories/3;calories(beef, unit(1, portion), 300);cooking
+a serving of meat costs 20 dollars;tell;price/2;price(meat, dollars(20));cooking
+meat is priced at 25 dollars per portion;tell;price/2;price(meat, dollars(25));cooking
+you can get meat for 15 dollars;tell;price/2;price(meat, dollars(15));cooking
+the meat costs 30 dollars;tell;price/2;price(meat, dollars(30));cooking
+a single portion of meat will run you 18 dollars;tell;price/2;price(meat, dollars(18));cooking
+a single slice of chocolate cake contains 250 calories;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
+be aware that one piece of chocolate contributes 250 calories;tell;calories/3;calories(chocolate, unit(1, piece), 250);cooking
+chocolate packs 250 calories for every individual slice;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
+that chocolate bar has 250 calories per serving;tell;calories/3;calories(chocolate, unit(1, serving), 250);cooking
+you should know that a slice of chocolate is 250 calories;tell;calories/3;calories(chocolate, unit(1, slice), 250);cooking
+beans have 24 grams of protein in every 100 gram serving;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+a 100 gram portion of beans provides 24 grams of protein;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+you get 24 grams of protein from 100 grams of beans;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+beans pack 24 grams of protein per 100 grams;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+if you eat 100 grams of beans, you consume 24 grams of protein;tell;protein/3;protein(beans, unit(100, gr), 24);cooking
+I enjoy having a salad accompanied by water;tell;pairing/2;pairing(salad, water(_));cooking
+A fresh salad and some water make a good pair;tell;pairing/2;pairing(salad, water(_));cooking
+My meal preference is salad and water;tell;pairing/2;pairing(salad, water(_));cooking
+I usually eat salad with water;tell;pairing/2;pairing(salad, water(_));cooking
+Salad goes well with water for me;tell;pairing/2;pairing(salad, water(_));cooking
+A slice of cake is priced at 15 euros;tell;price/2;price(cake, euros(15));cooking
+The cost for one piece of cake is 15 euros;tell;price/2;price(cake, euros(15));cooking
+I am selling cake for 15 euros per slice;tell;price/2;price(cake, euros(15));cooking
+One serving of cake goes for 15 euros;tell;price/2;price(cake, euros(15));cooking
+The price of a single cake slice is set at 15 euros;tell;price/2;price(cake, euros(15));cooking
+list all the components needed to prepare a bolognese lasagna;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
+tell me every item required for a bolognese lasagna recipe;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
+which ingredients go into a lasagna bolognese;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
+show me the full list of things used to make a bolognese lasagna;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
+what goes into making a bolognese lasagna;askAll;ingredients/2;ingredients(lasagna(bolognese), _);cooking
+what is the cost of every item on the menu?;askAll;price/2;price(_, _);cooking
+list the prices for all of the dishes available.;askAll;price/2;price(_, _);cooking
+i need to see the pricing for every single dish.;askAll;price/2;price(_, _);cooking
+show me how much each dish costs.;askAll;price/2;price(_, _);cooking
+what are the prices for all the food items?;askAll;price/2;price(_, _);cooking
+List every calorie count for the food items available.;askAll;calories/3;calories(_, _, _);cooking
+Show me the calorie content for all items in the database.;askAll;calories/3;calories(_, _, _);cooking
+What are the calories for each food item?;askAll;calories/3;calories(_, _, _);cooking
+Give me a full list of calories for all the food.;askAll;calories/3;calories(_, _, _);cooking
+Display all the calorie values for every available food item.;askAll;calories/3;calories(_, _, _);cooking
+show me every possible combination you have;askAll;pairing/2;pairing(_, _);cooking
+list all the pairings available;askAll;pairing/2;pairing(_, _);cooking
+what are all the pairings in your database;askAll;pairing/2;pairing(_, _);cooking
+give me a full list of all matches;askAll;pairing/2;pairing(_, _);cooking
+tell me all the available pairings;askAll;pairing/2;pairing(_, _);cooking
+List every dish that is priced at exactly 50 pounds;askAll;price/2;price(_, pounds(50));cooking
+Show me all the meals which have a cost of 50 pounds;askAll;price/2;price(_, pounds(50));cooking
+I need a list of all items costing 50 pounds;askAll;price/2;price(_, pounds(50));cooking
+Find every dish available for 50 pounds;askAll;price/2;price(_, pounds(50));cooking
+What are all the dishes that go for 50 pounds;askAll;price/2;price(_, pounds(50));cooking
+List the components needed for a chocolate cake;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
+What items go into making a chocolate cake;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
+Tell me the ingredients for a chocolate cake;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
+Which things do I need to prepare a chocolate cake;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
+Show me all the ingredients for a chocolate cake;askAll;ingredients/2;ingredients(cake(chocolate), _);cooking
+List every pizza that contains 200 calories;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
+Show me all pizzas with exactly 200 calories;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
+I need a list of all pizzas having 200 calories;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
+Which pizzas are rated at 200 calories;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
+Find all the pizzas that have a calorie count of 200;askAll;calories/3;calories(pizza(_), unit(1, portion), 200);cooking
+What are all the costs listed on the menu?;askAll;price/2;price(_, _);cooking
+List every single item and its associated price for me.;askAll;price/2;price(_, _);cooking
+I need a full breakdown of the prices for all menu items.;askAll;price/2;price(_, _);cooking
+Show me the entire menu with all the prices.;askAll;price/2;price(_, _);cooking
+Give me a list of every product and how much it costs.;askAll;price/2;price(_, _);cooking
+What is the price of the cake?;askOne;price/2;price(cake, _);cooking
+Tell me the cost of a cake.;askOne;price/2;price(cake, _);cooking
+How much money should I pay for a cake?;askOne;price/2;price(cake, _);cooking
+What is the price for the cake?;askOne;price/2;price(cake, _);cooking
+Give me the price for a cake.;askOne;price/2;price(cake, _);cooking
+What is the calorie count for 100 grams of ice cream?;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
+Tell me the calories in a 100g serving of ice cream.;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
+How many calories are contained in 100 gr of ice cream?;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
+I need the calorie value for 100 grams of ice cream.;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
+What's the caloric content of 100 gr of ice cream?;askOne;calories/3;calories(icecream, unit(100, gr), _);cooking
+What is the ideal food to go with a red wine?;askOne;pairing/2;pairing(_, wine(red));cooking
+Show me a good dish to eat alongside a glass of red wine.;askOne;pairing/2;pairing(_, wine(red));cooking
+I'm looking for a recommendation for a meal that pairs well with red wine.;askOne;pairing/2;pairing(_, wine(red));cooking
+Which food item is typically served with red wine?;askOne;pairing/2;pairing(_, wine(red));cooking
+Find a suitable pairing for red wine.;askOne;pairing/2;pairing(_, wine(red));cooking
+List the components needed for roman pasta;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
+Show me what goes into a roman pasta;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
+What items are in a roman style pasta;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
+Tell me the ingredients to make roman pasta;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
+Which ingredients are used for roman pasta;askOne;ingredients/2;ingredients(pasta(roman), _);cooking
+What is the cost of this item?;askOne;price/2;price(_, _);cooking
+Tell me the price for this meal.;askOne;price/2;price(_, _);cooking
+I need to know the price of this dish.;askOne;price/2;price(_, _);cooking
+How much does this cost?;askOne;price/2;price(_, _);cooking
+What is the price tag on this?;askOne;price/2;price(_, _);cooking
+I'm looking for the 3rd order id;tell;last_order_id/1;last_order_id(3);domestic_robot
+The most recent order ID is 3;tell;last_order_id/1;last_order_id(3);domestic_robot
+Check the system, the last order ID is 3;tell;last_order_id/1;last_order_id(3);domestic_robot
+It turns out the final order ID is 3;tell;last_order_id/1;last_order_id(3);domestic_robot
+My records show the latest order ID is 3;tell;last_order_id/1;last_order_id(3);domestic_robot
+I'd like to get 4 sandwiches;tell;order/2;order(sandwich,4);domestic_robot
+Put me down for 7 sandwiches;tell;order/2;order(sandwich,7);domestic_robot
+I am placing an order for 1 sandwich;tell;order/2;order(sandwich,1);domestic_robot
+I need 9 sandwiches;tell;order/2;order(sandwich,9);domestic_robot
+I just bought 5 sandwiches;tell;order/2;order(sandwich,5);domestic_robot
+The fridge contains some water;tell;available/2;available(water, fridge);domestic_robot
+I have water stored in the fridge;tell;available/2;available(water, fridge);domestic_robot
+Water is currently available inside the fridge;tell;available/2;available(water, fridge);domestic_robot
+You can find water in the fridge;tell;available/2;available(water, fridge);domestic_robot
+There's water kept in the fridge;tell;available/2;available(water, fridge);domestic_robot
+I have eaten 6 slices of pizza and that is definitely too much;tell;too_much/2;too_much(pizza, 6);domestic_robot
+Having 3 sodas is too much;tell;too_much/2;too_much(soda, 3);domestic_robot
+5 scoops of ice cream is too much for me;tell;too_much/2;too_much(ice_cream, 5);domestic_robot
+It is too much to have 2 burgers;tell;too_much/2;too_much(burger, 2);domestic_robot
+8 cookies is too much;tell;too_much/2;too_much(cookie, 8);domestic_robot
+I've set the maximum for candy at 5;tell;limit/2;limit(candy,5);domestic_robot
+The candy limit is now 5;tell;limit/2;limit(candy,5);domestic_robot
+Make sure the candy limit is fixed at 5;tell;limit/2;limit(candy,5);domestic_robot
+We have decided to cap candy at 5;tell;limit/2;limit(candy,5);domestic_robot
+Set the candy limit to 5;tell;limit/2;limit(candy,5);domestic_robot
+The owner possesses the food;tell;has/2;has(owner,food);domestic_robot
+Food is held by the owner;tell;has/2;has(owner,food);domestic_robot
+The proprietor is in possession of the food;tell;has/2;has(owner,food);domestic_robot
+The food belongs to the owner;tell;has/2;has(owner,food);domestic_robot
+The owner is keeping the food;tell;has/2;has(owner,food);domestic_robot
+The current time is 09:30;tell;time/1;"time(""09:30"")";domestic_robot
+Right now it is 14:15;tell;time/1;"time(""14:15"")";domestic_robot
+It is exactly 21:45;tell;time/1;"time(""21:45"")";domestic_robot
+The clock shows 11:20;tell;time/1;"time(""11:20"")";domestic_robot
+It is currently 06:50;tell;time/1;"time(""06:50"")";domestic_robot
+I am having wine for lunch;tell;drink/1;drink(wine);domestic_robot
+For my lunch today I am having wine;tell;drink/1;drink(wine);domestic_robot
+Wine is what I am drinking at lunch;tell;drink/1;drink(wine);domestic_robot
+My lunch drink today is wine;tell;drink/1;drink(wine);domestic_robot
+I decided to drink wine with my lunch;tell;drink/1;drink(wine);domestic_robot
+a shipment of 50 apples arrived yesterday;tell;delivered/3;delivered(apple, 50, _);domestic_robot
+we received 12 apples yesterday;tell;delivered/3;delivered(apple, 12, _);domestic_robot
+yesterday saw the delivery of 35 apples;tell;delivered/3;delivered(apple, 35, _);domestic_robot
+there were 100 apples delivered yesterday;tell;delivered/3;delivered(apple, 100, _);domestic_robot
+a total of 5 apples were dropped off yesterday;tell;delivered/3;delivered(apple, 5, _);domestic_robot
+What is the ID for the most recent order?;askOne;last_order_id/1;last_order_id(_);domestic_robot
+Show me the last order ID.;askOne;last_order_id/1;last_order_id(_);domestic_robot
+Give me the ID of the latest order placed.;askOne;last_order_id/1;last_order_id(_);domestic_robot
+Which ID belongs to the most recent order?;askOne;last_order_id/1;last_order_id(_);domestic_robot
+Tell me the ID of the final order.;askOne;last_order_id/1;last_order_id(_);domestic_robot
+how many beers can I drink?;askOne;limit/2;limit(beer,_);domestic_robot
+tell me the maximum number of beers allowed.;askOne;limit/2;limit(beer,_);domestic_robot
+what is the beer consumption limit?;askOne;limit/2;limit(beer,_);domestic_robot
+give me the limit for beer intake.;askOne;limit/2;limit(beer,_);domestic_robot
+what's the cap on beer?;askOne;limit/2;limit(beer,_);domestic_robot
+Could you tell me the current time?;askOne;time/1;time(_);domestic_robot
+What is the time right now?;askOne;time/1;time(_);domestic_robot
+Give me the time.;askOne;time/1;time(_);domestic_robot
+What time should I look at?;askOne;time/1;time(_);domestic_robot
+Check the time for me.;askOne;time/1;time(_);domestic_robot
+Is there a beer for the owner?;askOne;has/2;has(owner, beer);domestic_robot
+What beer does the owner have?;askOne;has/2;has(owner, _);domestic_robot
+Does the owner possess a beer?;askOne;has/2;has(owner, beer);domestic_robot
+Find out if the owner has a beer.;askOne;has/2;has(owner, beer);domestic_robot
+Check whether the owner is holding a beer.;askOne;has/2;has(owner, beer);domestic_robot
+Did you have a beer with your breakfast?;askOne;drink/1;drink(beer);domestic_robot
+I am curious if beer was your drink of choice this morning.;askOne;drink/1;drink(beer);domestic_robot
+Confirm whether you consumed beer for breakfast.;askOne;drink/1;drink(beer);domestic_robot
+Was beer what you had to drink for breakfast?;askOne;drink/1;drink(beer);domestic_robot
+I want to know if you drank beer at breakfast.;askOne;drink/1;drink(beer);domestic_robot
+How many cakes were delivered in the order of 30?;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
+Was a total of 30 cakes sent out?;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
+Confirm if 30 cakes have been delivered.;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
+Check if the delivery included 30 cakes.;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
+Has the shipment of 30 cakes arrived?;askOne;delivered/3;delivered(cake, 30, _);domestic_robot
+Where can I find some pasta?;askOne;available/2;available(pasta, _);domestic_robot
+Is there any pasta in the house?;askOne;available/2;available(pasta, _);domestic_robot
+Does the pantry have any pasta?;askOne;available/2;available(pasta, _);domestic_robot
+Tell me where the pasta is stored.;askOne;available/2;available(pasta, _);domestic_robot
+Find the location of the pasta.;askOne;available/2;available(pasta, _);domestic_robot
+Was the amount of meat I consumed excessive?;askOne;too_much/2;too_much(meat, _);domestic_robot
+Is the quantity of meat I had too high?;askOne;too_much/2;too_much(meat, _);domestic_robot
+Have I gone overboard with the meat?;askOne;too_much/2;too_much(meat, _);domestic_robot
+Would you say I ate an excessive serving of meat?;askOne;too_much/2;too_much(meat, _);domestic_robot
+Did I have too much meat today?;askOne;too_much/2;too_much(meat, _);domestic_robot
+Show me every order for beer;askAll;order/2;order(beer, _);domestic_robot
+List all the quantities requested for beer;askAll;order/2;order(beer, _);domestic_robot
+I need a full report on the beer orders;askAll;order/2;order(beer, _);domestic_robot
+Give me the details for all beer orders;askAll;order/2;order(beer, _);domestic_robot
+What are all the beer orders currently in the system?;askAll;order/2;order(beer, _);domestic_robot
+what items are currently kept in the fridge?;askAll;available/2;available(_, fridge);domestic_robot
+show me everything stored inside the fridge;askAll;available/2;available(_, fridge);domestic_robot
+tell me what is inside the fridge;askAll;available/2;available(_, fridge);domestic_robot
+give me a list of products in the fridge;askAll;available/2;available(_, fridge);domestic_robot
+what contents are in the fridge?;askAll;available/2;available(_, fridge);domestic_robot
+List all items that have a limit of 5.;askAll;limit/2;limit(_, 5);domestic_robot
+Show me every entry restricted to 5.;askAll;limit/2;limit(_, 5);domestic_robot
+Display all objects with a limit of 5.;askAll;limit/2;limit(_, 5);domestic_robot
+Which items are capped at 5?;askAll;limit/2;limit(_, 5);domestic_robot
+Give me a full list of everything with a limit of 5.;askAll;limit/2;limit(_, 5);domestic_robot
+what is the current inventory of all items in stock?;askAll;stock/2;stock(_, _);domestic_robot
+list every item and the quantity we have on hand;askAll;stock/2;stock(_, _);domestic_robot
+show me a full report of all products and their stock levels;askAll;stock/2;stock(_, _);domestic_robot
+provide a complete list of everything in the warehouse along with the counts;askAll;stock/2;stock(_, _);domestic_robot
+give me a breakdown of all available stock and how many of each we have;askAll;stock/2;stock(_, _);domestic_robot
+Do you have any beer in the fridge?;askOne;available/2;available(beer, fridge);domestic_robot
+Is the fridge stocked with beer?;askOne;available/2;available(beer, fridge);domestic_robot
+Check if there is beer inside the fridge.;askOne;available/2;available(beer, fridge);domestic_robot
+I need to know if the fridge contains beer.;askOne;available/2;available(beer, fridge);domestic_robot
+Is beer currently kept in the fridge?;askOne;available/2;available(beer, fridge);domestic_robot
+Show me every single limit currently in place;askAll;limit/2;limit(_, _);domestic_robot
+List all the established constraints for me;askAll;limit/2;limit(_, _);domestic_robot
+I need to see the entire set of limits;askAll;limit/2;limit(_, _);domestic_robot
+Give me a report of every limit defined;askAll;limit/2;limit(_, _);domestic_robot
+Display all the limits for every item;askAll;limit/2;limit(_, _);domestic_robot
+The system shows 8421 as the most recent employee ID;tell;last_employee_id/1;last_employee_id(8421);employer_management
+The latest ID assigned to an employee is 9920;tell;last_employee_id/1;last_employee_id(9920);employer_management
+Currently, the last employee ID on record is 1205;tell;last_employee_id/1;last_employee_id(1205);employer_management
+Employee ID 5543 is the final one in the database;tell;last_employee_id/1;last_employee_id(5543);employer_management
+The sequence ends with employee ID 3392;tell;last_employee_id/1;last_employee_id(3392);employer_management
+Employee 4521 is in charge of the finance department;tell;manager_of/2;manager_of(4521, finance);employer_management
+The finance team reports to the manager with ID 4521;tell;manager_of/2;manager_of(4521, finance);employer_management
+ID 4521 holds the management position for finance;tell;manager_of/2;manager_of(4521, finance);employer_management
+The person with ID 4521 manages finance;tell;manager_of/2;manager_of(4521, finance);employer_management
+Finance is under the supervision of employee 4521;tell;manager_of/2;manager_of(4521, finance);employer_management
+Employee 3421 received a 4.5 rating during their review on 10/05/2023;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5, _)";employer_management
+On 10/05/2023, the performance evaluation for 3421 resulted in a score of 4.5;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5, _)";employer_management
+The rating for staff member 3421 was 4.5 on the 10/05/2023 review;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5, _)";employer_management
+Record a 4.5 rating for employee 3421 for the assessment dated 10/05/2023;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5, _)";employer_management
+Employee 3421's review session on 10/05/2023 yielded a 4.5 rating;tell;performance_review/5;"performance_review(3421, ""10/05/2023"", _, 4.5, _)";employer_management
+Employee 5678 is an expert in python programming;tell;skill_set/3;skill_set(5678, python, expert);employer_management
+For staff member 5678, list the python skill as expert;tell;skill_set/3;skill_set(5678, python, expert);employer_management
+The proficiency level for python skills for employee 5678 is expert;tell;skill_set/3;skill_set(5678, python, expert);employer_management
+Employee 5678 demonstrates expert level python abilities;tell;skill_set/3;skill_set(5678, python, expert);employer_management
+Record python as an expert skill for employee 5678;tell;skill_set/3;skill_set(5678, python, expert);employer_management
+"List all staff members who possess the ""Data Analysis"" skill at an advanced level";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
+"Who is currently at an advanced level for ""Data Analysis""";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
+"Find me every person with advanced proficiency in ""Data Analysis""";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
+"Show me the employees who are advanced in ""Data Analysis""";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
+"I need a list of all workers with an advanced ""Data Analysis"" skill set";askAll;skill_set/3;skill_set(_, data_analysis, advanced);employer_management
+List every training session completed by staff member 7890;askAll;training_attended/3;training_attended(7890, _, _);employer_management
+Show me all courses that employee 7890 has finished;askAll;training_attended/3;training_attended(7890, _, _);employer_management
+What training did staff ID 7890 participate in;askAll;training_attended/3;training_attended(7890, _, _);employer_management
+Find all the training programs attended by user 7890;askAll;training_attended/3;training_attended(7890, _, _);employer_management
+Display the full list of trainings taken by employee 7890;askAll;training_attended/3;training_attended(7890, _, _);employer_management
+Show me every piece of equipment allocated to the marketing team;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
+What hardware is currently registered to the marketing department;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
+Retrieve a list of all devices linked to marketing;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
+Display all hardware items that are assigned under marketing;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
+Find all hardware units associated with the marketing department;askAll;hardware_assigned/4;"hardware_assigned(_, _, ""marketing"", _)";employer_management
+List every leave request that is currently pending;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
+Find all the entries for leave that are marked as pending;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
+Display all requests for leave that are awaiting approval;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
+I need to see all the pending leave requests;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
+Pull up the full list of leave requests waiting for a decision;askAll;leave_request/6;leave_request(_, _, _, _, _, pending);employer_management
+What is the current leave status for employee 1234?;askOne;leave_request/6;leave_request(_, 1234, _, _, _, _);employer_management
+Check if employee 1234 has any leave requests filed.;askOne;leave_request/6;leave_request(_, 1234, _, _, _, _);employer_management
+Is there a record of leave for staff member 1234?;askOne;leave_request/6;leave_request(_, 1234, _, _, _, _);employer_management
+Find the leave details for employee 1234.;askOne;leave_request/6;leave_request(_, 1234, _, _, _, _);employer_management
+Does employee 1234 have an active leave request?;askOne;leave_request/6;leave_request(_, 1234, _, _, _, _);employer_management
+Which laptop model is currently linked to user 4567?;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
+Show me the device details for the laptop provided to staff member 4567.;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
+Did employee 4567 receive a laptop, and what is its ID?;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
+Find the laptop assigned to user 4567.;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
+I need to know which laptop is registered under the ID 4567.;askOne;hardware_assigned/4;hardware_assigned(4567, laptop, _, _);employer_management
+Is there anyone currently working in the sales department?;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
+Show me an employee record for the sales team.;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
+I need to find a staff member from the sales division.;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
+Pull up a representative who is part of the sales department.;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
+Who is currently assigned to the sales department?;askOne;employment_info/5;employment_info(_, _, sales, _, _);employer_management
+staff member 7 finished the js session on 1/11/2025;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
+the js workshop was completed by employee 7 on 1/11/2025;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
+on 1/11/2025, person 7 wrapped up the js training;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
+id 7 successfully did the js course as of 1/11/2025;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
+the training record for id 7 shows js completion on 1/11/2025;tell;training_attended/3;"training_attended(7, js, ""1/11/2025"")";employer_management
+Did worker 6655 finish the mandatory safety training?;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
+Show me when employee 6655 did the mandatory safety training.;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
+Has the mandatory safety training been done by staff member 6655?;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
+Look up the completion date for employee 6655 regarding mandatory safety training.;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
+Check if 6655 attended the mandatory safety training course.;askOne;training_attended/3;training_attended(6655, mandatory_safety, _);employer_management
+Show me all the staff members who have an AWS certification.;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
+List every employee that possesses the AWS credential.;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
+I need a list of all personnel who are AWS certified.;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
+Find all AWS certification holders currently on record.;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
+Who has earned the AWS certification? Give me the full list.;askAll;certification_details/4;"certification_details(_, ""AWS"", _, _)";employer_management
+List every skill linked to employee 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
+Show me all skill entries for the worker with ID 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
+Which skills are currently associated with staff member 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
+Give me a full breakdown of the skill set for person 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
+Display the entire list of skills for employee number 121;askAll;skill_set/3;skill_set(121, _, _);employer_management
+10 and 11 have a friendship;tell;user_friend/2;user_friend(10, 11);games_platform
+User 10 is buddies with user 11;tell;user_friend/2;user_friend(10, 11);games_platform
+Link 10 and 11 as friends;tell;user_friend/2;user_friend(10, 11);games_platform
+User 11 is friends with user 10;tell;user_friend/2;user_friend(11, 10);games_platform
+Set 10 and 11 as friends;tell;user_friend/2;user_friend(10, 11);games_platform
+The price for Doom has been slashed by 30% through 25/10/2025;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
+You can grab Doom at a 30% discount until 25/10/2025;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
+Doom is currently marked down by 30% until the date 25/10/2025;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
+Until 25/10/2025, Doom is available with a 30% discount;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
+There is a 30% sale on Doom valid until 25/10/2025;tell;game_on_sale/3;"game_on_sale(""Doom"", 30, ""25/10/2025"")";games_platform
+user 123 picked up Zelda;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
+put Zelda into the cart for account 123;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
+123 just added Zelda to their cart;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
+the user with ID 123 selected Zelda;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
+Zelda is now in the cart for user 123;tell;in_cart/3;"in_cart(123, ""Zelda"", _)";games_platform
+user 9 has a balance of 23 euros in their wallet;tell;wallet_balance/2;wallet_balance(9, 23);games_platform
+set the wallet total for user 14 to 45 euros;tell;wallet_balance/2;wallet_balance(14, 45);games_platform
+user 22 holds 10 euros in their digital wallet;tell;wallet_balance/2;wallet_balance(22, 10);games_platform
+the balance for user 5 is currently 88 euros;tell;wallet_balance/2;wallet_balance(5, 88);games_platform
+record that user 7 has 12 euros in their wallet;tell;wallet_balance/2;wallet_balance(7, 12);games_platform
+I gave Fifa22 a rating of 1 on 12/12/2022 and I am user 18;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
+On 12/12/2022, user 18 logged a score of 1 for the game Fifa22;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
+Fifa22 got a 1 star review from player 18 back on 12/12/2022;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
+User 18 posted a review for Fifa22 on 12/12/2022 giving it 1 point;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
+The game Fifa22 was rated 1 by user 18 on 12/12/2022;tell;game_review/4;"game_review(""Fifa22"", 18, 1, ""12/12/2022"")";games_platform
+Borderlands3 is currently hosting a session with 3 out of 10 players;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
+I found a Borderlands3 lobby running with 3 players and a capacity of 10;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
+A game session for Borderlands3 is active with 3 participants out of 10;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
+Logged a Borderlands3 session featuring 3 active players out of 10 total slots;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
+Borderlands3 has an open session right now containing 3 players and 10 max slots;tell;multiplayer_session/4;"multiplayer_session(""Borderlands3"", _, 3, 10)";games_platform
+Log 300 hours of playtime for CSGO under user 22.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
+For user 22, add an entry for CSGO with 300 hours.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
+User 22 spent 300 hours in the game CSGO.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
+Store 300 hours for CSGO in the library of user 22.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
+CSGO has been played for 300 hours by user 22.;tell;user_library/4;"user_library(22, ""CSGO"", _, 300)";games_platform
+Player 99 just got the LordOfCinder achievement in DarkSouls3;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
+In DarkSouls3, user 99 earned the LordOfCinder trophy;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
+The achievement LordOfCinder was claimed by user 99 on DarkSouls3;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
+User 99 completed the LordOfCinder challenge within DarkSouls3;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
+DarkSouls3 user 99 has successfully unlocked LordOfCinder;tell;achievement_unlocked/4;"achievement_unlocked(99, ""DarkSouls3"", ""LordOfCinder"", _)";games_platform
+Pokemon is currently 25% through the download;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
+the download for Pokemon is sitting at 25%;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
+Pokemon download progress is exactly 25%;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
+I see the Pokemon download has hit 25%;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
+it looks like Pokemon is at 25% downloaded;tell;download_status/3;"download_status(_, ""Pokemon"", 25)";games_platform
+List every game registered to user 12.;askAll;game_owned/2;game_owned(12, _);games_platform
+Show me the entire library of titles for user 12.;askAll;game_owned/2;game_owned(12, _);games_platform
+Which games are currently in the collection of user 12?;askAll;game_owned/2;game_owned(12, _);games_platform
+Find all games associated with user ID 12.;askAll;game_owned/2;game_owned(12, _);games_platform
+Give me a list of every game owned by user 12.;askAll;game_owned/2;game_owned(12, _);games_platform
+List every soulslike title published by Bethesda that costs 30 euros;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
+Show me all soulslike games from Bethesda priced at 30 euros;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
+Find all soulslike games by Bethesda costing 30 euros;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
+Which soulslike games did Bethesda release for 30 euros;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
+Display the full list of soulslike titles from Bethesda with a price of 30 euros;askAll;game_details/7;"game_details(_, _, ""soulslike"", 30, ""Bethesda"", _, _)";games_platform
+Show me every item currently in my shopping cart;askAll;in_cart/3;in_cart(_, _, _);games_platform
+List all the games that are saved in my cart;askAll;in_cart/3;in_cart(_, _, _);games_platform
+Which titles have I added to my cart so far?;askAll;in_cart/3;in_cart(_, _, _);games_platform
+Display all the games sitting in my cart;askAll;in_cart/3;in_cart(_, _, _);games_platform
+I want to see everything currently inside my cart;askAll;in_cart/3;in_cart(_, _, _);games_platform
+list all of user 5's friends;askAll;user_friend/2;user_friend(5, _);games_platform
+tell me the friends of user 5;askAll;user_friend/2;user_friend(5, _);games_platform
+which people is user 5 connected to?;askAll;user_friend/2;user_friend(5, _);games_platform
+show me every friend of user 5;askAll;user_friend/2;user_friend(5, _);games_platform
+find all users who are friends with 5;askAll;user_friend/2;user_friend(5, _);games_platform
+list every achievement earned by user 3 for FinalFantasyXIV on 11/7/2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
+show all awards that player 3 got in FinalFantasyXIV as of 11/7/2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
+which achievements did user 3 get in FinalFantasyXIV by 11/7/2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
+display all FinalFantasyXIV achievements unlocked for user 3 on 11/7/2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
+get all the entries for user 3 in FinalFantasyXIV from 11/7/2021;askAll;achievement_unlocked/4;"achievement_unlocked(3, ""FinalFantasyXIV"", _, ""11/7/2021"")";games_platform
+"when was the account for ""UnclePear"" created?";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
+"find the date ""UnclePear"" joined the platform";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
+"what is the signup date for user ""UnclePear""?";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
+"show me the creation date associated with ""UnclePear""";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
+"i need the date that ""UnclePear"" registered";askOne;user_account/3;"user_account(""UnclePear"", _, _)";games_platform
+How much money does user 5 have in their wallet?;askOne;wallet_balance/2;wallet_balance(5, _);games_platform
+Show me the current balance for account 8.;askOne;wallet_balance/2;wallet_balance(8, _);games_platform
+Tell me the total funds held by user 12.;askOne;wallet_balance/2;wallet_balance(12, _);games_platform
+What's the balance currently sitting in user 9's account?;askOne;wallet_balance/2;wallet_balance(9, _);games_platform
+I need to know the wallet amount for user 3.;askOne;wallet_balance/2;wallet_balance(3, _);games_platform
+What is the current progress of the COD download for user 4?;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
+Tell me how much of the COD download is finished for user 4.;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
+Show me the completion percentage for user 4's COD download.;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
+I need to know the status of the COD file download for user 4.;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
+Is the COD download for user 4 complete, or what is the progress?;askOne;download_status/3;"download_status(4, ""COD"", _)";games_platform
+Show me details for post 3;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
+I need the data for forum entry 3;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
+What is written in post ID 3?;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
+Find information for the post numbered 3;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
+Retrieve the record for post 3;askOne;community_forum_post/5;community_forum_post(3, _, _, _, _);games_platform
+What are the specs for the session with ID 12921?;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
+Show me the data for session 12921.;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
+I need the info on multiplayer session 12921.;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
+Look up session 12921 for me.;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
+Display the details associated with session 12921.;askOne;multiplayer_session/4;multiplayer_session(_, 12921, _, _);games_platform
+When was ForHonor added to the cart by user 3?;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
+Show me the date that user 3 put ForHonor in their cart.;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
+Tell me the timestamp for when user 3 added ForHonor.;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
+Lookup the date ForHonor was placed in the cart by user 3.;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
+I need the date associated with user 3 adding ForHonor to the cart.;askOne;in_cart/3;"in_cart(3, ""ForHonor"", _)";games_platform
+is it true that user 4 has DS2 in their library?;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+does the account 4 possess the title DS2?;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+check if user 4 currently owns DS2;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+has user 4 purchased DS2?;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+confirm if DS2 is owned by user 4;askOne;game_owned/2;"game_owned(4, ""DS2"")";games_platform
+We spent 4316 euros on Concrete for that final project.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+Concrete for the most recent project totaled 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+For the last project, the Concrete expense was 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+The project finished with a Concrete cost of 4316 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+4316 euros were allocated to Concrete for the last project.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(4316))";house_builder
+We spent 3116 euros on Labor for the most recent project.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+The final bill for Labor on the last project came to 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+For the latest project, our Labor expense was 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+Labor costs for the last project totaled 3116 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+The last project required an expenditure of 3116 euros for Labor.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(3116))";house_builder
+The latest project spent 6477 euros on Labor.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+Labor costs for the final project amounted to 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+We paid 6477 euros for Labor on that last project.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+For the most recent project, Labor came in at 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+Total Labor expenses for the previous project reached 6477 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(6477))";house_builder
+The total expenditure for Concrete on the most recent project was 9011 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+Log 9011 euros as the Concrete expense for the final project.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+9011 euros was spent on Concrete for the last project.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+For the final project, the Concrete cost is listed at 9011 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+Concrete costs for the last project amount to 9011 euros.;tell;budget_item/3;"budget_item(_, ""Concrete"", euro(9011))";house_builder
+The final project spent 1867 euros on Labor.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+For the most recent project, Labor cost 1867 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+Labor was billed at 1867 euros for the last project.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+We logged 1867 euros for Labor on the previous project.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+The Labor expense for the latest project came to 1867 euros.;tell;budget_item/3;"budget_item(_, ""Labor"", euro(1867))";house_builder
+We sent a note regarding 'Site issue' on 2025-03-26;tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+'Site issue' was the topic of the communication from 2025-03-26;tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+On 2025-03-26, we updated the client on the 'Site issue';tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+The communication on 2025-03-26 addressed the 'Site issue';tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+Regarding the 'Site issue', a message went out on 2025-03-26;tell;client_communication/3;"client_communication(_, ""2025-03-26"", ""Site issue"")";house_builder
+We logged a message regarding 'Site issue' on 2025-08-13.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+On 2025-08-13, a note was filed concerning 'Site issue'.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+'Site issue' was the topic of a client update on 2025-08-13.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+Correspondence about 'Site issue' occurred on 2025-08-13.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+The system recorded a communication on 2025-08-13 involving 'Site issue'.;tell;client_communication/3;"client_communication(_, ""2025-08-13"", ""Site issue"")";house_builder
+"Which employees are currently listed as having the ""builder"" skill?";askAll;employee_skill/2;"employee_skill(_, ""builder"")";house_builder
+"List every staff member who possesses the ""builder"" skill.";askAll;employee_skill/2;"employee_skill(_, ""builder"")";house_builder
+"Show me a report of all workers who have ""builder"" as a skill.";askAll;employee_skill/2;"employee_skill(_, ""builder"")";house_builder
+"Find all personnel that hold the ""builder"" skill level.";askAll;employee_skill/2;"employee_skill(_, ""builder"")";house_builder
+"I need a complete list of individuals who are skilled in ""builder"".";askAll;employee_skill/2;"employee_skill(_, ""builder"")";house_builder
+"Is ""Welding"" a skill held by employee ""E101""?";askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
+"Check if the employee ""E101"" is proficient in ""Welding"".";askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
+"Does the record for ""E101"" show ""Welding"" as a skill?";askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
+"Verify whether ""E101"" possesses the ""Welding"" skill.";askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
+"Confirm if ""Welding"" is listed as a skill for employee ""E101"".";askOne;employee_skill/2;"employee_skill(""E101"", ""Welding"")";house_builder
+"Is ""Welding"" a skill listed for E102?";askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
+"Check if E102 is proficient in ""Welding"".";askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
+"Confirm whether employee E102 possesses the ""Welding"" skill.";askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
+"Does the profile for E102 include ""Welding"" as a skill?";askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
+"Verify if ""Welding"" is among the skills assigned to E102.";askOne;employee_skill/2;"employee_skill(""E102"", ""Welding"")";house_builder
+"Is ""Welding"" a skill listed for employee ""E103""?";askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
+"Check if the employee ""E103"" is skilled in ""Welding"".";askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
+"Does the record show ""Welding"" as a skill for ""E103""?";askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
+"Verify the ""Welding"" skill for employee ""E103"".";askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
+"Is ""E103"" qualified in ""Welding""?";askOne;employee_skill/2;"employee_skill(""E103"", ""Welding"")";house_builder
+Do we have a bulldozer at project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
+Is there a bulldozer present for project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
+Check if project 202 has a bulldozer on site.;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
+Is a bulldozer currently allocated to project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
+Confirm the presence of a bulldozer at project 202.;askOne;equipment_on_site/2;"equipment_on_site(202, ""Bulldozer"")";house_builder
+Does project 202 have a crane on site?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
+Is there a crane available at project 202?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
+Check if a crane is currently at the site for project 202.;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
+Is project 202 equipped with a crane?;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
+Tell me if project 202 currently has a crane on site.;askOne;equipment_on_site/2;"equipment_on_site(202, ""Crane"")";house_builder
+Did the plumbing check get a passed status for any of the projects?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
+Has any plumbing inspection resulted in a passed outcome?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
+Look for the project where the plumbing inspection was marked as passed.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
+Which project had a plumbing inspection with a passed result?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
+Find the entry where the plumbing inspection is recorded as passed.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Plumbing"", _, ""Passed"")";house_builder
+Did the electrical inspection for the previous project get a passed status?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Show me if the electrical inspection was marked as passed for that last project.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Has the electrical inspection for the most recent project been officially passed?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Check if the electrical inspection result is passed for the last project.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Verify if the electrical inspection for the last project resulted in a passed grade.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Electrical"", _, ""Passed"")";house_builder
+Did the structural inspection for the most recent project come back as passed?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
+Has the structural check been marked as passed for the last project?;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
+I need to know if the structural inspection for the final project has a status of passed.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
+Confirm whether the structural audit for the last project was passed.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
+Check if the structural inspection for the previous project is recorded as passed.;askOne;inspection_scheduled/4;"inspection_scheduled(_, ""Structural"", _, ""Passed"")";house_builder
+"List every project that currently has an ""Approved"" permit status";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
+"Show me all the permits that have been marked as ""Approved""";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
+"Which projects are listed as ""Approved"" right now?";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
+"Find all of the projects with a status of ""Approved""";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
+"I need a full list of projects that have an ""Approved"" status";askAll;permit_status/3;"permit_status(_, _, ""Approved"")";house_builder
+Is project 202's environmental permit marked as approved?;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
+Check if the status of the environmental permit for project 202 is approved.;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
+I need to know if project 202 has an approved environmental permit.;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
+Confirm whether the environmental permit for project 202 is currently approved.;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
+Was the environmental permit for project 202 granted approval?;askOne;permit_status/3;"permit_status(202, ""Environmental"", ""Approved"")";house_builder
+Tell me the status of project 202.;askOne;project_details/3;project_details(202, _, Status);house_builder
+How is project 202 coming along?;askOne;project_details/3;project_details(202, _, Status);house_builder
+I need to know the current phase for project 202.;askOne;project_details/3;project_details(202, _, Status);house_builder
+What state is project 202 in right now?;askOne;project_details/3;project_details(202, _, Status);house_builder
+Give me the progress update for project 202.;askOne;project_details/3;project_details(202, _, Status);house_builder
+Plumbing was finished on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
+The date for the Plumbing milestone is 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
+On 2025-04-20, the Plumbing stage was finalized.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
+Record that Plumbing reached completion on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
+The Plumbing task hit its milestone on 2025-04-20.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-04-20"")";house_builder
+The project reached its framing milestone on 2025-09-16.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+Mark 2025-09-16 as the completion date for the framing stage.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+Framing was finished on 2025-09-16.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+The date for the framing milestone is set to 2025-09-16.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+On 2025-09-16, the framing milestone was finalized.;tell;project_milestone/3;"project_milestone(_, ""Framing"", ""2025-09-16"")";house_builder
+Plumbing was officially finished on 2025-06-02.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
+Mark the 2025-06-02 date for the completion of the Plumbing stage.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
+The Plumbing phase reached its milestone on 2025-06-02.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
+We finished up the Plumbing portion on 2025-06-02.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
+The date for the Plumbing milestone is 2025-06-02.;tell;project_milestone/3;"project_milestone(_, ""Plumbing"", ""2025-06-02"")";house_builder
+The inventory shows 123 units for pipes;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
+We are holding 123 pipes in our supply;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
+Our records indicate 123 pipes are available;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
+There are exactly 123 pipes currently in storage;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
+Our stock count for pipes is 123;tell;resource_inventory/2;"resource_inventory(""pipes"", 123)";house_builder
+Our current stockpile holds 103 items of wood panels.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
+The inventory count for wood panels is exactly 103 units.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
+There are 103 wood panels available in the warehouse right now.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
+We are holding 103 units of wood panels.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
+The wood panels stock level is sitting at 103.;tell;resource_inventory/2;"resource_inventory(""wood panels"", 103)";house_builder
+Project 202 requires an additional 82 steel beams.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
+The construction team for project 202 is requesting 82 steel beams.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
+For project 202, please allocate 82 steel beams.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
+There is a requirement of 82 steel beams for project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
+Supply 82 steel beams to project 202.;tell;resource_needed/3;"resource_needed(202, ""steel beams"", unit(82))";house_builder
+Project 202 is located at 123 Main Street and the soil is Clay.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
+The ground at 123 Main Street for project 202 consists of Clay.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
+For project 202, the site is situated at 123 Main Street with Clay ground.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
+123 Main Street is the address for project 202, where the ground type is Clay.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
+We have project 202 at 123 Main Street featuring Clay ground.;tell;site_info/3;"site_info(202, ""123 Main Street"", ""Clay"")";house_builder
+Mr. Rossi is the designated contact person for SteelCorp.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
+The point of contact for SteelCorp is Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
+For SteelCorp, the contact individual is Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
+SteelCorp's contact person is listed as Mr. Rossi.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
+Connect with Mr. Rossi at SteelCorp.;tell;supplier_details/2;"supplier_details(""SteelCorp"", ""Mr. Rossi"")";house_builder
+Which team member is working on project 202 in the role of architect?;askOne;team_assignment/3;"team_assignment(202, _, ""Architect"")";house_builder
+Find the architect currently assigned to project 202.;askOne;team_assignment/3;"team_assignment(202, _, ""Architect"")";house_builder
+Tell me the employee ID of the architect for project 202.;askOne;team_assignment/3;"team_assignment(202, _, ""Architect"")";house_builder
+Show me the person serving as architect for project 202.;askOne;team_assignment/3;"team_assignment(202, _, ""Architect"")";house_builder
+Identify the architect associated with project 202.;askOne;team_assignment/3;"team_assignment(202, _, ""Architect"")";house_builder
+Project 202 produced 13 cubic meters of wood waste.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
+There are 13 cubic meters of wood debris recorded for project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
+For project 202, we logged 13 cubic meters of wood.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
+We have 13 cubic meters of wood waste from project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
+Project 202 resulted in a total of 13 cubic meters of wood waste.;tell;waste_management/3;"waste_management(202, ""Wood"", 13)";house_builder
+Project 202 produced 32 units of wood waste.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
+The volume of wood waste for project 202 is 32 cubic meters.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
+For project 202, we recorded 32 of wood waste.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
+There was 32 cubic meters of wood debris from project 202.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
+Project 202 resulted in 32 cubic meters of wood waste.;tell;waste_management/3;"waste_management(202, ""Wood"", 32)";house_builder
+the final transaction code is 45;tell;last_transaction_id/1;last_transaction_id(45);onbanking
+transaction number 89 was the most recent one;tell;last_transaction_id/1;last_transaction_id(89);onbanking
+the latest transaction identifier is 102;tell;last_transaction_id/1;last_transaction_id(102);onbanking
+the last recorded transaction ID happens to be 7;tell;last_transaction_id/1;last_transaction_id(7);onbanking
+that last transaction ID was 23;tell;last_transaction_id/1;last_transaction_id(23);onbanking
+Pippo01 is currently not logged in;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
+The account Pippo01 shows as offline;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
+Status for Pippo01 is offline;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
+Pippo01 has an offline status;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
+It appears that Pippo01 is offline;tell;login_status/2;"login_status(""Pippo01"", offline)";onbanking
+ErTrota04 couldn't get into the account;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
+I saw an unsuccessful sign-in attempt from ErTrota04;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
+ErTrota04 had a login error;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
+The account for ErTrota04 experienced a failed login;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
+Login rejected for ErTrota04;tell;failed_login/1;"failed_login(""ErTrota04"")";onbanking
+dispatch message 5 to user 4040;tell;send_notification/2;send_notification(4040, 5);onbanking
+user 1105 needs to receive alert 9;tell;send_notification/2;send_notification(1105, 9);onbanking
+notify client 9921 with update 3;tell;send_notification/2;send_notification(9921, 3);onbanking
+the system should push notification 7 to account 8876;tell;send_notification/2;send_notification(8876, 7);onbanking
+transmit notice 1 to user 5543;tell;send_notification/2;send_notification(5543, 1);onbanking
+the current balance for account 01343 is 3000 euros;tell;account/3;account(01343, _, 3000);onbanking
+i see that account number 88291 holds 5500 euros;tell;account/3;account(88291, _, 5500);onbanking
+the total funds in account 44920 amount to 1200 euros;tell;account/3;account(44920, _, 1200);onbanking
+account 99210 sits at a balance of 800 euros;tell;account/3;account(99210, _, 800);onbanking
+verify that account 55672 has 4200 euros;tell;account/3;account(55672, _, 4200);onbanking
+Fabiuccio222 just signed in;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
+Access granted for user Fabiuccio222;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
+Fabiuccio222 successfully authenticated;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
+It seems Fabiuccio222 is now logged in;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
+Fabiuccio222 finished the login process;tell;successful_login/1;"successful_login(""Fabiuccio222"")";onbanking
+Card 0021 is currently blocked;tell;card_status/2;card_status(0021, blocked);onbanking
+Mark card 0021 as blocked;tell;card_status/2;card_status(0021, blocked);onbanking
+The status of card 0021 is blocked;tell;card_status/2;card_status(0021, blocked);onbanking
+I need to report that card 0021 is blocked;tell;card_status/2;card_status(0021, blocked);onbanking
+Card 0021 status is set to blocked;tell;card_status/2;card_status(0021, blocked);onbanking
+Account 0123 processed a payment of 200 euros on 12/12/2021;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
+On 12/12/2021, a 200 euro transaction occurred via account 0123;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
+I see a 200 euro transaction linked to account 0123 dated 12/12/2021;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
+Account 0123 shows a transaction for 200 euros on 12/12/2021;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
+A transaction of 200 euros was made by account 0123 on 12/12/2021;tell;transaction/6;"transaction(_, 0123, _, 200, ""12/12/2021"", _)";onbanking
+The login attempt for the Pluto account yesterday resulted in a failure;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
+Pluto account access was denied during the latest attempt;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
+Someone wasn't able to get into the Pluto account recently;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
+A failed login event occurred on the Pluto account;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
+Access to Pluto was unsuccessful when someone tried to sign in;tell;authentication_attempt/3;"authentication_attempt(""Pluto"", _, failed)";onbanking
+List every card that currently has a blocked status;askAll;card_status/2;card_status(_, blocked);onbanking
+Show me which cards are marked as blocked;askAll;card_status/2;card_status(_, blocked);onbanking
+Display all blocked cards;askAll;card_status/2;card_status(_, blocked);onbanking
+Find all cards with the status blocked;askAll;card_status/2;card_status(_, blocked);onbanking
+Provide a list of all cards currently showing as blocked;askAll;card_status/2;card_status(_, blocked);onbanking
+List all customer IDs and their corresponding security alert types;askAll;security_alert/2;security_alert(_, _);onbanking
+Show me every user ID that triggered a security alert and specify the type;askAll;security_alert/2;security_alert(_, _);onbanking
+Retrieve the full list of security alerts along with the associated customer identifiers;askAll;security_alert/2;security_alert(_, _);onbanking
+Give me a report of all security alert instances including customer IDs and alert categories;askAll;security_alert/2;security_alert(_, _);onbanking
+I want a complete dump of all security alerts, showing both the customer ID and the alert type;askAll;security_alert/2;security_alert(_, _);onbanking
+Show me every account that had a failed login attempt;askAll;failed_login/1;failed_login(_);onbanking
+List all of the usernames that couldn't get signed in;askAll;failed_login/1;failed_login(_);onbanking
+Which accounts experienced login failures;askAll;failed_login/1;failed_login(_);onbanking
+I need a list of all accounts that failed to log in;askAll;failed_login/1;failed_login(_);onbanking
+Display all accounts that faced issues logging into the system;askAll;failed_login/1;failed_login(_);onbanking
+"list every authentication record for the user ""Bulbasaur15"" that occurred on 4/12/2023";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
+"show me all the times ""Bulbasaur15"" tried to log in on 4/12/2023";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
+"get all authentication_attempt entries for ""Bulbasaur15"" dated 4/12/2023";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
+"find every login event associated with ""Bulbasaur15"" for the date 4/12/2023";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
+"display all authentication_attempt data involving ""Bulbasaur15"" on 4/12/2023";askAll;authentication_attempt/3;"authentication_attempt(""Bulbasaur15"", ""4/12/2023"", _)";onbanking
+What is the daily limit for all accounts currently set at 200 euro?;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
+Show me all account types that allow a daily transfer of 200 euro.;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
+List every account category with a 200 euro cap.;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
+Which account tiers are restricted to a 200 euro daily transfer?;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
+Identify all accounts that have a 200 euro daily limit.;askAll;transfer_limit/2;transfer_limit(_, 200);onbanking
+Tell me the identifier for the most recent transaction.;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
+Which ID corresponds to the latest transaction?;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
+Show me the id of the last transaction processed.;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
+I need to know the id of the final transaction.;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
+What is the latest transaction id?;askOne;last_transaction_id/1;last_transaction_id(_);onbanking
+How much can I transfer if I have a premium account?;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
+Tell me the maximum amount allowed for a premium account.;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
+What is the daily cap for premium users?;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
+Show me the transfer limit for premium status.;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
+I need to know the limit for a premium account.;askOne;transfer_limit/2;transfer_limit(premium, _);onbanking
+"Is ""Giratina12"" currently logged in or out?";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
+"What is the current session status for user ""Giratina12""?";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
+"Check if ""Giratina12"" is active right now.";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
+"I need to know the login state for ""Giratina12"".";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
+"Show me the connection status for ""Giratina12"".";askOne;login_status/2;"login_status(""Giratina12"", _)";onbanking
+Find the username associated with customer ID 11;askOne;user/3;user(_, _, 11);onbanking
+Who is the user assigned to customer 11;askOne;user/3;user(_, _, 11);onbanking
+Show me the username for customer 11;askOne;user/3;user(_, _, 11);onbanking
+Identify the username linked to account 11;askOne;user/3;user(_, _, 11);onbanking
+Give me the username for customer record 11;askOne;user/3;user(_, _, 11);onbanking
+What is the current state of card 321?;askOne;card_status/2;card_status(321, _);onbanking
+Check the status for card 321.;askOne;card_status/2;card_status(321, _);onbanking
+I need to know the standing of card 321.;askOne;card_status/2;card_status(321, _);onbanking
+Is card 321 active or blocked?;askOne;card_status/2;card_status(321, _);onbanking
+Show me the info for card 321.;askOne;card_status/2;card_status(321, _);onbanking
+What is the pending transaction for account 122?;askOne;pending_transaction/2;pending_transaction(_, 122);onbanking
+Show me any transaction currently pending for account number 122.;askOne;pending_transaction/2;pending_transaction(_, 122);onbanking
+Which transaction is waiting on account 122?;askOne;pending_transaction/2;pending_transaction(_, 122);onbanking
+I need to find the pending transaction associated with account 122.;askOne;pending_transaction/2;pending_transaction(_, 122);onbanking
+Lookup the pending transaction linked to account 122.;askOne;pending_transaction/2;pending_transaction(_, 122);onbanking
+What is the payment amount for transaction 222?;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
+Show me the total for bill number 222.;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
+How much was paid for the transaction with ID 222?;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
+Find the value associated with payment 222.;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
+I am checking the amount for payment 222.;askOne;bill_payment/5;bill_payment(222, _, _, _, _);onbanking
+the robot's current state is charging;tell;robot_status/1;robot_status(recharging);robot_assistant
+currently the bot is in charging mode;tell;robot_status/1;robot_status(recharging);robot_assistant
+the robot is now recharging;tell;robot_status/1;robot_status(recharging);robot_assistant
+set the robot status to charging;tell;robot_status/1;robot_status(recharging);robot_assistant
+the machine is presently recharging;tell;robot_status/1;robot_status(recharging);robot_assistant
+The charge is currently at 45%;tell;battery_level/1;battery_level(45);robot_assistant
+My battery percentage sits at 92%;tell;battery_level/1;battery_level(92);robot_assistant
+The power level is 15%;tell;battery_level/1;battery_level(15);robot_assistant
+I'm looking at a battery status of 60%;tell;battery_level/1;battery_level(60);robot_assistant
+The remaining battery is 33%;tell;battery_level/1;battery_level(33);robot_assistant
+iPhone15 works perfectly with AppleCase;tell;accessory_compatible/2;"accessory_compatible(""iPhone15"", ""AppleCase"")";robot_assistant
+Is SonyHeadphones compatible with BoseAdapter?;tell;accessory_compatible/2;"accessory_compatible(""SonyHeadphones"", ""BoseAdapter"")";robot_assistant
+Show me all items compatible with LogitechMouse;tell;accessory_compatible/2;"accessory_compatible(_, ""LogitechMouse"")";robot_assistant
+Pixel8 is officially supported by GoogleStand;tell;accessory_compatible/2;"accessory_compatible(""Pixel8"", ""GoogleStand"")";robot_assistant
+List every accessory that works with KindlePaperwhite;tell;accessory_compatible/2;"accessory_compatible(_, ""KindlePaperwhite"")";robot_assistant
+The PlayStation is currently sold out;tell;out_of_stock/1;"out_of_stock(""PlayStation"")";robot_assistant
+We have run out of Laptops;tell;out_of_stock/1;"out_of_stock(""Laptops"")";robot_assistant
+Headphones are no longer in stock;tell;out_of_stock/1;"out_of_stock(""Headphones"")";robot_assistant
+Monitors are completely unavailable right now;tell;out_of_stock/1;"out_of_stock(""Monitors"")";robot_assistant
+Cameras are out of stock;tell;out_of_stock/1;"out_of_stock(""Cameras"")";robot_assistant
+Find all locations where the Camera is being displayed;tell;product_on_display/2;"product_on_display(""Camera"", _)";robot_assistant
+Show me which display the Monitor is currently featured on;tell;product_on_display/2;"product_on_display(""Monitor"", _)";robot_assistant
+The promo for Samsung is set at 15% starting 3/5/2026 and ending 3/6/2026;tell;promotion_active/4;"promotion_active(""Samsung"", 15, ""3/5/2026"", ""3/6/2026"")";robot_assistant
+Is there a 25% discount active for iPhone between 5/5/2025 and 6/5/2025?;tell;promotion_active/4;"promotion_active(""iPhone"", 25, ""5/5/2025"", ""6/5/2025"")";robot_assistant
+Show me all active promotions that offer a 10% discount ending on 12/12/2025;tell;promotion_active/4;"promotion_active(_, 10, _, ""12/12/2025"")";robot_assistant
+Sony provides a 30% price cut from 2/2/2025 until 2/3/2025;tell;promotion_active/4;"promotion_active(""Sony"", 30, ""2/2/2025"", ""2/3/2025"")";robot_assistant
+Find the discount percentage and date range for the LG promo;tell;promotion_active/4;"promotion_active(""LG"", _, _, _)";robot_assistant
+List every return process linked to Samsung products;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
+Show me all return options for Samsung devices;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
+What return procedures are registered for Samsung items?;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
+Find every available return process for a Samsung device;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
+Retrieve all return processes applicable to Samsung;askAll;return_process/2;"return_process(_, ""Samsung"")";robot_assistant
+list every item currently out of stock;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
+show me all the products that aren't available;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
+what are all the things that are currently out of stock?;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
+display the full list of unavailable products;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
+find all the items that we do not have in stock right now;askAll;out_of_stock/1;out_of_stock(_);robot_assistant
+List every promotion that runs through 1/1/2026;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
+Which deals are currently scheduled to end on 1/1/2026?;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
+Show me all active promotions ending on 1/1/2026;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
+I need a list of every promotion valid until 1/1/2026;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
+Display all promotions that expire on 1/1/2026;askAll;promotion_active/4;"promotion_active(_, _, _, ""1/1/2026"")";robot_assistant
+list every item that currently has a stock count of 9;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
+show me all products with exactly 9 units left in the stockroom;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
+what are the items that have a quantity of 9 in stock;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
+find all products where the remaining inventory is 9;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
+give me a list of all items in the stockroom with a quantity of 9;askAll;product_in_stockroom/2;product_in_stockroom(_, 9);robot_assistant
+List every customer who has shown interest in the dishwasher;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
+Show me all customers looking for a dishwasher;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
+Give me a list of all clients who want a dishwasher;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
+Who are all the customers that have requested a dishwasher;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
+Find all the users interested in the dishwasher;askAll;customer_request/2;customer_request(_, dishwasher);robot_assistant
+List every accessory that works with PixelPhone3;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
+Show me all the accessories that are compatible with the PixelPhone3;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
+Find all items that can be used with PixelPhone3;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
+Which accessories are compatible with PixelPhone3?;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
+Display all of the accessories that pair with PixelPhone3;askAll;accessory_compatible/2;"accessory_compatible(""PixelPhone3"", _)";robot_assistant
+How much power is left in the battery?;askOne;battery_level/1;battery_level(_);robot_assistant
+Check the current battery status for me.;askOne;battery_level/1;battery_level(_);robot_assistant
+What percentage is the battery at right now?;askOne;battery_level/1;battery_level(_);robot_assistant
+Show the robot battery level.;askOne;battery_level/1;battery_level(_);robot_assistant
+Give me the battery reading.;askOne;battery_level/1;battery_level(_);robot_assistant
+What is the current charging status of the robot?;askOne;charging_status/1;charging_status(_);robot_assistant
+Is the robot currently charging or not?;askOne;charging_status/1;charging_status(_);robot_assistant
+Tell me the charging state for the robot.;askOne;charging_status/1;charging_status(_);robot_assistant
+Check the charging status of the bot.;askOne;charging_status/1;charging_status(_);robot_assistant
+I need to know if the robot is charging right now.;askOne;charging_status/1;charging_status(_);robot_assistant
+Did customer 21 place an order for the XiaomiRedmi?;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
+Check if customer 21 is interested in the XiaomiRedmi.;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
+Has user 21 made a request concerning the XiaomiRedmi?;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
+Verify if the XiaomiRedmi was requested by customer 21.;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
+Look for a XiaomiRedmi request filed by customer 21.;askOne;customer_request/2;"customer_request(21, ""XiaomiRedmi"")";robot_assistant
+Is the SamsungS3 currently out of stock?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
+Check if the SamsungS3 is unavailable.;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
+Tell me if the SamsungS3 is out of stock.;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
+Does the shop have any SamsungS3 left?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
+Is the SamsungS3 sold out?;askOne;out_of_stock/1;"out_of_stock(""SamsungS3"")";robot_assistant
+"Has the ""clear"" task been finished yet?";askOne;task_completed/1;task_completed(clear);robot_assistant
+"Is the ""clear"" task done?";askOne;task_completed/1;task_completed(clear);robot_assistant
+"Mark ""clear"" as finished?";askOne;task_completed/1;task_completed(clear);robot_assistant
+"Was the ""clear"" assignment wrapped up?";askOne;task_completed/1;task_completed(clear);robot_assistant
+"Did you finish ""clear"" already?";askOne;task_completed/1;task_completed(clear);robot_assistant
+Has the return process for transaction 502 been completed?;askOne;return_process/2;return_process(502, _);robot_assistant
+Is the return process for order 12 finished yet?;askOne;return_process/2;return_process(12, _);robot_assistant
+What is the status of the return process for transaction 88?;askOne;return_process/2;return_process(88, _);robot_assistant
+Tell me the status of the return process for transaction 400.;askOne;return_process/2;return_process(400, _);robot_assistant
+Check the return process for transaction 777.;askOne;return_process/2;return_process(777, _);robot_assistant

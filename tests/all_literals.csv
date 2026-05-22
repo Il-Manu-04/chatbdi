@@ -784,7 +784,7 @@ battery_level(Percentage);battery_level;robot_assistant
 charging_status(IsCharging);charging_status;robot_assistant
 customer_request(CustomerID, ProductInterest);customer_request;robot_assistant
 product_details(ProductName, Category, Brand, Price, StockQuantity, DisplayLocation);product_details;robot_assistant
-product_specifications(ProductName, SpecName, SpecValue)
+product_specifications(ProductName, SpecName, SpecValue);product_specifications;robot_assistant
 product_specifications(Laptop_X, "RAM", "16GB");product_specifications;robot_assistant
 product_on_display(ProductName, DisplayLocation);product_on_display;robot_assistant
 product_in_stockroom(ProductName, Quantity);product_in_stockroom;robot_assistant
@@ -794,7 +794,7 @@ promotion_active(ProductName, DiscountPercentage, StartDate, EndDate);promotion_
 accessory_compatible(MainProduct, AccessoryProduct);accessory_compatible;robot_assistant
 sales_completed(ProductList, Currency(TotalAmount), PaymentType);sales_completed;robot_assistant
 return_process(TransactionID, Product);return_process;robot_assistant
-navigation_obstacle(ObstacleType, Location)
+navigation_obstacle(ObstacleType, Location);navigation_obstacle;robot_assistant
 navigation_obstacle(cliente, corsia_tv);navigation_obstacle;robot_assistant
 task_completed(TaskName);task_completed;robot_assistant
 robot_status(recharging);robot_status;robot_assistant

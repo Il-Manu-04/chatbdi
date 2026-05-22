@@ -142,7 +142,7 @@ The actual cost of Concrete for the last project is 9011 euros.;tell;budget_item
 The actual cost of Labor for the last project is 1867 euros.;tell;budget_item/3;budget_item(_, "Labor", euro(1867));house_builder
 A client communication was sent on 2025-03-26 about 'Site issue'.;tell;client_communication/3;client_communication(_, "2025-03-26", "Site issue");house_builder
 A client communication was sent on 2025-08-13 about 'Site issue'.;tell;client_communication/3;client_communication(_, "2025-08-13", "Site issue");house_builder
-Need to know all the emplyers with skill "builder";askAll;employee_skill/2;employee_skill(_, builder);house_builder
+Need to know all the employers with skill "builder";askAll;employee_skill/2;employee_skill(_, builder);house_builder
 Does employee E101 have a skill in welding?;askOne;employee_skill/2;employee_skill("E101", "Welding");house_builder
 Does employee E102 have a skill in welding?;askOne;employee_skill/2;employee_skill("E102", "Welding");house_builder
 Does employee E103 have a skill in welding?;askOne;employee_skill/2;employee_skill("E103", "Welding");house_builder

@@ -3,16 +3,62 @@ import json
 import re
 import os
 import random
+import argparse
 
 random.seed(42)
 
-# ── Percorsi ────────────────────────────────────────────────────────────────
+# ── Percorsi base ────────────────────────────────────────────────────────────
 BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
 INPUT_DIR   = os.path.join(BASE_DIR, "input")
-SYSTEM_FILE = os.path.join(BASE_DIR, "..", "interpreter", "src", "agt", "chatbdi", "modelfiles", "nl2log.txt")
-PROMPT_FILE = os.path.join(BASE_DIR, "..", "interpreter", "src", "agt", "chatbdi", "modelfiles", "nl2logPrompt.txt")
-ALL_CSV     = os.path.join(BASE_DIR, "test_domain.csv")
-OUTPUT_FILE = os.path.join(BASE_DIR, "tickets_test_dataset.jsonl")
+MODELFILES  = os.path.join(BASE_DIR, "..", "interpreter", "src", "agt", "chatbdi", "modelfiles")
+
+# ── File prompt (lunghi — originali) ─────────────────────────────────────────
+SYSTEM_FILE_LONG = os.path.join(MODELFILES, "nl2log.txt")
+PROMPT_FILE_LONG = os.path.join(MODELFILES, "nl2logPrompt.txt")
+
+# ── File prompt (corti — per fine-tuning) ────────────────────────────────────
+SYSTEM_FILE_SHORT = os.path.join(MODELFILES, "nl2log_short.txt")
+PROMPT_FILE_SHORT = os.path.join(MODELFILES, "nl2logPrompt_short.txt")
+
+
+# ── CLI ──────────────────────────────────────────────────────────────────────
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Convert CSV dataset to JSONL for LLM training"
+    )
+    parser.add_argument(
+        "--input",
+        default=os.path.join(BASE_DIR, "all_data_augmented.csv"),
+        help="Input CSV file path (default: all_data_augmented.csv)",
+    )
+    parser.add_argument(
+        "--output",
+        default=os.path.join(BASE_DIR, "dataset.jsonl"),
+        help="Output JSONL file path (default: dataset.jsonl)",
+    )
+    parser.add_argument(
+        "--short",
+        action="store_true",
+        help="Use compact prompts (nl2log_short.txt + nl2logPrompt_short.txt) "
+             "for fine-tuning with reduced token count",
+    )
+    return parser.parse_args()
+
+
+args_cli = parse_args()
+ALL_CSV     = args_cli.input
+OUTPUT_FILE = args_cli.output
+USE_SHORT   = args_cli.short
+
+# ── Selezione prompt in base alla modalità ───────────────────────────────────
+if USE_SHORT:
+    SYSTEM_FILE = SYSTEM_FILE_SHORT
+    PROMPT_FILE = PROMPT_FILE_SHORT
+    print(f"[INFO] Modalità CORTA: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
+else:
+    SYSTEM_FILE = SYSTEM_FILE_LONG
+    PROMPT_FILE = PROMPT_FILE_LONG
+    print(f"[INFO] Modalità LUNGA: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
 
 DOMAINS = [
     "booking", "car_control", "cooking", "domestic_robot",
@@ -202,20 +248,34 @@ def get_examples(domain, embedding_str):
     return "[" + ", ".join(json_examples) + "]"
 
 
-# ── Costruisce il prompt utente compilando nl2logPrompt.txt ──────────────────
+# ── Costruisce il prompt utente ──────────────────────────────────────────────
 def build_user_prompt(sentence, embedding, performative, domain):
     nearest_json = embedding_to_nearest_json(embedding, domain)
-    examples     = get_examples(domain, embedding)
-    return (PROMPT_TEMPLATE
-        .replace("SENTENCE",     sentence)
-        .replace("NEAREST_JSON", nearest_json)
-        .replace("ILF",          performative)
-        .replace("EXAMPLES",     examples))
+
+    if USE_SHORT:
+        # Modalità corta: il template usa solo SENTENCE, NEAREST_JSON, ILF
+        # Non serve passare gli esempi
+        return (PROMPT_TEMPLATE
+            .replace("SENTENCE",     sentence)
+            .replace("NEAREST_JSON", nearest_json)
+            .replace("ILF",          performative))
+    else:
+        # Modalità lunga (originale): include anche array di esempi
+        examples = get_examples(domain, embedding)
+        return (PROMPT_TEMPLATE
+            .replace("SENTENCE",     sentence)
+            .replace("NEAREST_JSON", nearest_json)
+            .replace("ILF",          performative)
+            .replace("EXAMPLES",     examples))
 
 
-# ── Main: legge all_data.csv e genera dataset.jsonl ─────────────────────────
+# ── Main: legge CSV e genera dataset.jsonl ───────────────────────────────────
 errors = 0
 total  = 0
+
+print(f"[INFO] Input:  {ALL_CSV}")
+print(f"[INFO] Output: {OUTPUT_FILE}")
+print()
 
 with open(ALL_CSV, encoding="utf-8") as csv_f, \
      open(OUTPUT_FILE, "w", encoding="utf-8") as out_f:
