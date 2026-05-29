@@ -1,0 +1,22 @@
+sentence;performative;embedding;solution;domain
+Marco booked a suite from 01/06/2025 to 05/06/2025;tell;booking/4;booking(marco, suite, "01/06/2025", "05/06/2025");booking
+What is the price per night for a single room?;askOne;room_price/2;room_price(single, X);booking
+Show me all the guests that have a confirmed reservation;askAll;has_reservation/2;has_reservation(_, _);booking
+One portion of pasta norma has 325 calories;tell;calories/3;calories(pasta(norma), unit(1, portion), 325);cooking
+What goes well with pizza quattro stagioni?;askOne;pairing/2;pairing(pizza(quattro_stagioni), X);cooking
+The current speed is 120 kph;tell;current_speed/2;current_speed(120, kph);car_control
+What is the tire pressure on the front left wheel?;askOne;tire_pressure/2;tire_pressure(front_left, X);car_control
+I ordered 5 bottles of water;tell;order/2;order(water, 5);domestic_robot
+List all the products currently available in the fridge;askAll;available/2;available(_, fridge);domestic_robot
+Project 44 needs an inspection for electrical wiring on 20/08/2025;tell;inspection_scheduled/4;inspection_scheduled(44, electrical, "20/08/2025", _);house_builder
+Which projects have their payment status as pending?;askAll;payment_status/2;payment_status(_, pending);house_builder
+User Gino77 logged in successfully;tell;successful_login/1;successful_login("Gino77");onbanking
+Tell me all pending transactions on account 55012;askAll;pending_transaction/2;pending_transaction(_, 55012);onbanking
+The game Halo costs 59 euros and was developed by Bungie and published by Microsoft on 15/11/2001;tell;game_details/7;game_details(_, "Halo", _, 59, "Bungie", "Microsoft", "15/11/2001");games_platform
+Which games does user 42 have in the wishlist?;askAll;wishlist/3;wishlist(42, _, _);games_platform
+There are only 3 units of Laptop Pro left in stock;tell;low_stock_alert/2;low_stock_alert("Laptop Pro", 3);robot_assistant
+What is the battery level of the robot right now?;askOne;battery_level/1;battery_level(X);robot_assistant
+Employee 1234 has a certification in Project Management issued on 10/01/2023 expiring 10/01/2026;tell;certification_details/4;certification_details(1234, "Project Management", "10/01/2023", "10/01/2026");employer_management
+Show me all employees who have the skill Python;askAll;skill_set/3;skill_set(_, "Python", _);employer_management
+What is the proficiency level of employee 5678 in Java?;askOne;skill_set/3;skill_set(5678, "Java", X);employer_management
+Which ingredients do I need for a greek salad?;askOne;ingredients/2;ingredients(salad(greek), X);cooking
