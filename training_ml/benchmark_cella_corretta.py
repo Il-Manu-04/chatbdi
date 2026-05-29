@@ -2,7 +2,6 @@ import json
 import torch
 import re
 import time
-import yaml
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -42,34 +41,12 @@ def normalize(obj):
     return out
 
 def fix_hallucinated_json(text):
-    """
-    Prende output sporco (da Base o FT) e restituisce una stringa JSON perfetta,
-    aggiungendo virgolette mancanti a chiavi e argomenti.
-    """
-    # 1. Cambia = in : per il Fine-Tuned
-    text = re.sub(r'([a-zA-Z0-9_]+)\s*=', r'\1: ', text)
-    
-    # 2. Usa YAML per estrarre i dati ignorando virgolette mancanti (es. functor: user_account)
-    try:
-        dizionario = yaml.safe_load(text)
-    except Exception:
-        return text
-        
-    if not isinstance(dizionario, dict):
-        return text
-        
-    # 3. Aggiunge virgolette interne agli 'arg' se il modello le ha scordate
-    for k, v in dizionario.items():
-        if isinstance(v, str) and k.startswith("arg"):
-            # Ignora la variabile anonima
-            if v == "_":
-                continue
-            # Se la parola NON ha già le virgolette interne, le aggiunge
-            if not (v.startswith('"') and v.endswith('"')):
-                dizionario[k] = f'"{v}"'
-                
-    # 4. Restituisce un JSON impeccabile
-    return json.dumps(dizionario)
+    """Converte output in formato HashMap (con =) in JSON valido (con :).
+    Da usare SOLO quando il modello fine-tuned produce output con = invece di :."""
+    text = re.sub(r'([a-zA-Z0-9_]+)\s*=', r'"\1": ', text)
+    text = re.sub(r'("arg\d+":\s*)"([^"]*)"', r'\1"\\"\2\\""', text)
+    text = re.sub(r':\s*([^"\d\s\[{][^,}]*?)\s*([,}])', r': "\1"\2', text)
+    return text
 
 def calcola_accuratezza_parziale(expected_dict, predicted_dict):
     if not isinstance(expected_dict, dict) or not isinstance(predicted_dict, dict):
@@ -79,9 +56,6 @@ def calcola_accuratezza_parziale(expected_dict, predicted_dict):
         return 1.0 if len(predicted_dict) == 0 else 0.0
     chiavi_corrette = sum(1 for k, v in expected_dict.items() if k in predicted_dict and predicted_dict[k] == v)
     return chiavi_corrette / totale_chiavi
-
-
-
 
 class StopOnTokens(StoppingCriteria):
     def __init__(self, stop_ids):
@@ -132,7 +106,7 @@ for config_mod in esperimenti:
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = config_mod['path'],
-        max_seq_length = 4096,
+        max_seq_length = 3072,
         dtype = None,
         load_in_4bit = True,
     )
@@ -195,11 +169,14 @@ for config_mod in esperimenti:
             if cleaned.endswith(backticks): cleaned = cleaned[:-3]
             cleaned = cleaned.strip()
 
-            # [MODIFICA 1] Applichiamo il fixer a prescindere dal modello se il JSON è rotto
-            try:
-                json.loads(cleaned)
-            except json.JSONDecodeError:
-                cleaned = fix_hallucinated_json(cleaned)
+            # [FIX 3] Applica fix_hallucinated_json SOLO se il JSON non è già valido.
+            # Se il modello fine-tuned produce JSON corretto, non serve convertire nulla.
+            # Se invece produce formato HashMap (con =), la funzione lo converte in JSON.
+            if config_mod['trained'] == "Yes":
+                try:
+                    json.loads(cleaned)  # Testa se è già JSON valido
+                except json.JSONDecodeError:
+                    cleaned = fix_hallucinated_json(cleaned)  # Converte solo se necessario
 
             passed = False
             parziale = 0.0
