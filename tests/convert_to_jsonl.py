@@ -20,6 +20,12 @@ PROMPT_FILE_LONG = os.path.join(MODELFILES, "nl2logPrompt.txt")
 SYSTEM_FILE_SHORT = os.path.join(MODELFILES, "nl2log_short.txt")
 PROMPT_FILE_SHORT = os.path.join(MODELFILES, "nl2logPrompt_short.txt")
 
+# ── File prompt (corti + esempi — per fine-tuning con examples) ──────────────
+PROMPT_FILE_SHORT_EXAMPLES = os.path.join(MODELFILES, "nl2logPrompt_short_examples.txt")
+
+# ── File prompt (lunghi senza esempi — per base model zero-shot) ─────────────
+PROMPT_FILE_LONG_ZERO = os.path.join(MODELFILES, "nl2logPrompt_zero.txt")
+
 
 # ── CLI ──────────────────────────────────────────────────────────────────────
 def parse_args():
@@ -42,23 +48,38 @@ def parse_args():
         help="Use compact prompts (nl2log_short.txt + nl2logPrompt_short.txt) "
              "for fine-tuning with reduced token count",
     )
+    parser.add_argument(
+        "--examples",
+        action="store_true",
+        help="Include domain examples in the user prompt (HashMap format with =). "
+             "When combined with --short, uses nl2logPrompt_short_examples.txt template.",
+    )
     return parser.parse_args()
 
 
-args_cli = parse_args()
-ALL_CSV     = args_cli.input
-OUTPUT_FILE = args_cli.output
-USE_SHORT   = args_cli.short
+args_cli     = parse_args()
+ALL_CSV      = args_cli.input
+OUTPUT_FILE  = args_cli.output
+USE_SHORT    = args_cli.short
+USE_EXAMPLES = args_cli.examples
 
 # ── Selezione prompt in base alla modalità ───────────────────────────────────
-if USE_SHORT:
+if USE_SHORT and USE_EXAMPLES:
+    SYSTEM_FILE = SYSTEM_FILE_SHORT
+    PROMPT_FILE = PROMPT_FILE_SHORT_EXAMPLES
+    print(f"[INFO] Modalità CORTA + ESEMPI: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
+elif USE_SHORT:
     SYSTEM_FILE = SYSTEM_FILE_SHORT
     PROMPT_FILE = PROMPT_FILE_SHORT
     print(f"[INFO] Modalità CORTA: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
-else:
+elif USE_EXAMPLES:
     SYSTEM_FILE = SYSTEM_FILE_LONG
     PROMPT_FILE = PROMPT_FILE_LONG
-    print(f"[INFO] Modalità LUNGA: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
+    print(f"[INFO] Modalità LUNGA + ESEMPI: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
+else:
+    SYSTEM_FILE = SYSTEM_FILE_LONG
+    PROMPT_FILE = PROMPT_FILE_LONG_ZERO
+    print(f"[INFO] Modalità LUNGA ZERO-SHOT: {os.path.basename(SYSTEM_FILE)} + {os.path.basename(PROMPT_FILE)}")
 
 DOMAINS = [
     "booking", "car_control", "cooking", "domestic_robot",
@@ -227,6 +248,34 @@ def embedding_to_nearest_json(embedding_str, domain):
     return "{" + parts + "}"
 
 
+# ── Parser Prolog → HashMap (formato con =) ─────────────────────────────────
+def prolog_to_hashmap(solution):
+    """
+    Converte un letterale Prolog nel formato Java HashMap.toString().
+    Es: booking(carlo, single, "10/10/2025", "15/10/2025")
+     →  {functor=booking, arg0=carlo, arg1=single, arg2="10/10/2025", arg3="15/10/2025"}
+    Stesso formato usato per lo Schema (NEAREST_JSON) nel prompt.
+    """
+    solution = str(solution).strip()
+
+    # rimuove eventuali virgolette doppie CSV attorno all'intera soluzione
+    if solution.startswith('"') and solution.endswith('"'):
+        solution = solution[1:-1].replace('""', '"')
+
+    match = re.match(r"^([a-zA-Z0-9_]+)\((.*)\)$", solution, re.DOTALL)
+    if not match:
+        return "{functor=" + solution + "}"
+
+    functor = match.group(1)
+    args_str = match.group(2)
+
+    parts = [f"functor={functor}"]
+    args = split_args(args_str)
+    for i, arg in enumerate(args):
+        parts.append(f"arg{i}={arg_to_json_value(arg)}")
+    return "{" + ", ".join(parts) + "}"
+
+
 # ── Recupera gli esempi con lo stesso functor da literals.csv ────────────────
 def get_examples(domain, embedding_str):
     """
@@ -248,25 +297,59 @@ def get_examples(domain, embedding_str):
     return "[" + ", ".join(json_examples) + "]"
 
 
+def get_examples_hashmap(domain, embedding_str):
+    """
+    Restituisce la lista di esempi nel formato HashMap (con =).
+    Es: [{functor=booking, arg0=carlo, arg1=single}, {functor=booking, arg0=_, arg1=_}]
+    Coerente con il formato dello Schema nel prompt corto.
+    """
+    match = re.match(r"^([a-zA-Z0-9_]+)/", embedding_str.strip())
+    if not match:
+        return "[]"
+    functor = match.group(1)
+    raw_examples = ALL_LITERALS.get(domain, {}).get(functor, [])
+    hashmap_examples = []
+    for ex in raw_examples:
+        try:
+            hashmap_examples.append(prolog_to_hashmap(ex))
+        except Exception:
+            pass
+    return "[" + ", ".join(hashmap_examples) + "]"
+
+
 # ── Costruisce il prompt utente ──────────────────────────────────────────────
 def build_user_prompt(sentence, embedding, performative, domain):
     nearest_json = embedding_to_nearest_json(embedding, domain)
 
-    if USE_SHORT:
+    if USE_SHORT and USE_EXAMPLES:
+        # Modalità corta + esempi: template corto con examples in formato HashMap (=)
+        examples = get_examples_hashmap(domain, embedding)
+        return (PROMPT_TEMPLATE
+            .replace("SENTENCE",     sentence)
+            .replace("NEAREST_JSON", nearest_json)
+            .replace("ILF",          performative)
+            .replace("EXAMPLES",     examples))
+    elif USE_SHORT:
         # Modalità corta: il template usa solo SENTENCE, NEAREST_JSON, ILF
         # Non serve passare gli esempi
         return (PROMPT_TEMPLATE
             .replace("SENTENCE",     sentence)
             .replace("NEAREST_JSON", nearest_json)
             .replace("ILF",          performative))
-    else:
-        # Modalità lunga (originale): include anche array di esempi
+    elif USE_EXAMPLES:
+        # Modalità lunga + esempi: include array di esempi in JSON (con :)
         examples = get_examples(domain, embedding)
         return (PROMPT_TEMPLATE
             .replace("SENTENCE",     sentence)
             .replace("NEAREST_JSON", nearest_json)
             .replace("ILF",          performative)
             .replace("EXAMPLES",     examples))
+    else:
+        # Modalità lunga zero-shot: niente esempi, template senza EXAMPLES
+        return (PROMPT_TEMPLATE
+            .replace("SENTENCE",     sentence)
+            .replace("NEAREST_JSON", nearest_json)
+            .replace("ILF",          performative))
 
 
 # ── Main: legge CSV e genera dataset.jsonl ───────────────────────────────────
